@@ -20,6 +20,7 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
     var isGameOver = false
     var isGamePaused = false
     var pauseButton = SKSpriteNode()
+    var pauseButtonBlurr = SKSpriteNode()
     
     var scoreLabel = SKLabelNode(fontNamed: "avenirNext-Bold")
     var score = 0 {
@@ -36,7 +37,7 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
     var obstacleScoreList = [SKSpriteNode]()
     var firstObstacleNumber = 0
     
-    var gap: CGFloat = 100.0
+    var gap: CGFloat = 150.0
 
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
@@ -75,7 +76,8 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
                 } else {
                     isGamePaused = false
                     self.isPaused = false
-                    pauseButton.texture = SKTexture(imageNamed: "PauseButtonWhite")
+                    pauseButton.texture = SKTexture(imageNamed: "PauseButton")
+                    pauseButtonBlurr.texture = SKTexture(imageNamed: "BluePauseButtonBlurr")
                     self.speed = 1.0
                     self.physicsWorld.speed = 1.0
                 }
@@ -103,7 +105,8 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
         timeCheck = 1
         self.isPaused = true
         isGamePaused = true
-        pauseButton.texture = SKTexture(imageNamed: "PlayButtonWhite")
+        pauseButton.texture = SKTexture(imageNamed: "PlayButton")
+        pauseButtonBlurr.texture = SKTexture(imageNamed: "BluePlayButtonBlurr")
         self.speed = 0.0
         self.physicsWorld.speed = 0.0
     }
@@ -124,7 +127,7 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
     
     func addPlayerBlurr() {
         let playerBlurr = SKSpriteNode(imageNamed: "PlayerBlurr")
-        playerBlurr.size = CGSize(width: 78, height: 78)
+        playerBlurr.size = CGSize(width: 73, height: 73)
         //playerBlurr.position = CGPoint(x: player.position.x, y: player.position.y)
         //playerBlurr.name = "PLAYER"
         //playerBlurr.physicsBody?.isDynamic = false
@@ -142,9 +145,10 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
         var randomNumber = Int(arc4random_uniform(UInt32(preRandomNumber)))
         print(randomNumber)
 
-        var obstacle1 = SKSpriteNode(color: .blue, size: CGSize(width: randomNumber, height: 20))
+        var obstacle1 = SKSpriteNode(imageNamed: "Obstacle")
+        obstacle1.size = CGSize(width: 750, height: 45)
         //obstacle1.anchorPoint = CGPoint(x: 0, y: 0)
-        obstacle1.position = CGPoint(x: 0 + obstacle1.size.width/2, y: 1334 + obstacle1.size.height)
+        obstacle1.position = CGPoint(x: self.size.width/2 - gap - CGFloat(randomNumber), y: 1334 + obstacle1.size.height)
         obstacle1.name = "OBSTACLE"
         obstacle1.physicsBody?.isDynamic = true
         obstacle1.physicsBody = SKPhysicsBody(rectangleOf: obstacle1.size)
@@ -156,7 +160,14 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
         firstObstacleNumber = 1
         addChild(obstacle1)
         
-        var obstacle2 = SKSpriteNode(color: .blue, size: CGSize(width: 750 - gap - obstacle1.size.width, height: 20))
+        
+       let obstacleBlurr = SKSpriteNode(imageNamed: "ObstacleBlurr")
+        obstacleBlurr.size = CGSize(width: 803, height: 98)
+        obstacle1.addChild(obstacleBlurr)
+        obstacleBlurr.zPosition = -1
+        
+        var obstacle2 = SKSpriteNode(imageNamed: "Obstacle")
+        obstacle2.size = CGSize(width: 750, height: 45)
         //obstacle2.anchorPoint = CGPoint(x: 0, y: 0)
         obstacle2.position = CGPoint(x: obstacle1.position.x + obstacle1.size.width/2 + gap + obstacle2.size.width/2, y: 1334 + obstacle2.size.height)
         obstacle2.name = "OBSTACLE"
@@ -171,6 +182,11 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
         
         addMovement(obs: obstacle1)
         addMovement(obs: obstacle2)
+        
+        let obstacleBlurr2 = SKSpriteNode(imageNamed: "ObstacleBlurr")
+        obstacleBlurr.size = CGSize(width: 803, height: 98)
+        obstacle2.addChild(obstacleBlurr2)
+        obstacleBlurr2.zPosition = -1
         
     }
     
@@ -270,21 +286,34 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
     func addBackButton() {
         let backButton = SKSpriteNode(texture: SKTexture(imageNamed: "BackButton"))
         backButton.name = "BackButton"
-        backButton.size.width = frame.size.width/10
-        backButton.size.height = backButton.size.width
-        backButton.position = CGPoint(x: frame.minX + backButton.size.width/2, y: frame.maxY - backButton.size.height/2 - 40)
+        backButton.size = CGSize(width: 32.3, height: 75)
         backButton.zPosition = 6
         addChild(backButton)
+        
+        let backButtonBlurr = SKSpriteNode(imageNamed: "BlueBackButtonBlurr")
+        backButtonBlurr.size = CGSize(width: 67.2, height: 115.8)
+        backButton.addChild(backButtonBlurr)
+        backButtonBlurr.zPosition = -1
+        
+        backButton.position = CGPoint(x: 0 + backButtonBlurr.size.width/2 + 25, y: 1334 - backButtonBlurr.size.height/2 - 25)
+        
     }
     
     func addPauseButton() {
-        pauseButton = SKSpriteNode(texture: SKTexture(imageNamed: "PauseButtonWhite"))
+        pauseButton = SKSpriteNode(texture: SKTexture(imageNamed: "PauseButton"))
         pauseButton.name = "PauseButton"
-        pauseButton.size.width = frame.size.width/10
-        pauseButton.size.height = pauseButton.size.width
-        pauseButton.position = CGPoint(x: frame.maxX - pauseButton.size.width/2, y: frame.maxY - pauseButton.size.height/2 - 40)
+        pauseButton.size.width = 42.7
+        pauseButton.size.height = 75
+        
         pauseButton.zPosition = 6
         addChild(pauseButton)
+        
+        pauseButtonBlurr = SKSpriteNode(imageNamed: "BluePauseButtonBlurr")
+        pauseButtonBlurr.size = CGSize(width: 72.4, height: 104.7)
+        pauseButton.addChild(pauseButtonBlurr)
+        pauseButtonBlurr.zPosition = -1
+        
+        pauseButton.position = CGPoint(x: 750 - pauseButtonBlurr.size.width/2 - 25, y: 1334 - pauseButtonBlurr.size.height/2 - 25)
         
     }
     
