@@ -52,8 +52,8 @@ class GameScene_sim: SKScene, SKPhysicsContactDelegate {
     }
     
     func addButton() {
-        var button = SKSpriteNode(imageNamed: "bbball")
-        button.size = CGSize(width: 30, height: 30)
+        var button = SKSpriteNode(imageNamed: "Disc")
+        // button.size = CGSize(width: 30, height: 30)
         var randomX = Int(arc4random_uniform(UInt32(650)) + 50)
         var randomY = Int(arc4random_uniform(UInt32(1150)) + 50)
         button.position = CGPoint(x: randomX, y: randomY)
@@ -62,6 +62,23 @@ class GameScene_sim: SKScene, SKPhysicsContactDelegate {
         buttonCount += 1
         buttonSequence.append(button)
         addChild(button)
+        
+        var randomBlurr = Int(arc4random_uniform(3))
+        var buttonBlurr = SKSpriteNode()
+        
+        switch randomBlurr {
+        case 0:
+            buttonBlurr = SKSpriteNode(imageNamed: "BlueDiscBlurr")
+        case 1:
+            buttonBlurr = SKSpriteNode(imageNamed: "GreenDiscBlurr")
+        case 2:
+            buttonBlurr = SKSpriteNode(imageNamed: "RedDiscBlurr")
+        default:
+            buttonBlurr = SKSpriteNode(imageNamed: "BlueDiscBlurr")
+        }
+        
+        button.addChild(buttonBlurr)
+        buttonBlurr.zPosition = -1
     }
     
     func addActionButton() {

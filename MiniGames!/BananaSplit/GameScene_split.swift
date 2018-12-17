@@ -22,10 +22,53 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
     var pauseButton = SKSpriteNode()
     var pauseButtonBlurr = SKSpriteNode()
     
-    var scoreLabel = SKLabelNode(fontNamed: "avenirNext-Bold")
+    var scoreLabel1 = SKSpriteNode(imageNamed: "num0")
+    var scoreLabel2 = SKSpriteNode(imageNamed: "num0")
+    var scoreLabel3 = SKSpriteNode(imageNamed: "num0")
+    var blurr1 = SKSpriteNode(imageNamed: "BlueNum0")
+    var blurr2 = SKSpriteNode(imageNamed: "BlueNum0")
+    var blurr3 = SKSpriteNode(imageNamed: "BlueNum0")
+    
+    var ones = 0
+    var tens = 0
+    var hundreds = 0
     var score = 0 {
         didSet {
-            scoreLabel.text = "\(score)"
+            ones += 1
+            if score % 100 == 0 {
+                ones = 0
+                tens = 0
+                hundreds += 1
+                scoreLabel2.texture = SKTexture(imageNamed: "num\(tens)")
+                blurr2.texture = SKTexture(imageNamed: "BlueNum\(tens)")
+                scoreLabel1.texture = SKTexture(imageNamed: "num\(hundreds)")
+                blurr1.texture = SKTexture(imageNamed: "BlueNumBlueNum\(hundreds)")
+
+            }
+
+            if score % 10 == 0 && score % 100 != 0 {
+                ones = 0
+                tens += 1
+                scoreLabel2.texture = SKTexture(imageNamed: "num\(tens)")
+                blurr2.texture = SKTexture(imageNamed: "BlueNum\(tens)")
+
+                
+            }
+            scoreLabel3.texture = SKTexture(imageNamed: "num\(ones)")
+            blurr3.texture = SKTexture(imageNamed: "BlueNum\(ones)")
+
+            if score >= 999 {
+                scoreLabel1.texture = SKTexture(imageNamed: "num9")
+                blurr1.texture = SKTexture(imageNamed: "BlueNum9")
+
+                scoreLabel2.texture = SKTexture(imageNamed: "num9")
+                blurr2.texture = SKTexture(imageNamed: "BlueNum9")
+
+                scoreLabel3.texture = SKTexture(imageNamed: "num9")
+                blurr3.texture = SKTexture(imageNamed: "BlueNum9")
+
+
+            }
         }
     }
     
@@ -37,7 +80,7 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
     var obstacleScoreList = [SKSpriteNode]()
     var firstObstacleNumber = 0
     
-    var gap: CGFloat = 150.0
+    var gap: CGFloat = 175.0
 
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
@@ -48,7 +91,7 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
         addPauseButton()
         addPlayer()
         addPlayerBlurr()
-        addScoreLabel()
+        addScoreLabels()
         
         view.showsNodeCount = true
         //view.showsPhysics = true
@@ -112,8 +155,7 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
     }
     
     func addPlayer() {
-        player = SKSpriteNode(imageNamed: "Player")
-        player.size = CGSize(width: 45, height: 45)
+        player = SKSpriteNode(imageNamed: "Disc")
         player.position = CGPoint(x: self.size.width/2, y: 250)
         player.name = "PLAYER"
         player.physicsBody?.isDynamic = false
@@ -126,8 +168,7 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
     }
     
     func addPlayerBlurr() {
-        let playerBlurr = SKSpriteNode(imageNamed: "PlayerBlurr")
-        playerBlurr.size = CGSize(width: 73, height: 73)
+        let playerBlurr = SKSpriteNode(imageNamed: "GreenDiscBlurr")
         //playerBlurr.position = CGPoint(x: player.position.x, y: player.position.y)
         //playerBlurr.name = "PLAYER"
         //playerBlurr.physicsBody?.isDynamic = false
@@ -317,13 +358,24 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    func addScoreLabel() {
-        scoreLabel.zPosition = 2
-        scoreLabel.fontSize = 80
-        scoreLabel.fontColor = .yellow
-        scoreLabel.text = "\(score)"
-        scoreLabel.position = CGPoint(x: self.size.width/2, y: self.size.height - (scoreLabel.frame.height * 2))
-        addChild(scoreLabel)
+    func addScoreLabels() {
+        scoreLabel1.zPosition = 2
+        scoreLabel1.position = CGPoint(x: self.size.width/2 - scoreLabel1.size.width - 20, y: 1334 - scoreLabel1.size.height/2 - 40)
+        scoreLabel2.zPosition = 2
+        scoreLabel2.position = CGPoint(x: self.size.width/2, y: 1334 - scoreLabel2.size.height/2 - 40)
+        scoreLabel3.zPosition = 2
+        scoreLabel3.position = CGPoint(x: self.size.width/2 + scoreLabel3.size.width + 20, y: 1334 - scoreLabel3.size.height/2 - 40)
+        addChild(scoreLabel1)
+        addChild(scoreLabel2)
+        addChild(scoreLabel3)
+        
+        scoreLabel1.addChild(blurr1)
+        scoreLabel2.addChild(blurr2)
+        scoreLabel3.addChild(blurr3)
+        
+        blurr1.zPosition = -1
+        blurr2.zPosition = -1
+        blurr3.zPosition = -1
     }
 }
 

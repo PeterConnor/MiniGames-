@@ -33,7 +33,11 @@ class GameScene_pop: SKScene, SKPhysicsContactDelegate {
     }
     
     var player = SKSpriteNode()
+    var playerBlurr = SKSpriteNode()
     var checkpoint = SKSpriteNode()
+    
+    var playerSpeed: CGFloat = 400
+    var speedIncrease: CGFloat = 10
     
     override func didMove(to view: SKView) {
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
@@ -47,13 +51,11 @@ class GameScene_pop: SKScene, SKPhysicsContactDelegate {
         addPlayer()
         addScoreLabel()
         
-        print(self.size)
     
     }
     
     func addPlayer() {
-        player = SKSpriteNode(imageNamed: "bbball")
-        player.size = CGSize(width: 30, height: 30)
+        player = SKSpriteNode(imageNamed: "Disc")
         player.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
         player.name = "PLAYER"
         player.physicsBody?.isDynamic = true
@@ -64,36 +66,43 @@ class GameScene_pop: SKScene, SKPhysicsContactDelegate {
         //print("player mass \(player.physicsBody?.mass)")
         player.physicsBody?.mass = 1.0
         addChild(player)
+        
+        playerBlurr = SKSpriteNode(imageNamed: "BlueDiscBlurr")
+        player.addChild(playerBlurr)
+        playerBlurr.zPosition = -1
     }
     
     func addCheckpoint() {
-        checkpoint = SKSpriteNode(imageNamed: "bbball")
-        checkpoint.size = CGSize(width: 30, height: 30)
+        checkpoint = SKSpriteNode(imageNamed: "Disc")
+        //checkpoint.size = CGSize(width: 30, height: 30)
         placeCheckpoint()
         checkpoint.name = "CHECKPOINT"
         checkpoint.physicsBody?.isDynamic = true
         checkpoint.physicsBody = SKPhysicsBody(circleOfRadius: checkpoint.size.width/2)
         checkpoint.physicsBody?.categoryBitMask = CollisionBitMask_pop.Checkpoint
         checkpoint.physicsBody?.collisionBitMask = 0
-        print(checkpoint.physicsBody?.mass)
         checkpoint.physicsBody?.mass = 1.0
         addChild(checkpoint)
+        
+        let checkpointBlurr = SKSpriteNode(imageNamed: "RedDiscBlurr")
+        checkpoint.addChild(checkpointBlurr)
+        checkpointBlurr.zPosition = -1
     }
     
     func placeCheckpoint() {
         
         var randomX = Int(arc4random_uniform(UInt32(650)) + 50)
         var randomY = Int(arc4random_uniform(UInt32(1150)) + 50)
-        print("random x \(randomX) minus player position x\(player.position.x)")
-        print("random y \(randomY) minus \(player.position.y)")
-        print("diff \(abs(player.position.x - CGFloat(randomX)), abs(player.position.y - CGFloat(randomY)))")
+       // print("random x \(randomX) minus player position x\(player.position.x)")
+        //print("random y \(randomY) minus \(player.position.y)")
+        //print("diff \(abs(player.position.x - CGFloat(randomX)), abs(player.position.y - CGFloat(randomY)))")
         print(abs(player.position.x - CGFloat(randomX)) < 200, abs(player.position.y) < 200)
         
         while abs(player.position.x - CGFloat(randomX)) < 10 || abs(player.position.y - CGFloat(randomY)) < 10 {
             randomX = Int(arc4random_uniform(UInt32(650)) + 50)
             randomY = Int(arc4random_uniform(UInt32(1150)) + 50)
-            print("new random x \(randomX)")
-            print("new random y \(randomY)")
+            //print("new random x \(randomX)")
+            //print("new random y \(randomY)")
         }
         
         checkpoint.position = CGPoint(x: randomX, y: randomY)
@@ -113,8 +122,8 @@ class GameScene_pop: SKScene, SKPhysicsContactDelegate {
         var vector = CGVector(dx: checkpoint.position.x - player.position.x, dy: checkpoint.position.y - player.position.y)
         var length = hypot(vector.dx, vector.dy)
         
-        vector.dx *= 500 / length
-        vector.dy *= 500 / length
+        vector.dx *= playerSpeed / length
+        vector.dy *= playerSpeed / length
         
         player.physicsBody?.applyImpulse(vector)
     }
@@ -172,9 +181,25 @@ class GameScene_pop: SKScene, SKPhysicsContactDelegate {
             
             if started && atPoint(location).name != "BackButton" && atPoint(location).name != "PauseButton" && !isGameOver && !isGamePaused {
                 if touching {
+                    let greenAction = SKAction.run {
+                        self.playerBlurr.texture = SKTexture(imageNamed: "GreenDiscBlurr")
+                    }
+                    
+                    let waitAction = SKAction.wait(forDuration: 0.25)
+                    
+                    let blueAction = SKAction.run {
+                        self.playerBlurr.texture = SKTexture(imageNamed: "BlueDiscBlurr")
+                    }
+                    
+                    
+                    player.run(SKAction.sequence([greenAction, waitAction, blueAction]))
+                    
                     score += 1
                     touching = false
                     player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+                    playerSpeed += speedIncrease
+                    speedIncrease *= 0.98
+                    print(playerSpeed)
                     placeCheckpoint()
                     movePlayer()
                 } else {
