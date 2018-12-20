@@ -327,12 +327,12 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
     func addBackButton() {
         let backButton = SKSpriteNode(texture: SKTexture(imageNamed: "BackButton"))
         backButton.name = "BackButton"
-        backButton.size = CGSize(width: 32.3, height: 75)
+        //backButton.size = CGSize(width: 32.3, height: 75)
         backButton.zPosition = 6
         addChild(backButton)
         
         let backButtonBlurr = SKSpriteNode(imageNamed: "BlueBackButtonBlurr")
-        backButtonBlurr.size = CGSize(width: 67.2, height: 115.8)
+        //backButtonBlurr.size = CGSize(width: 67.2, height: 115.8)
         backButton.addChild(backButtonBlurr)
         backButtonBlurr.zPosition = -1
         
@@ -343,14 +343,14 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
     func addPauseButton() {
         pauseButton = SKSpriteNode(texture: SKTexture(imageNamed: "PauseButton"))
         pauseButton.name = "PauseButton"
-        pauseButton.size.width = 42.7
-        pauseButton.size.height = 75
+        //pauseButton.size.width = 42.7
+        //pauseButton.size.height = 75
         
         pauseButton.zPosition = 6
         addChild(pauseButton)
         
         pauseButtonBlurr = SKSpriteNode(imageNamed: "BluePauseButtonBlurr")
-        pauseButtonBlurr.size = CGSize(width: 72.4, height: 104.7)
+        //pauseButtonBlurr.size = CGSize(width: 72.4, height: 104.7)
         pauseButton.addChild(pauseButtonBlurr)
         pauseButtonBlurr.zPosition = -1
         

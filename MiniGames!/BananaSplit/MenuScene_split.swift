@@ -15,20 +15,17 @@ class MenuScene_split: SKScene, GKGameCenterControllerDelegate {
     weak var gameVC: GameViewController2?
     
     var backButton: SKSpriteNode!
-    var infoButton: SKSpriteNode!
+    var helpButton: SKSpriteNode!
     
     var leaderButton: SKSpriteNode!
     
     var recentScoreLabel = SKLabelNode()
     
     override func didMove(to view: SKView) {
-    
-        backgroundColor = SKColor(red: 255/255, green: 192/255, blue: 203/255, alpha: 1)
         addLogo()
-        addLabels()
+        addLabelsAndButtons()
         addBackButton()
         addLeaderButton()
-        addInfoButton()
     }
     
     func addLogo() {
@@ -50,33 +47,42 @@ class MenuScene_split: SKScene, GKGameCenterControllerDelegate {
         addChild(backButton)
     }
     
-    func addInfoButton() {
-        infoButton = SKSpriteNode(texture: SKTexture(imageNamed: "InfoButtonWhite"))
-        infoButton.name = "InfoButton"
-        infoButton.size.width = frame.size.width/10
-        infoButton.size.height = infoButton.size.width
-        infoButton.position = CGPoint(x: frame.maxX - backButton.size.width/2, y: frame.maxY - backButton.size.height/2 - 20)
-        infoButton.zPosition = 6
+    func addLabelsAndButtons() {
+        let playButton = SKSpriteNode(imageNamed: "PlayWhite")
+        let playButtonBlurr = SKSpriteNode(imageNamed: "PlayGreenBlurr")
+        //backButtonBlurr.size = CGSize(width: 67.2, height: 115.8)
+        playButton.addChild(playButtonBlurr)
+        playButtonBlurr.zPosition = -1
         
-        addChild(infoButton)
-    }
-    
-    func addLabels() {
-        let playLabel = SKLabelNode(text: "Tap Banana to Play!")
-        playLabel.fontName = "AvenirNext-Bold"
-        playLabel.fontSize = 30.0
+        playButton.position = CGPoint(x: frame.midX, y: frame.midY)
+        addChild(playButton)
+        //animate(label: playButton)
         
-        playLabel.fontColor = UIColor.red
-        playLabel.position = CGPoint(x: frame.midX, y: frame.midY)
-        addChild(playLabel)
-        animate(label: playLabel)
+        helpButton = SKSpriteNode(imageNamed: "HelpWhite")
+        helpButton.name = "helpButton"
+        addChild(helpButton)
+        let helpButtonBlurr = SKSpriteNode(imageNamed: "HelpBlueBlurr")
+        //backButtonBlurr.size = CGSize(width: 67.2, height: 115.8)
+        helpButton.addChild(helpButtonBlurr)
+        helpButtonBlurr.zPosition = -1
         
-        let highscoreLabel = SKLabelNode(text: "High Score: \(UserDefaults.standard.integer(forKey: "HighScore_split"))")
-        highscoreLabel.fontName = "AvenirNext-Bold"
-        highscoreLabel.fontSize = 30.0
-        highscoreLabel.fontColor = UIColor.red
-        highscoreLabel.position = CGPoint(x: frame.midX, y: frame.midY - highscoreLabel.frame.size.height*4)
+        helpButton.position = CGPoint(x: frame.midX, y: frame.midY - helpButton.size.height)
+        
+        
+        
+        
+        
+        let highscoreLabel = SKSpriteNode(imageNamed: "HighScoreWhite")
+        let score = UserDefaults.standard.integer(forKey: "HighScore_split")
+        highscoreLabel.position = CGPoint(x: helpButton.position.x, y: helpButton.position.y - highscoreLabel.size.height)
+        highscoreLabel.xScale = 0.5
+        highscoreLabel.yScale = 0.5
+
         addChild(highscoreLabel)
+        let highscoreLabelBlurr = SKSpriteNode(imageNamed: "HighScoreRedBlurr")
+        //backButtonBlurr.size = CGSize(width: 67.2, height: 115.8)
+        highscoreLabel.addChild(highscoreLabelBlurr)
+        highscoreLabelBlurr.zPosition = -1
         
         recentScoreLabel = SKLabelNode(text: "Recent Score: \(UserDefaults.standard.integer(forKey: "RecentScore_split"))")
         recentScoreLabel.fontName = "AvenirNext-Bold"
@@ -86,7 +92,7 @@ class MenuScene_split: SKScene, GKGameCenterControllerDelegate {
         addChild(recentScoreLabel)
     }
     
-    func animate(label: SKLabelNode) {
+    func animate(label: SKSpriteNode) {
         //let fadeOut = SKAction.fadeOut(withDuration: 0.5)
         //let fadeIn = SKAction.fadeIn(withDuration: 0.5)
         
@@ -119,7 +125,7 @@ class MenuScene_split: SKScene, GKGameCenterControllerDelegate {
                 showLeader()
             }
             
-            if infoButton.contains(location) {
+            if helpButton.contains(location) {
                 showAlert()
             }
             
