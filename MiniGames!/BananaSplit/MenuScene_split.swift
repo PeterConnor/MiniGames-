@@ -29,10 +29,11 @@ class MenuScene_split: SKScene, GKGameCenterControllerDelegate {
     }
     
     func addLogo() {
-        logo = SKSpriteNode(imageNamed: "Banana")
-        logo.size = CGSize(width: frame.size.width/3.5, height: logo.size.width * 2)
-        logo.position = CGPoint(x: frame.midX, y: frame.midY + frame.size.height/4)
+        logo = SKSpriteNode(imageNamed: "image_split")
+        logo.size = CGSize(width: 200, height: 200)
         addChild(logo)
+        logo.position = CGPoint(x: self.size.width/2, y: frame.maxY - logo.size.height/2)
+
         
     }
     
@@ -52,6 +53,8 @@ class MenuScene_split: SKScene, GKGameCenterControllerDelegate {
         let playButtonBlurr = SKSpriteNode(imageNamed: "PlayGreenBlurr")
         //backButtonBlurr.size = CGSize(width: 67.2, height: 115.8)
         playButton.addChild(playButtonBlurr)
+        playButton.xScale = 0.5
+        playButton.yScale = 0.5
         playButtonBlurr.zPosition = -1
         
         playButton.position = CGPoint(x: frame.midX, y: frame.midY)
@@ -64,6 +67,8 @@ class MenuScene_split: SKScene, GKGameCenterControllerDelegate {
         let helpButtonBlurr = SKSpriteNode(imageNamed: "HelpBlueBlurr")
         //backButtonBlurr.size = CGSize(width: 67.2, height: 115.8)
         helpButton.addChild(helpButtonBlurr)
+        helpButton.xScale = 0.5
+        helpButton.yScale = 0.5
         helpButtonBlurr.zPosition = -1
         
         helpButton.position = CGPoint(x: frame.midX, y: frame.midY - helpButton.size.height)
@@ -89,7 +94,7 @@ class MenuScene_split: SKScene, GKGameCenterControllerDelegate {
         recentScoreLabel.fontSize = 30.0
         recentScoreLabel.fontColor = UIColor.red
         recentScoreLabel.position = CGPoint(x: frame.midX, y: highscoreLabel.position.y - recentScoreLabel.frame.size.height*2)
-        addChild(recentScoreLabel)
+        //addChild(recentScoreLabel)
     }
     
     func animate(label: SKSpriteNode) {
