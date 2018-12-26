@@ -33,9 +33,6 @@ class CollectionVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath as IndexPath) as! CustomCell
         cell.imageView.image = UIImage(named: "image_\(gameItems[indexPath.row])")
-        if self.traitCollection.forceTouchCapability != UIForceTouchCapability.available && cell.imageView.image == UIImage(named: "image_split") {
-            cell.alpha = 0.2
-        }
         return cell
     }
     
@@ -68,17 +65,17 @@ class CollectionVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let width = collectionView.frame.size.width / 3 - 1
-        let height = collectionView.frame.size.height / 3  - 1
+        let width = collectionView.frame.size.width / 2
+        let height = collectionView.frame.size.height / 2
         return CGSize(width: width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 5.0
+        return 0.0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 1.0
+        return 0.0
     }
 
     @IBAction func shareButtonAction(_ sender: Any) {

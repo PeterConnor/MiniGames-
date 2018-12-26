@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="a9G-VH-vq4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="a9G-VH-vq4">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,8 +19,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SRp-JM-Igg">
-                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="133.5" width="375" height="533.5"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <color key="tintColor" red="1" green="0.50196078431372548" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tfa-HF-9Zu">
                                     <size key="itemSize" width="50" height="50"/>
@@ -55,32 +55,32 @@
                                 </cells>
                             </collectionView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uNV-C9-coO">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="133.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GV4-04-OXh">
-                                        <rect key="frame" x="132.5" y="35" width="110" height="30"/>
+                                        <rect key="frame" x="132.5" y="37.5" width="110" height="30"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8OX-x3-ayd">
+                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8OX-x3-ayd">
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
-                                                <state key="normal" image="Share"/>
+                                                <state key="normal" image="ShareButton"/>
                                                 <connections>
                                                     <action selector="shareButtonAction:" destination="a9G-VH-vq4" eventType="touchUpInside" id="fMu-G2-3fv"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jth-q2-c79">
+                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jth-q2-c79">
                                                 <rect key="frame" x="40" y="0.0" width="30" height="30"/>
-                                                <state key="normal" image="Rate"/>
+                                                <state key="normal" image="RateButton"/>
                                                 <connections>
                                                     <action selector="rateButtonAction:" destination="a9G-VH-vq4" eventType="touchUpInside" id="pHy-Zw-4Vo"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DKK-W0-Xpd">
+                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DKK-W0-Xpd">
                                                 <rect key="frame" x="80" y="0.0" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="nIB-Kn-pzL"/>
                                                     <constraint firstAttribute="height" constant="30" id="nbY-zJ-gjQ"/>
                                                 </constraints>
-                                                <state key="normal" image="LeaderButtonRound"/>
+                                                <state key="normal" image="LeaderButton"/>
                                                 <connections>
                                                     <action selector="combinedLeaderButton:" destination="a9G-VH-vq4" eventType="touchUpInside" id="e8Z-Yp-EPR"/>
                                                 </connections>
@@ -96,22 +96,18 @@
                                             <constraint firstItem="DKK-W0-Xpd" firstAttribute="top" secondItem="GV4-04-OXh" secondAttribute="top" id="yj6-G9-Rpi"/>
                                         </constraints>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MiniGames!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGk-4S-8tb">
-                                        <rect key="frame" x="94" y="75" width="187.5" height="45"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="32"/>
-                                        <color key="textColor" red="0.0" green="0.58823529411764708" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <color key="shadowColor" red="0.0" green="0.5" blue="0.896240234375" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <size key="shadowOffset" width="0.0" height="1"/>
-                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MiniGamesImage" translatesAutoresizingMaskIntoConstraints="NO" id="E9V-ZG-dTu">
+                                        <rect key="frame" x="-12.5" y="72.5" width="400" height="51"/>
+                                    </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="C7E-rI-slO"/>
-                                    <constraint firstItem="pGk-4S-8tb" firstAttribute="centerX" secondItem="uNV-C9-coO" secondAttribute="centerX" id="YJI-ou-Ug5"/>
+                                    <constraint firstItem="E9V-ZG-dTu" firstAttribute="top" secondItem="GV4-04-OXh" secondAttribute="bottom" constant="5" id="AIW-nh-eGy"/>
+                                    <constraint firstItem="E9V-ZG-dTu" firstAttribute="width" secondItem="uNV-C9-coO" secondAttribute="height" multiplier="3:1" id="HZy-8l-XTB"/>
+                                    <constraint firstAttribute="bottom" secondItem="E9V-ZG-dTu" secondAttribute="bottom" constant="10" id="YBZ-uS-rM8"/>
                                     <constraint firstItem="GV4-04-OXh" firstAttribute="centerX" secondItem="uNV-C9-coO" secondAttribute="centerX" id="ceL-RO-tN0"/>
-                                    <constraint firstItem="pGk-4S-8tb" firstAttribute="top" secondItem="GV4-04-OXh" secondAttribute="bottom" constant="10" id="dOX-l9-0no"/>
-                                    <constraint firstAttribute="bottom" secondItem="pGk-4S-8tb" secondAttribute="bottom" id="zhe-xt-5uV"/>
+                                    <constraint firstItem="E9V-ZG-dTu" firstAttribute="centerX" secondItem="uNV-C9-coO" secondAttribute="centerX" id="n8G-lM-BPU"/>
+                                    <constraint firstItem="GV4-04-OXh" firstAttribute="width" secondItem="E9V-ZG-dTu" secondAttribute="height" multiplier="110:51" id="oX7-uf-blN"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -120,6 +116,7 @@
                             <constraint firstItem="uNV-C9-coO" firstAttribute="top" secondItem="GTy-qN-Bzq" secondAttribute="top" id="1KO-R4-Qka"/>
                             <constraint firstItem="eXg-1c-Rkv" firstAttribute="trailing" secondItem="uNV-C9-coO" secondAttribute="trailing" id="8XJ-ig-JmH"/>
                             <constraint firstItem="eXg-1c-Rkv" firstAttribute="bottom" secondItem="SRp-JM-Igg" secondAttribute="bottom" id="JtB-oY-A4J"/>
+                            <constraint firstItem="uNV-C9-coO" firstAttribute="height" secondItem="GTy-qN-Bzq" secondAttribute="height" multiplier="1:5" id="Kyi-yF-t79"/>
                             <constraint firstItem="eXg-1c-Rkv" firstAttribute="trailing" secondItem="SRp-JM-Igg" secondAttribute="trailing" id="NLt-WL-CiR"/>
                             <constraint firstItem="SRp-JM-Igg" firstAttribute="top" secondItem="uNV-C9-coO" secondAttribute="bottom" id="b7R-i0-pcE"/>
                             <constraint firstItem="SRp-JM-Igg" firstAttribute="leading" secondItem="eXg-1c-Rkv" secondAttribute="leading" id="rX7-En-v5Z"/>
@@ -144,7 +141,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eQU-i4-FRb" customClass="GADBannerView">
-                                <rect key="frame" x="27" y="617" width="320" height="50"/>
+                                <rect key="frame" x="27.5" y="617" width="320" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="GUL-9W-y0Y"/>
@@ -169,8 +166,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LeaderButtonRound" width="75" height="75"/>
-        <image name="Rate" width="50" height="50"/>
-        <image name="Share" width="50" height="50"/>
+        <image name="LeaderButton" width="258" height="258"/>
+        <image name="MiniGamesImage" width="823" height="234"/>
+        <image name="RateButton" width="258" height="258"/>
+        <image name="ShareButton" width="258" height="258"/>
     </resources>
 </document>

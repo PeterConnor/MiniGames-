@@ -12,7 +12,9 @@ import Foundation
 class Singleton: NSObject {
     static let shared: Singleton = Singleton()
     
-    var gameItems = ["ss", "pop", "bt", "fb", "cs", "bb", "gs", "split", "sim"]
+    var gameItems = ["pop", "split", "sim"]
+    
+    // deleted - ss, bt, fb, cs, bb, gs
     
     var appID = "ca-app-pub-3940256099942544/2934735716" //test!!
     
