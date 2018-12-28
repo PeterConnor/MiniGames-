@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SRp-JM-Igg">
-                                <rect key="frame" x="0.0" y="133.5" width="375" height="533.5"/>
+                                <rect key="frame" x="0.0" y="167" width="375" height="500"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <color key="tintColor" red="1" green="0.50196078431372548" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tfa-HF-9Zu">
@@ -55,30 +55,29 @@
                                 </cells>
                             </collectionView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uNV-C9-coO">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="133.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="167"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GV4-04-OXh">
-                                        <rect key="frame" x="132.5" y="37.5" width="110" height="30"/>
+                                        <rect key="frame" x="94" y="35" width="187.5" height="56"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8OX-x3-ayd">
-                                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="55.5" height="56"/>
                                                 <state key="normal" image="ShareButton"/>
                                                 <connections>
                                                     <action selector="shareButtonAction:" destination="a9G-VH-vq4" eventType="touchUpInside" id="fMu-G2-3fv"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jth-q2-c79">
-                                                <rect key="frame" x="40" y="0.0" width="30" height="30"/>
+                                                <rect key="frame" x="65.5" y="0.0" width="56" height="56"/>
                                                 <state key="normal" image="RateButton"/>
                                                 <connections>
                                                     <action selector="rateButtonAction:" destination="a9G-VH-vq4" eventType="touchUpInside" id="pHy-Zw-4Vo"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DKK-W0-Xpd">
-                                                <rect key="frame" x="80" y="0.0" width="30" height="30"/>
+                                                <rect key="frame" x="131.5" y="0.0" width="56" height="56"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="30" id="nIB-Kn-pzL"/>
-                                                    <constraint firstAttribute="height" constant="30" id="nbY-zJ-gjQ"/>
+                                                    <constraint firstAttribute="width" secondItem="DKK-W0-Xpd" secondAttribute="height" id="h8D-xM-laR"/>
                                                 </constraints>
                                                 <state key="normal" image="LeaderButton"/>
                                                 <connections>
@@ -97,17 +96,18 @@
                                         </constraints>
                                     </stackView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MiniGamesImage" translatesAutoresizingMaskIntoConstraints="NO" id="E9V-ZG-dTu">
-                                        <rect key="frame" x="-12.5" y="72.5" width="400" height="51"/>
+                                        <rect key="frame" x="-4.5" y="96" width="384" height="56"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstItem="E9V-ZG-dTu" firstAttribute="top" secondItem="GV4-04-OXh" secondAttribute="bottom" constant="5" id="AIW-nh-eGy"/>
-                                    <constraint firstItem="E9V-ZG-dTu" firstAttribute="width" secondItem="uNV-C9-coO" secondAttribute="height" multiplier="3:1" id="HZy-8l-XTB"/>
-                                    <constraint firstAttribute="bottom" secondItem="E9V-ZG-dTu" secondAttribute="bottom" constant="10" id="YBZ-uS-rM8"/>
+                                    <constraint firstItem="E9V-ZG-dTu" firstAttribute="width" secondItem="uNV-C9-coO" secondAttribute="height" multiplier="2.3:1" id="HZy-8l-XTB"/>
+                                    <constraint firstAttribute="bottom" secondItem="E9V-ZG-dTu" secondAttribute="bottom" constant="15" id="YBZ-uS-rM8"/>
+                                    <constraint firstItem="GV4-04-OXh" firstAttribute="width" secondItem="uNV-C9-coO" secondAttribute="width" multiplier="1:2" id="aIk-j4-BhO"/>
                                     <constraint firstItem="GV4-04-OXh" firstAttribute="centerX" secondItem="uNV-C9-coO" secondAttribute="centerX" id="ceL-RO-tN0"/>
                                     <constraint firstItem="E9V-ZG-dTu" firstAttribute="centerX" secondItem="uNV-C9-coO" secondAttribute="centerX" id="n8G-lM-BPU"/>
-                                    <constraint firstItem="GV4-04-OXh" firstAttribute="width" secondItem="E9V-ZG-dTu" secondAttribute="height" multiplier="110:51" id="oX7-uf-blN"/>
+                                    <constraint firstItem="GV4-04-OXh" firstAttribute="height" secondItem="E9V-ZG-dTu" secondAttribute="height" id="rHz-KR-x8V"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -116,7 +116,7 @@
                             <constraint firstItem="uNV-C9-coO" firstAttribute="top" secondItem="GTy-qN-Bzq" secondAttribute="top" id="1KO-R4-Qka"/>
                             <constraint firstItem="eXg-1c-Rkv" firstAttribute="trailing" secondItem="uNV-C9-coO" secondAttribute="trailing" id="8XJ-ig-JmH"/>
                             <constraint firstItem="eXg-1c-Rkv" firstAttribute="bottom" secondItem="SRp-JM-Igg" secondAttribute="bottom" id="JtB-oY-A4J"/>
-                            <constraint firstItem="uNV-C9-coO" firstAttribute="height" secondItem="GTy-qN-Bzq" secondAttribute="height" multiplier="1:5" id="Kyi-yF-t79"/>
+                            <constraint firstItem="uNV-C9-coO" firstAttribute="height" secondItem="GTy-qN-Bzq" secondAttribute="height" multiplier="1:4" id="Kyi-yF-t79"/>
                             <constraint firstItem="eXg-1c-Rkv" firstAttribute="trailing" secondItem="SRp-JM-Igg" secondAttribute="trailing" id="NLt-WL-CiR"/>
                             <constraint firstItem="SRp-JM-Igg" firstAttribute="top" secondItem="uNV-C9-coO" secondAttribute="bottom" id="b7R-i0-pcE"/>
                             <constraint firstItem="SRp-JM-Igg" firstAttribute="leading" secondItem="eXg-1c-Rkv" secondAttribute="leading" id="rX7-En-v5Z"/>
@@ -167,7 +167,7 @@
     </scenes>
     <resources>
         <image name="LeaderButton" width="258" height="258"/>
-        <image name="MiniGamesImage" width="823" height="234"/>
+        <image name="MiniGamesImage" width="876" height="246"/>
         <image name="RateButton" width="258" height="258"/>
         <image name="ShareButton" width="258" height="258"/>
     </resources>

@@ -23,11 +23,11 @@ class GameViewController2: UIViewController, GADBannerViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
                 
-        /*let request = GADRequest()
+        let request = GADRequest()
         bannerView.delegate = self
-        bannerView.adUnitID = "ca-app-pub-9017513021309308/2799201158"
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         bannerView.rootViewController = self
-        bannerView.load(request)*/
+        bannerView.load(request)
         
         if let view = self.view as! SKView? {
             switch gameItem {
@@ -80,9 +80,9 @@ class GameViewController2: UIViewController, GADBannerViewDelegate {
                 view.ignoresSiblingOrder = true
                 view.presentScene(scene)
             case "split":
-                let scene = MenuScene_split(size: view.bounds.size)
-                scene.scaleMode = .aspectFill
-                scene.gameVC = self
+                let scene = MenuScene_split(fileNamed: "MenuScene_Split")
+                scene?.scaleMode = .aspectFit
+                scene?.gameVC = self
                 view.ignoresSiblingOrder = true
                 view.presentScene(scene)
             default:

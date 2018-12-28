@@ -16,23 +16,27 @@ class MenuScene_split: SKScene, GKGameCenterControllerDelegate {
     
     var backButton: SKSpriteNode!
     var helpButton: SKSpriteNode!
+    var playButton: SKSpriteNode!
     
     var leaderButton: SKSpriteNode!
     
     var recentScoreLabel = SKLabelNode()
     
     override func didMove(to view: SKView) {
+        self.backgroundColor = .black
         addLogo()
         addLabelsAndButtons()
         addBackButton()
         addLeaderButton()
+        print(self.size)
+        
     }
     
     func addLogo() {
         logo = SKSpriteNode(imageNamed: "image_split")
-        logo.size = CGSize(width: 200, height: 200)
+        logo.size = CGSize(width: 500, height: 500)
+        logo.position = CGPoint(x: frame.midX, y: frame.maxY - logo.size.height/2)
         addChild(logo)
-        logo.position = CGPoint(x: self.size.width/2, y: frame.maxY - logo.size.height/2)
 
         
     }
@@ -40,24 +44,30 @@ class MenuScene_split: SKScene, GKGameCenterControllerDelegate {
     func addBackButton() {
         backButton = SKSpriteNode(texture: SKTexture(imageNamed: "BackButton"))
         backButton.name = "BackButton"
-        backButton.size.width = frame.size.width/10
-        backButton.size.height = backButton.size.width
-        backButton.position = CGPoint(x: frame.minX + backButton.size.width/2, y: frame.maxY - backButton.size.height/2 - 20)
         backButton.zPosition = 6
-        
         addChild(backButton)
+        
+        let backButtonBlurr = SKSpriteNode(imageNamed: "GreenBackButtonBlurr")
+        //backButtonBlurr.size = CGSize(width: 67.2, height: 115.8)
+        backButton.addChild(backButtonBlurr)
+        backButtonBlurr.zPosition = -1
+        
+        backButton.position = CGPoint(x: 0 + backButtonBlurr.size.width/2 + 25, y: 1334 - backButtonBlurr.size.height/2 - 25)
+        
     }
     
+   
+    
     func addLabelsAndButtons() {
-        let playButton = SKSpriteNode(imageNamed: "PlayWhite")
+        playButton = SKSpriteNode(imageNamed: "PlayWhite")
         let playButtonBlurr = SKSpriteNode(imageNamed: "PlayGreenBlurr")
         //backButtonBlurr.size = CGSize(width: 67.2, height: 115.8)
         playButton.addChild(playButtonBlurr)
-        playButton.xScale = 0.5
-        playButton.yScale = 0.5
+        //playButton.xScale = 0.5
+        //playButton.yScale = 1
         playButtonBlurr.zPosition = -1
         
-        playButton.position = CGPoint(x: frame.midX, y: frame.midY)
+        playButton.position = CGPoint(x: frame.midX, y: logo.position.y - logo.size.height/2 - playButtonBlurr.size.height/2)
         addChild(playButton)
         //animate(label: playButton)
         
@@ -67,21 +77,18 @@ class MenuScene_split: SKScene, GKGameCenterControllerDelegate {
         let helpButtonBlurr = SKSpriteNode(imageNamed: "HelpBlueBlurr")
         //backButtonBlurr.size = CGSize(width: 67.2, height: 115.8)
         helpButton.addChild(helpButtonBlurr)
-        helpButton.xScale = 0.5
-        helpButton.yScale = 0.5
+        //helpButton.xScale = 0.5
+        //helpButton.yScale = 0.5
         helpButtonBlurr.zPosition = -1
         
-        helpButton.position = CGPoint(x: frame.midX, y: frame.midY - helpButton.size.height)
-        
-        
-        
+        helpButton.position = CGPoint(x: frame.midX, y: playButton.position.y - playButtonBlurr.size.height/2 - 25)
         
         
         let highscoreLabel = SKSpriteNode(imageNamed: "HighScoreWhite")
         let score = UserDefaults.standard.integer(forKey: "HighScore_split")
-        highscoreLabel.position = CGPoint(x: helpButton.position.x, y: helpButton.position.y - highscoreLabel.size.height)
-        highscoreLabel.xScale = 0.5
-        highscoreLabel.yScale = 0.5
+        highscoreLabel.position = CGPoint(x: helpButton.position.x, y: helpButton.position.y - helpButtonBlurr.size.height/2 - 25)
+        //highscoreLabel.xScale = 0.5
+        //highscoreLabel.yScale = 0.5
 
         addChild(highscoreLabel)
         let highscoreLabelBlurr = SKSpriteNode(imageNamed: "HighScoreRedBlurr")
@@ -114,8 +121,8 @@ class MenuScene_split: SKScene, GKGameCenterControllerDelegate {
         let gameScene = GameScene_split(fileNamed: "GameScene_split")
         if let touch = touches.first {
             let location = touch.location(in: self)
-            if let logo = logo {
-                if logo.contains(location) {
+            if let playButton = playButton {
+                if playButton.contains(location) {
                     gameScene!.scaleMode = .aspectFit
                     gameScene!.gameVC = gameVC
                     view!.ignoresSiblingOrder = true
@@ -142,8 +149,10 @@ class MenuScene_split: SKScene, GKGameCenterControllerDelegate {
         leaderButton.name = "BackButton"
         leaderButton.size.width = frame.size.width/15
         leaderButton.size.height = leaderButton.size.width
-        leaderButton.position = CGPoint(x: frame.midX, y: recentScoreLabel.frame.minY - leaderButton.size.height * 2)
-        leaderButton.size = CGSize(width: leaderButton.size.height*2.2, height: frame.size.width/10)
+        leaderButton.position = CGPoint(x: frame.midX, y: 0 + leaderButton.size.height
+            + 100)
+        leaderButton.xScale = 2
+        leaderButton.yScale = 2
         leaderButton.zPosition = 6
         
         addChild(leaderButton)

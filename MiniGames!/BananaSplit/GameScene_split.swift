@@ -106,11 +106,11 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
             let location = touch.location(in: self)
             
             if atPoint(location).name == "BackButton" {
-                let menuScene = MenuScene_split(size: view!.bounds.size)
-                menuScene.scaleMode = .aspectFill
-                menuScene.gameVC = gameVC
+                let menuScene = MenuScene_split(fileNamed: "MenuScene_Split")
+                menuScene?.scaleMode = .aspectFit
+                menuScene?.gameVC = gameVC
                 
-                self.view?.presentScene(menuScene, transition: SKTransition.doorway(withDuration: 1))
+                self.view?.presentScene(menuScene!, transition: SKTransition.doorway(withDuration: 1))
             }
             
             if atPoint(location).name == "PauseButton" {
@@ -332,7 +332,7 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
         addChild(backButton)
         
         let backButtonBlurr = SKSpriteNode(imageNamed: "BlueBackButtonBlurr")
-        //backButtonBlurr.size = CGSize(width: 67.2, height: 115.8)
+        //ZbackButtonBlurr.size = CGSize(width: 67.2, height: 115.8)
         backButton.addChild(backButtonBlurr)
         backButtonBlurr.zPosition = -1
         
