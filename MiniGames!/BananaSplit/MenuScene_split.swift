@@ -18,9 +18,11 @@ class MenuScene_split: SKScene, GKGameCenterControllerDelegate {
     var helpButton: SKSpriteNode!
     var playButton: SKSpriteNode!
     
+    
+    
     var leaderButton: SKSpriteNode!
     
-    var recentScoreLabel = SKLabelNode()
+    //var recentScoreLabel = SKLabelNode()
     
     override func didMove(to view: SKView) {
         self.backgroundColor = .black
@@ -96,12 +98,63 @@ class MenuScene_split: SKScene, GKGameCenterControllerDelegate {
         highscoreLabel.addChild(highscoreLabelBlurr)
         highscoreLabelBlurr.zPosition = -1
         
+        var scoreLabel1 = SKSpriteNode(imageNamed: "num0")
+        var scoreLabel2 = SKSpriteNode(imageNamed: "num0")
+        var scoreLabel3 = SKSpriteNode(imageNamed: "num0")
+        var blurr1 = SKSpriteNode(imageNamed: "BlueNum0")
+        var blurr2 = SKSpriteNode(imageNamed: "BlueNum0")
+        var blurr3 = SKSpriteNode(imageNamed: "BlueNum0")
+        scoreLabel1.position = CGPoint(x: frame.midX - blurr1.size.width/2, y: highscoreLabel.position.y - highscoreLabelBlurr.size.height/2 - 25)
+        scoreLabel2.position = CGPoint(x: frame.midX, y: highscoreLabel.position.y - highscoreLabelBlurr.size.height/2 - 25)
+        scoreLabel3.position = CGPoint(x: frame.midX + blurr3.size.width/2, y: highscoreLabel.position.y - highscoreLabelBlurr.size.height/2 - 25)
+        addChild(scoreLabel1)
+        addChild(scoreLabel2)
+        addChild(scoreLabel3)
+        scoreLabel1.addChild(blurr1)
+        blurr1.zPosition = -1
+        scoreLabel2.addChild(blurr2)
+        blurr2.zPosition = -1
+        scoreLabel3.addChild(blurr3)
+        blurr3.zPosition = -1
+
+        
+        var stringFromNum = String(score)
+        var numList = [String]()
+        
+        for char in stringFromNum {
+            numList.append(String(char))
+        }
+        
+        switch numList.count {
+        case 1:
+            scoreLabel3.texture = SKTexture(imageNamed: "num" + numList[0])
+            blurr3.texture = SKTexture(imageNamed: "BlueNum" + numList[0])
+        case 2:
+            scoreLabel3.texture = SKTexture(imageNamed: "num" + numList[1])
+            blurr3.texture = SKTexture(imageNamed: "BlueNum" + numList[1])
+            
+            scoreLabel2.texture = SKTexture(imageNamed: "num" + numList[0])
+            blurr2.texture = SKTexture(imageNamed: "BlueNum" + numList[0])
+        case 3:
+            scoreLabel3.texture = SKTexture(imageNamed: "num" + numList[2])
+            blurr3.texture = SKTexture(imageNamed: "BlueNum" + numList[2])
+            
+            scoreLabel2.texture = SKTexture(imageNamed: "num" + numList[1])
+            blurr2.texture = SKTexture(imageNamed: "BlueNum" + numList[1])
+            
+            scoreLabel1.texture = SKTexture(imageNamed: "num" + numList[0])
+            blurr1.texture = SKTexture(imageNamed: "BlueNum" + numList[0])
+        default:
+            break
+        }
+        
+        /*
         recentScoreLabel = SKLabelNode(text: "Recent Score: \(UserDefaults.standard.integer(forKey: "RecentScore_split"))")
         recentScoreLabel.fontName = "AvenirNext-Bold"
         recentScoreLabel.fontSize = 30.0
         recentScoreLabel.fontColor = UIColor.red
         recentScoreLabel.position = CGPoint(x: frame.midX, y: highscoreLabel.position.y - recentScoreLabel.frame.size.height*2)
-        //addChild(recentScoreLabel)
+        addChild(recentScoreLabel)*/
     }
     
     func animate(label: SKSpriteNode) {
