@@ -24,14 +24,15 @@ If your app is published to the App Store, remember to come back to link your ap
 ---
 *To Do*
 *split*
-Add score
 Make progressively harder
  
 *pop*
-make gvvectors same length. progressively harder = decrease mass.
  
 *sim*
-simon says, but the lights disappear!
+
+*MenuScene*
+Change Leaderboards, so u can use string interolation
+use switch on showAlert() instructions button
  
 ***Eventually***
 console messages

@@ -13,6 +13,7 @@ class MenuScene_split: SKScene, GKGameCenterControllerDelegate {
     var logo: SKSpriteNode!
     
     weak var gameVC: GameViewController2?
+    var gameName: String?
     
     var backButton: SKSpriteNode!
     var helpButton: SKSpriteNode!
@@ -30,12 +31,12 @@ class MenuScene_split: SKScene, GKGameCenterControllerDelegate {
         addLabelsAndButtons()
         addBackButton()
         addLeaderButton()
-        print(self.size)
+        print(gameName)
         
     }
     
     func addLogo() {
-        logo = SKSpriteNode(imageNamed: "image_split")
+        logo = SKSpriteNode(imageNamed: "image_" + gameName!)
         logo.size = CGSize(width: 500, height: 500)
         logo.position = CGPoint(x: frame.midX, y: frame.maxY - logo.size.height/2)
         addChild(logo)
@@ -87,7 +88,7 @@ class MenuScene_split: SKScene, GKGameCenterControllerDelegate {
         
         
         let highscoreLabel = SKSpriteNode(imageNamed: "HighScoreWhite")
-        let score = UserDefaults.standard.integer(forKey: "HighScore_split")
+        let score = UserDefaults.standard.integer(forKey: "HighScore_" + gameName!)
         highscoreLabel.position = CGPoint(x: helpButton.position.x, y: helpButton.position.y - helpButtonBlurr.size.height/2 - 25)
         //highscoreLabel.xScale = 0.5
         //highscoreLabel.yScale = 0.5
@@ -171,16 +172,38 @@ class MenuScene_split: SKScene, GKGameCenterControllerDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let gameScene = GameScene_split(fileNamed: "GameScene_split")
+    
         if let touch = touches.first {
             let location = touch.location(in: self)
             if let playButton = playButton {
                 if playButton.contains(location) {
-                    gameScene!.scaleMode = .aspectFit
-                    gameScene!.gameVC = gameVC
-                    view!.ignoresSiblingOrder = true
-                    view!.presentScene(scene)
-                    view!.presentScene(gameScene)
+                    switch gameName {
+                    case "split":
+                        let gameScene = GameScene_split(fileNamed: "GameScene_" + gameName!)
+                            gameScene!.scaleMode = .aspectFit
+                            gameScene!.gameVC = gameVC
+                            view!.ignoresSiblingOrder = true
+                            view!.presentScene(scene)
+                            view!.presentScene(gameScene)
+                    case "sim":
+                        print(true)
+                        print(gameName)
+                        let gameScene = GameScene_sim(fileNamed: "GameScene_" + gameName!)
+                        gameScene!.scaleMode = .aspectFit
+                        gameScene!.gameVC = gameVC
+                        view!.ignoresSiblingOrder = true
+                        view!.presentScene(scene)
+                        view!.presentScene(gameScene)
+                    case "pop":
+                        let gameScene = GameScene_pop(fileNamed: "GameScene_" + gameName!)
+                        gameScene!.scaleMode = .aspectFit
+                        gameScene!.gameVC = gameVC
+                        view!.ignoresSiblingOrder = true
+                        view!.presentScene(scene)
+                        view!.presentScene(gameScene)
+                    default:
+                        break
+                    }
                 }
             }
             if backButton.contains(location) {
@@ -230,7 +253,7 @@ class MenuScene_split: SKScene, GKGameCenterControllerDelegate {
     func submitScore() {
         let leaderboardID = "MiniGames! - Banana Split"
         let sScore = GKScore(leaderboardIdentifier: leaderboardID)
-        sScore.value = Int64(UserDefaults.standard.integer(forKey: "HighScore_split"))
+        sScore.value = Int64(UserDefaults.standard.integer(forKey: "HighScore_" + gameName!))
         //let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
         GKScore.report([sScore]) { (error: Error!) -> Void in
             if error != nil {

@@ -74,15 +74,17 @@ class GameViewController2: UIViewController, GADBannerViewDelegate {
                 view.ignoresSiblingOrder = true
                 view.presentScene(scene)
             case "sim":
-                let scene = MenuScene_sim(size: view.bounds.size)
-                scene.scaleMode = .aspectFill
-                scene.gameVC = self
+                let scene = MenuScene_split(fileNamed: "MenuScene_Split")
+                scene?.scaleMode = .aspectFit
+                scene?.gameVC = self
+                scene?.gameName = "sim"
                 view.ignoresSiblingOrder = true
                 view.presentScene(scene)
             case "split":
                 let scene = MenuScene_split(fileNamed: "MenuScene_Split")
                 scene?.scaleMode = .aspectFit
                 scene?.gameVC = self
+                scene?.gameName = "split"
                 view.ignoresSiblingOrder = true
                 view.presentScene(scene)
             default:

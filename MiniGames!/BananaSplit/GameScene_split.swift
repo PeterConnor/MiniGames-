@@ -108,6 +108,7 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
             if atPoint(location).name == "BackButton" {
                 let menuScene = MenuScene_split(fileNamed: "MenuScene_Split")
                 menuScene?.scaleMode = .aspectFit
+                menuScene?.gameName = "split"
                 menuScene?.gameVC = gameVC
                 
                 self.view?.presentScene(menuScene!, transition: SKTransition.doorway(withDuration: 1))
@@ -317,9 +318,10 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
         }
         
         if let view = self.view as SKView? {
-            let scene = MenuScene_split(size: view.bounds.size)
-            scene.scaleMode = .aspectFill
-            scene.gameVC = self.gameVC
+            let scene = MenuScene_split(fileNamed: "MenuScene_Split")
+            scene?.scaleMode = .aspectFit
+            scene?.gameVC = self.gameVC
+            scene?.gameName = "split"
             view.presentScene(scene)
         }
     }
