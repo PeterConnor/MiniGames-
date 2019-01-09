@@ -23,12 +23,56 @@ class GameScene_pop: SKScene, SKPhysicsContactDelegate {
     var isGameOver = false
     var isGamePaused = false
     var pauseButton = SKSpriteNode()
+    var pauseButtonBlurr = SKSpriteNode()
 
     
-    var scoreLabel = SKLabelNode(fontNamed: "avenirNext-Bold")
+    var scoreLabel1 = SKSpriteNode(imageNamed: "num0")
+    var scoreLabel2 = SKSpriteNode(imageNamed: "num0")
+    var scoreLabel3 = SKSpriteNode(imageNamed: "num0")
+    var blurr1 = SKSpriteNode(imageNamed: "GreenNum0")
+    var blurr2 = SKSpriteNode(imageNamed: "GreenNum0")
+    var blurr3 = SKSpriteNode(imageNamed: "GreenNum0")
+    
+    var ones = 0
+    var tens = 0
+    var hundreds = 0
     var score = 0 {
         didSet {
-            scoreLabel.text = "\(score)"
+            ones += 1
+            if score % 100 == 0 {
+                ones = 0
+                tens = 0
+                hundreds += 1
+                scoreLabel2.texture = SKTexture(imageNamed: "num\(tens)")
+                blurr2.texture = SKTexture(imageNamed: "GreenNum\(tens)")
+                scoreLabel1.texture = SKTexture(imageNamed: "num\(hundreds)")
+                blurr1.texture = SKTexture(imageNamed: "GreenNum\(hundreds)")
+                
+            }
+            
+            if score % 10 == 0 && score % 100 != 0 {
+                ones = 0
+                tens += 1
+                scoreLabel2.texture = SKTexture(imageNamed: "num\(tens)")
+                blurr2.texture = SKTexture(imageNamed: "GreenNum\(tens)")
+                
+                
+            }
+            scoreLabel3.texture = SKTexture(imageNamed: "num\(ones)")
+            blurr3.texture = SKTexture(imageNamed: "GreenNum\(ones)")
+            
+            if score >= 999 {
+                scoreLabel1.texture = SKTexture(imageNamed: "num9")
+                blurr1.texture = SKTexture(imageNamed: "GreenNum9")
+                
+                scoreLabel2.texture = SKTexture(imageNamed: "num9")
+                blurr2.texture = SKTexture(imageNamed: "GreenNum9")
+                
+                scoreLabel3.texture = SKTexture(imageNamed: "num9")
+                blurr3.texture = SKTexture(imageNamed: "GreenNum9")
+                
+                
+            }
         }
     }
     
@@ -49,9 +93,7 @@ class GameScene_pop: SKScene, SKPhysicsContactDelegate {
         addBackButton()
         addPauseButton()
         addPlayer()
-        addScoreLabel()
-        
-    
+        addScoreLabels()
     }
     
     func addPlayer() {
@@ -108,14 +150,24 @@ class GameScene_pop: SKScene, SKPhysicsContactDelegate {
         checkpoint.position = CGPoint(x: randomX, y: randomY)
     }
     
-    func addScoreLabel() {
-        scoreLabel = SKLabelNode(fontNamed: "avenirNext-Bold")
-        scoreLabel.position = CGPoint(x: self.frame.midX, y: 1334 - scoreLabel.frame.size.height - 40)
-        scoreLabel.fontColor = .white
-        scoreLabel.zPosition = 3
-        scoreLabel.text = "Tap to Start"
+    func addScoreLabels() {
+        scoreLabel1.zPosition = 3
+        scoreLabel1.position = CGPoint(x: self.size.width/2 - scoreLabel1.size.width - 20, y: 1334 - scoreLabel1.size.height/2 - 40)
+        scoreLabel2.zPosition = 3
+        scoreLabel2.position = CGPoint(x: self.size.width/2, y: 1334 - scoreLabel2.size.height/2 - 40)
+        scoreLabel3.zPosition = 3
+        scoreLabel3.position = CGPoint(x: self.size.width/2 + scoreLabel3.size.width + 20, y: 1334 - scoreLabel3.size.height/2 - 40)
+        addChild(scoreLabel1)
+        addChild(scoreLabel2)
+        addChild(scoreLabel3)
         
-        self.addChild(scoreLabel)
+        scoreLabel1.addChild(blurr1)
+        scoreLabel2.addChild(blurr2)
+        scoreLabel3.addChild(blurr3)
+        
+        blurr1.zPosition = -1
+        blurr2.zPosition = -1
+        blurr3.zPosition = -1
     }
     
     func movePlayer() {
@@ -132,7 +184,8 @@ class GameScene_pop: SKScene, SKPhysicsContactDelegate {
         //timeCheck = 1
         self.isPaused = true
         isGamePaused = true
-        pauseButton.texture = SKTexture(imageNamed: "PlayButtonWhite")
+        pauseButton.texture = SKTexture(imageNamed: "PlayButton")
+        pauseButtonBlurr.texture = SKTexture(imageNamed: "RedPlayButtonBlurr")
         self.speed = 0.0
         self.physicsWorld.speed = 0.0
     }
@@ -156,21 +209,34 @@ class GameScene_pop: SKScene, SKPhysicsContactDelegate {
     func addBackButton() {
         let backButton = SKSpriteNode(texture: SKTexture(imageNamed: "BackButton"))
         backButton.name = "BackButton"
-        backButton.size.width = frame.size.width/10
-        backButton.size.height = backButton.size.width
-        backButton.position = CGPoint(x: frame.minX + backButton.size.width/2, y: frame.maxY - backButton.size.height/2 - 40)
+        //backButton.size = CGSize(width: 32.3, height: 75)
         backButton.zPosition = 6
         addChild(backButton)
+        
+        let backButtonBlurr = SKSpriteNode(imageNamed: "BlueBackButtonBlurr")
+        //ZbackButtonBlurr.size = CGSize(width: 67.2, height: 115.8)
+        backButton.addChild(backButtonBlurr)
+        backButtonBlurr.zPosition = -1
+        
+        backButton.position = CGPoint(x: 0 + backButtonBlurr.size.width/2 + 25, y: 1334 - backButtonBlurr.size.height/2 - 25)
+        
     }
     
     func addPauseButton() {
-        pauseButton = SKSpriteNode(texture: SKTexture(imageNamed: "PauseButtonWhite"))
+        pauseButton = SKSpriteNode(texture: SKTexture(imageNamed: "PauseButton"))
         pauseButton.name = "PauseButton"
-        pauseButton.size.width = frame.size.width/10
-        pauseButton.size.height = pauseButton.size.width
-        pauseButton.position = CGPoint(x: frame.maxX - pauseButton.size.width/2, y: frame.maxY - pauseButton.size.height/2 - 40)
+        //pauseButton.size.width = 42.7
+        //pauseButton.size.height = 75
+        
         pauseButton.zPosition = 6
         addChild(pauseButton)
+        
+        pauseButtonBlurr = SKSpriteNode(imageNamed: "RedPauseButtonBlurr")
+        //pauseButtonBlurr.size = CGSize(width: 72.4, height: 104.7)
+        pauseButton.addChild(pauseButtonBlurr)
+        pauseButtonBlurr.zPosition = -1
+        
+        pauseButton.position = CGPoint(x: 750 - pauseButtonBlurr.size.width/2 - 25, y: 1334 - pauseButtonBlurr.size.height/2 - 25)
         
     }
     
@@ -227,7 +293,8 @@ class GameScene_pop: SKScene, SKPhysicsContactDelegate {
                 } else {
                     isGamePaused = false
                     self.isPaused = false
-                    pauseButton.texture = SKTexture(imageNamed: "PauseButtonWhite")
+                    pauseButton.texture = SKTexture(imageNamed: "PauseButton")
+                    pauseButtonBlurr.texture = SKTexture(imageNamed: "RedPauseButtonBlurr")
                     self.speed = 1.0
                     self.physicsWorld.speed = 1.0
                 }
@@ -240,7 +307,7 @@ class GameScene_pop: SKScene, SKPhysicsContactDelegate {
             started = true
             addCheckpoint()
             movePlayer()
-            scoreLabel.text = "0"
+            //scoreLabel.text = "0"
         }
     }
     
