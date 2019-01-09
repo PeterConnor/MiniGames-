@@ -38,9 +38,10 @@ class GameViewController2: UIViewController, GADBannerViewDelegate {
                 view.ignoresSiblingOrder = true
                 view.presentScene(scene)
             case "pop":
-                let scene = MenuScene_pop(size: view.bounds.size)
-                scene.scaleMode = .aspectFill
-                scene.gameVC = self
+                let scene = MenuScene_split(fileNamed: "MenuScene_Split")
+                scene?.scaleMode = .aspectFit
+                scene?.gameVC = self
+                scene?.gameName = "pop"
                 view.ignoresSiblingOrder = true
                 view.presentScene(scene)
             case "bt":

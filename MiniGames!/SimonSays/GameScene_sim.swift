@@ -44,7 +44,7 @@ class GameScene_sim: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.contactDelegate = self
 
         addBackButton()
-        addPauseButton()
+        //addPauseButton()
         addActionButton()
         
         
@@ -248,11 +248,17 @@ class GameScene_sim: SKScene, SKPhysicsContactDelegate {
     func addBackButton() {
         let backButton = SKSpriteNode(texture: SKTexture(imageNamed: "BackButton"))
         backButton.name = "BackButton"
-        backButton.size.width = frame.size.width/10
-        backButton.size.height = backButton.size.width
-        backButton.position = CGPoint(x: frame.minX + backButton.size.width/2, y: frame.maxY - backButton.size.height/2 - 40)
+        //backButton.size = CGSize(width: 32.3, height: 75)
         backButton.zPosition = 6
         addChild(backButton)
+        
+        let backButtonBlurr = SKSpriteNode(imageNamed: "BlueBackButtonBlurr")
+        //ZbackButtonBlurr.size = CGSize(width: 67.2, height: 115.8)
+        backButton.addChild(backButtonBlurr)
+        backButtonBlurr.zPosition = -1
+        
+        backButton.position = CGPoint(x: 0 + backButtonBlurr.size.width/2 + 25, y: 1334 - backButtonBlurr.size.height/2 - 25)
+        
     }
     
     func addPauseButton() {

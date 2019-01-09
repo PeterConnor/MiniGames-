@@ -92,6 +92,7 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
         addPlayer()
         addPlayerBlurr()
         addScoreLabels()
+        addBackground()
         
         view.showsNodeCount = true
         //view.showsPhysics = true
@@ -155,6 +156,23 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.speed = 0.0
     }
     
+    func addBackground() {
+        var background = SKSpriteNode(imageNamed: "BackgroundWhite")
+        background.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        background.size.width = self.size.width
+        background.size.height = self.size.height
+        background.zPosition = 1
+        
+        var backgroundBlurr = SKSpriteNode(imageNamed: "BackgroundRed")
+        backgroundBlurr.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        backgroundBlurr.size.width = self.size.width
+        backgroundBlurr.size.height = self.size.height
+        backgroundBlurr.zPosition = -1
+        
+        self.addChild(background)
+        //self.addChild(backgroundBlurr)
+    }
+    
     func addPlayer() {
         player = SKSpriteNode(imageNamed: "Disc")
         player.position = CGPoint(x: self.size.width/2, y: 250)
@@ -165,7 +183,7 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
         player.physicsBody?.collisionBitMask = 0
         player.physicsBody?.contactTestBitMask = CollisionBitMask_split.Obstacle
         addChild(player)
-        player.zPosition = 2
+        player.zPosition = 3
     }
     
     func addPlayerBlurr() {
@@ -361,11 +379,11 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
     }
     
     func addScoreLabels() {
-        scoreLabel1.zPosition = 2
+        scoreLabel1.zPosition = 3
         scoreLabel1.position = CGPoint(x: self.size.width/2 - scoreLabel1.size.width - 20, y: 1334 - scoreLabel1.size.height/2 - 40)
-        scoreLabel2.zPosition = 2
+        scoreLabel2.zPosition = 3
         scoreLabel2.position = CGPoint(x: self.size.width/2, y: 1334 - scoreLabel2.size.height/2 - 40)
-        scoreLabel3.zPosition = 2
+        scoreLabel3.zPosition = 3
         scoreLabel3.position = CGPoint(x: self.size.width/2 + scoreLabel3.size.width + 20, y: 1334 - scoreLabel3.size.height/2 - 40)
         addChild(scoreLabel1)
         addChild(scoreLabel2)
@@ -380,455 +398,3 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
         blurr3.zPosition = -1
     }
 }
-
-/*class GameScene_split: SKScene, SKPhysicsContactDelegate {
-    
-    var isGameOver = false
-    var isGamePaused = false
-    
-    var compareNum = 10
- 
-    var obstacleList = [SKSpriteNode]()
-    var obstacleList2 = [SKSpriteNode]()
-    
-    var firstObstacleNumber = 0
-    
-    weak var gameVC: GameViewController2?
-    
-    var player: SKSpriteNode!
-    var player2: SKSpriteNode!
-    
-    var pauseButton = SKSpriteNode()
-    
-    var initialPlayerPosition: CGPoint!
-    
-    override func didMove(to view: SKView) {
-        
-        
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(GameScene_split.pauseGame), name: NSNotification.Name(rawValue: "PauseGame"), object: nil)
-        
-        backgroundColor = SKColor(red: 255/255, green: 192/255, blue: 203/255, alpha: 1)
-        self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
-        self.physicsWorld.contactDelegate = self
-        addPlayer()
-        addScoreLabel()
-        addBackButton()
-        addPauseButton()
-        //addRow(type: .oneM)
-    }
-    
-    func addRandomRow() {
-        var randomNumber = Int(arc4random_uniform(9))
-        
-        while randomNumber == compareNum {
-            randomNumber = Int(arc4random_uniform(9))
-        }
-        
-        compareNum = randomNumber
-        
-        switch randomNumber {
-        case 0:
-            addRow(type: RowType(rawValue: 0)!)
-            break
-        case 1:
-            addRow(type: RowType(rawValue: 1)!)
-            break
-        case 2:
-            addRow(type: RowType(rawValue: 2)!)
-            break
-        case 3:
-            addRow(type: RowType(rawValue: 3)!)
-            break
-        case 4:
-            addRow(type: RowType(rawValue: 4)!)
-            break
-        case 5:
-            addRow(type: RowType(rawValue: 5)!)
-            break
-        case 6:
-            addRow(type: RowType(rawValue: 6)!)
-        case 7:
-            addRow(type: RowType(rawValue: 7)!)
-        case 8:
-            addRow(type: RowType(rawValue: 8)!)
-            break
-        default:
-            break
-        }
-    }
-    
-    var lastUpdate = TimeInterval()
-    var lastYieldTimeInterval = TimeInterval()
-    var timeCheck = 0
-    
-    func updateWithTimeSinceLastUpdate(timeSinceLastUpdate: CFTimeInterval) {
-        if isGameOver == false && isGamePaused == false {
-            lastYieldTimeInterval += timeSinceLastUpdate
-            if lastYieldTimeInterval > 0.6 {
-                lastYieldTimeInterval = 0
-                addRandomRow()
-            }
-        }
-    }
-    
-    
-    override func update(_ currentTime: TimeInterval) {
-        
-        if isGamePaused == false && isGameOver == false {
-            if timeCheck == 1 {
-                lastUpdate = currentTime
-                timeCheck = 0
-            }
-            var timeSinceLastUpdate = currentTime - lastUpdate
-            lastUpdate = currentTime
-            lastYieldTimeInterval += timeSinceLastUpdate
-            if lastYieldTimeInterval > 0.6 {
-                lastYieldTimeInterval = 0
-                addRandomRow()
-            }
-        }
-        
-        
-        
-        
-        
-        if firstObstacleNumber == 1 {
-            if obstacleList[0].position.y < player.position.y {
-                score += 1
-                obstacleList.removeFirst()
-            }
-        }
-        
-        for (index, object) in obstacleList2.enumerated() {
-            if object.position.y < frame.minX - 20 {
-                obstacleList2.remove(at: index)
-            }
-        }
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        for touch in touches {
-
-        let location = touch.location(in: self)
-        
-        if atPoint(location).name == "BackButton" {
-            let menuScene = MenuScene_split(size: view!.bounds.size)
-            menuScene.scaleMode = .aspectFill
-            menuScene.gameVC = gameVC
-
-            self.view?.presentScene(menuScene, transition: SKTransition.doorway(withDuration: 1))
-            }
-            
-            if atPoint(location).name == "PauseButton" && isGameOver == false {
-                if isGamePaused == false {
-                    pauseGame()
-                } else {
-                    isGamePaused = false
-                    self.isPaused = false
-                    pauseButton.texture = SKTexture(imageNamed: "PauseButtonWhite")
-                    self.speed = 1.0
-                    self.physicsWorld.speed = 1.0
-                }
-            }
-        }
-    }
-    
-    @objc func pauseGame() {
-        timeCheck = 1
-        self.isPaused = true
-        isGamePaused = true
-        pauseButton.texture = SKTexture(imageNamed: "PlayButtonWhite")
-        self.speed = 0.0
-        self.physicsWorld.speed = 0.0
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if isGameOver == false  && isGamePaused == false {
-            if let touch = touches.first {
-                let maximumPossibleForce = touch.maximumPossibleForce
-                let force = touch.force
-                let normalizedForce = force/maximumPossibleForce
-                
-                player.position.x = (self.size.width / 2) - normalizedForce * (self.size.width / 2 - 25)
-                player2.position.x = (self.size.width / 2) + normalizedForce * (self.size.width / 2 - 25)
-            }
-        }
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if isGameOver == false {
-            resetPlayerPosition()
-        }
-        
-    }
-    
-    func resetPlayerPosition() {
-        player.position = initialPlayerPosition
-        player2.position = initialPlayerPosition
-    }
-    
-    func didBegin(_ contact: SKPhysicsContact) {
-        if contact.bodyA.node?.name == "PLAYER" {
-            isGameOver = true
-            player.isUserInteractionEnabled = false
-            player2.isUserInteractionEnabled = false
-            //self.isUserInteractionEnabled = false
-            
-            for i in obstacleList {
-                i.removeAllActions()
-            }
-            for i in obstacleList2 {
-                i.removeAllActions()
-            }
-            let actionRed = SKAction.colorize(with: .red, colorBlendFactor: 1.0, duration: 0.25)
-            let actionBack = SKAction.wait(forDuration: 2.0)
-            
-            self.scene?.run(SKAction.sequence([actionRed, actionBack]), completion: { () -> Void in
-                self.gameOver()
-            })
-        }
-    }
-    
-}
-
-extension GameScene_split {
- 
-    func addObstacle(type: ObstacleType) -> SKSpriteNode {
-        let obstacle = SKSpriteNode()
-        obstacle.size = CGSize(width: 0, height: self.frame.size.height * 0.03)
-        obstacle.name = "OBSTACLE"
-        obstacle.physicsBody?.isDynamic = true
-        
-        switch type {
-        case .Small:
-            obstacle.texture = SKTexture(imageNamed: "SplitBarSmall")
-            obstacle.size.width = self.size.width * 0.25
-            //480 x 60
-            break
-        case .Medium:
-            obstacle.texture = SKTexture(imageNamed: "SplitBarSmall")
-            obstacle.size.width = self.size.width * 0.4
-            //768
-            break
-        case .Large:
-            obstacle.texture = SKTexture(imageNamed: "SplitBarLarge")
-
-            obstacle.size.width = self.size.width * 0.75
-            //1440
-        case .Tiny:
-            obstacle.texture = SKTexture(imageNamed: "SplitBarTiny")
-            obstacle.size.width = self.size.width * 0.15
-            break
-        }
-        
-        obstacle.position = CGPoint(x: 0, y: self.size.height + obstacle.size.height)
-        obstacle.physicsBody = SKPhysicsBody(rectangleOf: obstacle.size)
-        obstacle.physicsBody?.categoryBitMask = CollisionBitMask_split.Obstacle
-        obstacle.physicsBody?.collisionBitMask = 0
-        
-        return obstacle
-    }
-    
-    func addMovement(obstacle: SKSpriteNode) {
-        var actionArray = [SKAction]()
-        
-        actionArray.append(SKAction.move(to: CGPoint(x: obstacle.position.x, y: -obstacle.size.height), duration: 3))
-        actionArray.append(SKAction.removeFromParent())
-        
-        obstacle.run(SKAction.sequence(actionArray))
-    }
-    
-    func addRow(type: RowType) {
-        switch type {
-        case .oneS:
-            let obst = addObstacle(type: .Small)
-            obst.position = CGPoint(x: self.size.width / 2, y: obst.position.y)
-            obstacleList.append(obst)
-            obstacleList2.append(obst)
-            if firstObstacleNumber == 0 {
-                firstObstacleNumber = 1
-            }
-            addMovement(obstacle: obst)
-            addChild(obst)
-            break
-        case .oneM:
-            let obst = addObstacle(type: .Medium)
-            obst.position = CGPoint(x: self.size.width / 2, y: obst.position.y)
-            obstacleList.append(obst)
-            obstacleList2.append(obst)
-            if firstObstacleNumber == 0 {
-                firstObstacleNumber = 1
-            }
-            addMovement(obstacle: obst)
-            addChild(obst)
-            break
-        case .oneL:
-            let obst = addObstacle(type: .Large)
-            obst.position = CGPoint(x: self.size.width / 2, y: obst.position.y)
-            obstacleList.append(obst)
-            obstacleList2.append(obst)
-            if firstObstacleNumber == 0 {
-                firstObstacleNumber = 1
-            }
-            addMovement(obstacle: obst)
-            addChild(obst)
-            break
-        case .twoS:
-            let obst1 = addObstacle(type: .Small)
-            let obst2 = addObstacle(type: .Small)
-            
-            obst1.position = CGPoint(x: obst1.size.width + 50, y: obst1.position.y)
-            obst2.position = CGPoint(x: self.size.width - obst2.size.width - 50, y: obst1.position.y)
-            obstacleList.append(obst1)
-            obstacleList2.append(obst2)
-            obstacleList2.append(obst1)
-            if firstObstacleNumber == 0 {
-                firstObstacleNumber = 1
-            }
-            
-            addMovement(obstacle: obst1)
-            addMovement(obstacle: obst2)
-            
-            addChild(obst1)
-            addChild(obst2)
-            
-            break
-        case .twoM:
-            let obst1 = addObstacle(type: .Medium)
-            let obst2 = addObstacle(type: .Medium)
-            
-            obst1.position = CGPoint(x: obst1.size.width/2, y: obst1.position.y)
-            obst2.position = CGPoint(x: self.size.width - obst2.size.width/2, y: obst1.position.y)
-            obstacleList.append(obst1)
-            obstacleList2.append(obst2)
-            obstacleList2.append(obst1)
-            if firstObstacleNumber == 0 {
-                firstObstacleNumber = 1
-            }
-            
-            addMovement(obstacle: obst1)
-            addMovement(obstacle: obst2)
-            
-            addChild(obst1)
-            addChild(obst2)
-            break
-        case .threeTiny:
-            let obst1 = addObstacle(type: .Tiny)
-            let obst2 = addObstacle(type: .Tiny)
-            let obst3 = addObstacle(type: .Tiny)
-
-            obst1.position = CGPoint(x: obst1.size.width/2, y: obst1.position.y)
-            obst2.position = CGPoint(x: self.size.width - obst2.size.width/2, y: obst1.position.y)
-            obst3.position = CGPoint(x: self.size.width/2, y: obst1.position.y)
-            obstacleList.append(obst1)
-            obstacleList2.append(obst2)
-            obstacleList2.append(obst3)
-            obstacleList2.append(obst1)
-            
-            if firstObstacleNumber == 0 {
-                firstObstacleNumber = 1
-            }
-            
-            addMovement(obstacle: obst1)
-            addMovement(obstacle: obst2)
-            addMovement(obstacle: obst3)
-            
-            addChild(obst1)
-            addChild(obst2)
-            addChild(obst3)
-            
-            break
-        case .twoSmallOneTiny:
-            let obst1 = addObstacle(type: .Small)
-            let obst2 = addObstacle(type: .Small)
-            let obst3 = addObstacle(type: .Tiny)
-            
-            obst1.position = CGPoint(x: obst1.size.width/2, y: obst1.position.y)
-            obst2.position = CGPoint(x: self.size.width - obst2.size.width/2, y: obst1.position.y)
-            obst3.position = CGPoint(x: self.size.width/2, y: obst1.position.y)
-            obstacleList.append(obst1)
-            obstacleList2.append(obst2)
-            obstacleList2.append(obst3)
-            obstacleList2.append(obst1)
-            
-            if firstObstacleNumber == 0 {
-                firstObstacleNumber = 1
-            }
-            
-            addMovement(obstacle: obst1)
-            addMovement(obstacle: obst2)
-            addMovement(obstacle: obst3)
-            
-            addChild(obst1)
-            addChild(obst2)
-            addChild(obst3)
-            
-            break
-        case .oneMediumTwoTiny:
-            let obst1 = addObstacle(type: .Tiny)
-            let obst2 = addObstacle(type: .Tiny)
-            let obst3 = addObstacle(type: .Medium)
-            
-            obst1.position = CGPoint(x: obst1.size.width/2, y: obst1.position.y)
-            obst2.position = CGPoint(x: self.size.width - obst2.size.width/2, y: obst1.position.y)
-            obst3.position = CGPoint(x: self.size.width/2, y: obst1.position.y)
-            obstacleList.append(obst1)
-            obstacleList2.append(obst2)
-            obstacleList2.append(obst3)
-            obstacleList2.append(obst1)
-            
-            
-            if firstObstacleNumber == 0 {
-                firstObstacleNumber = 1
-            }
-            
-            addMovement(obstacle: obst1)
-            addMovement(obstacle: obst2)
-            addMovement(obstacle: obst3)
-            
-            addChild(obst1)
-            addChild(obst2)
-            addChild(obst3)
-            
-            break
-        case .threeS:
-            let obst1 = addObstacle(type: .Small)
-            let obst2 = addObstacle(type: .Small)
-            let obst3 = addObstacle(type: .Small)
-            
-            obst1.position = CGPoint(x: obst1.size.width/2, y: obst1.position.y)
-            obst2.position = CGPoint(x: self.size.width - obst2.size.width/2, y: obst1.position.y)
-            obst3.position = CGPoint(x: self.size.width/2, y: obst1.position.y)
-            obstacleList.append(obst1)
-            obstacleList2.append(obst2)
-            obstacleList2.append(obst3)
-            obstacleList2.append(obst1)
-
-            if firstObstacleNumber == 0 {
-                firstObstacleNumber = 1
-            }
-            
-            addMovement(obstacle: obst1)
-            addMovement(obstacle: obst2)
-            addMovement(obstacle: obst3)
-            
-            addChild(obst1)
-            addChild(obst2)
-            addChild(obst3)
-        
-            break
-        }
-    }
-    
-    func addScoreLabel() {
-        scoreLabel.zPosition = 2
-        scoreLabel.fontSize = 80
-        scoreLabel.fontColor = .yellow
-        scoreLabel.text = "\(score)"
-        scoreLabel.position = CGPoint(x: frame.midX, y: self.size.height - (scoreLabel.frame.height * 2))
-        addChild(scoreLabel)
-    }
- 
-}*/
