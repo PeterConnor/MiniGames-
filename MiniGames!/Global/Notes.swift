@@ -35,6 +35,11 @@ Change Leaderboards, so u can use string interpolation
 use switch on showAlert() instructions button
 fix collectionview "MiniGames" cutoff
 fix number "1". doesnt lineup with blurr.`
+make sure all games have same gameover
+ flash buttons to abrupt? Fade in/out? Make a "Wrong"/"Gamover" button?
+ make flash buttons bigger?
+ fix leaderboards.
+ fix Push to remote!
  
 ***Eventually***
 console messages

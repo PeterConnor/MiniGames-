@@ -241,7 +241,7 @@ class MenuScene_split: SKScene, GKGameCenterControllerDelegate {
         let gcVC: GKGameCenterViewController = GKGameCenterViewController()
         gcVC.gameCenterDelegate = self
         gcVC.viewState = GKGameCenterViewControllerState.leaderboards
-        gcVC.leaderboardIdentifier = "MiniGames! - Banana Split"
+        gcVC.leaderboardIdentifier = "MiniGames! - " + "\(gameName!)"
         gameVC?.present(gcVC, animated: true, completion: nil)
     
     }
@@ -251,7 +251,7 @@ class MenuScene_split: SKScene, GKGameCenterControllerDelegate {
     }
     
     func submitScore() {
-        let leaderboardID = "MiniGames! - Banana Split"
+        let leaderboardID = "MiniGames! - " + "\(gameName!)"
         let sScore = GKScore(leaderboardIdentifier: leaderboardID)
         sScore.value = Int64(UserDefaults.standard.integer(forKey: "HighScore_" + gameName!))
         //let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
