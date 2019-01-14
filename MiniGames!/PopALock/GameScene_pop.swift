@@ -70,8 +70,6 @@ class GameScene_pop: SKScene, SKPhysicsContactDelegate {
                 
                 scoreLabel3.texture = SKTexture(imageNamed: "num9")
                 blurr3.texture = SKTexture(imageNamed: "GreenNum9")
-                
-                
             }
         }
     }
