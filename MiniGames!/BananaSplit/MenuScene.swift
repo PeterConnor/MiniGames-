@@ -8,7 +8,7 @@
 import SpriteKit
 import GameKit
 
-class MenuScene_split: SKScene, GKGameCenterControllerDelegate {
+class MenuScene: SKScene, GKGameCenterControllerDelegate {
     
     var logo: SKSpriteNode!
     

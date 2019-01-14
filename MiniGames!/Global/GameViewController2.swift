@@ -38,7 +38,7 @@ class GameViewController2: UIViewController, GADBannerViewDelegate {
                 view.ignoresSiblingOrder = true
                 view.presentScene(scene)
             case "pop":
-                let scene = MenuScene_split(fileNamed: "MenuScene_Split")
+                let scene = MenuScene(fileNamed: "MenuScene")
                 scene?.scaleMode = .aspectFit
                 scene?.gameVC = self
                 scene?.gameName = "pop"
@@ -75,14 +75,14 @@ class GameViewController2: UIViewController, GADBannerViewDelegate {
                 view.ignoresSiblingOrder = true
                 view.presentScene(scene)
             case "sim":
-                let scene = MenuScene_split(fileNamed: "MenuScene_Split")
+                let scene = MenuScene(fileNamed: "MenuScene")
                 scene?.scaleMode = .aspectFit
                 scene?.gameVC = self
                 scene?.gameName = "sim"
                 view.ignoresSiblingOrder = true
                 view.presentScene(scene)
             case "split":
-                let scene = MenuScene_split(fileNamed: "MenuScene_Split")
+                let scene = MenuScene(fileNamed: "MenuScene")
                 scene?.scaleMode = .aspectFit
                 scene?.gameVC = self
                 scene?.gameName = "split"

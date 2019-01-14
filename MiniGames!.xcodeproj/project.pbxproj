@@ -25,8 +25,8 @@
 		FA7A83F22076F62500705B50 /* GameScene_cs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7A83EE2076F62400705B50 /* GameScene_cs.swift */; };
 		FA7A83F32076F62500705B50 /* Settings_cs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7A83EF2076F62400705B50 /* Settings_cs.swift */; };
 		FA7A83F42076F62500705B50 /* MenuScene_cs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7A83F02076F62400705B50 /* MenuScene_cs.swift */; };
-		FA868EB420EAE1220007A716 /* MenuScene_split.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA868EB320EAE1220007A716 /* MenuScene_split.swift */; };
-		FA868EB620ED556C0007A716 /* MenuScene_Split.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA868EB520ED556C0007A716 /* MenuScene_Split.sks */; };
+		FA868EB420EAE1220007A716 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA868EB320EAE1220007A716 /* MenuScene.swift */; };
+		FA868EB620ED556C0007A716 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA868EB520ED556C0007A716 /* MenuScene.sks */; };
 		FA93AE6320683ACF0083FED1 /* MenuScene_bb.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA93AE6220683ACF0083FED1 /* MenuScene_bb.swift */; };
 		FA93F65B219B9250007021F6 /* GameScene_pop.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA93F65A219B9250007021F6 /* GameScene_pop.sks */; };
 		FA93F65D219D1227007021F6 /* GameScene_sim.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA93F65C219D1227007021F6 /* GameScene_sim.sks */; };
@@ -77,8 +77,8 @@
 		FA7A83EE2076F62400705B50 /* GameScene_cs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene_cs.swift; sourceTree = "<group>"; };
 		FA7A83EF2076F62400705B50 /* Settings_cs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings_cs.swift; sourceTree = "<group>"; };
 		FA7A83F02076F62400705B50 /* MenuScene_cs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuScene_cs.swift; sourceTree = "<group>"; };
-		FA868EB320EAE1220007A716 /* MenuScene_split.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene_split.swift; sourceTree = "<group>"; };
-		FA868EB520ED556C0007A716 /* MenuScene_Split.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene_Split.sks; sourceTree = "<group>"; };
+		FA868EB320EAE1220007A716 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
+		FA868EB520ED556C0007A716 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
 		FA93AE6220683ACF0083FED1 /* MenuScene_bb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene_bb.swift; sourceTree = "<group>"; };
 		FA93F65A219B9250007021F6 /* GameScene_pop.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene_pop.sks; sourceTree = "<group>"; };
 		FA93F65C219D1227007021F6 /* GameScene_sim.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene_sim.sks; sourceTree = "<group>"; };
@@ -258,8 +258,8 @@
 			children = (
 				FADE21E820E7F5560066024F /* GameScene_split.swift */,
 				FADE21EA20E7F5660066024F /* GameScene_split.sks */,
-				FA868EB320EAE1220007A716 /* MenuScene_split.swift */,
-				FA868EB520ED556C0007A716 /* MenuScene_Split.sks */,
+				FA868EB320EAE1220007A716 /* MenuScene.swift */,
+				FA868EB520ED556C0007A716 /* MenuScene.sks */,
 			);
 			path = BananaSplit;
 			sourceTree = "<group>";
@@ -377,7 +377,7 @@
 				FA5BE9F2214724290056B5ED /* GameScene_bb.sks in Resources */,
 				FADE21EB20E7F5660066024F /* GameScene_split.sks in Resources */,
 				FAF6A8622059DE5800DAE12E /* Main.storyboard in Resources */,
-				FA868EB620ED556C0007A716 /* MenuScene_Split.sks in Resources */,
+				FA868EB620ED556C0007A716 /* MenuScene.sks in Resources */,
 				FA3FBA8B20D197FE005229C8 /* MenuScene_gs.sks in Resources */,
 				FAF6A8642059DE5800DAE12E /* Assets.xcassets in Resources */,
 				FAF6A8672059DE5800DAE12E /* LaunchScreen.storyboard in Resources */,
@@ -427,7 +427,7 @@
 				FA24F3572094F10400B535E6 /* GameViewController.swift in Sources */,
 				FA6070A3209FEFA900DFFFD1 /* Notes.swift in Sources */,
 				FADE21E920E7F5560066024F /* GameScene_split.swift in Sources */,
-				FA868EB420EAE1220007A716 /* MenuScene_split.swift in Sources */,
+				FA868EB420EAE1220007A716 /* MenuScene.swift in Sources */,
 				FA24F3552094F0FD00B535E6 /* GameplayScene.swift in Sources */,
 				FA7A83E32075ACDE00705B50 /* MenuScene_bt.swift in Sources */,
 				FA6070A5209FF10600DFFFD1 /* MainMenuScene.swift in Sources */,

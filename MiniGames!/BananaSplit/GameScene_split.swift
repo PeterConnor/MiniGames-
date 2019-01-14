@@ -107,7 +107,7 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
             let location = touch.location(in: self)
             
             if atPoint(location).name == "BackButton" {
-                let menuScene = MenuScene_split(fileNamed: "MenuScene_Split")
+                let menuScene = MenuScene(fileNamed: "MenuScene")
                 menuScene?.scaleMode = .aspectFit
                 menuScene?.gameName = "split"
                 menuScene?.gameVC = gameVC
@@ -336,7 +336,7 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
         }
         
         if let view = self.view as SKView? {
-            let scene = MenuScene_split(fileNamed: "MenuScene_Split")
+            let scene = MenuScene(fileNamed: "MenuScene")
             scene?.scaleMode = .aspectFit
             scene?.gameVC = self.gameVC
             scene?.gameName = "split"

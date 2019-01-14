@@ -199,7 +199,7 @@ class GameScene_sim: SKScene, SKPhysicsContactDelegate {
             let location = touch.location(in: self)
             
             if atPoint(location).name == "BackButton" {
-                let menuScene = MenuScene_split(fileNamed: "MenuScene_Split")
+                let menuScene = MenuScene(fileNamed: "MenuScene")
                 menuScene?.scaleMode = .aspectFit
                 menuScene?.gameName = "sim"
                 menuScene?.gameVC = gameVC
@@ -317,7 +317,7 @@ class GameScene_sim: SKScene, SKPhysicsContactDelegate {
         }
         
         if let view = self.view as SKView? {
-            let scene = MenuScene_split(fileNamed: "MenuScene_Split")
+            let scene = MenuScene(fileNamed: "MenuScene")
             scene?.scaleMode = .aspectFit
             scene?.gameName = "sim"
             scene?.gameVC = self.gameVC
