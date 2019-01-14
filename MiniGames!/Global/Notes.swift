@@ -31,8 +31,10 @@ Make progressively harder
 *sim*
 
 *MenuScene*
-Change Leaderboards, so u can use string interolation
+Change Leaderboards, so u can use string interpolation
 use switch on showAlert() instructions button
+fix collectionview "MiniGames" cutoff
+fix number "1". doesnt lineup with blurr.`
  
 ***Eventually***
 console messages

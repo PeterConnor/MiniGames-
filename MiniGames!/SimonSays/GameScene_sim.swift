@@ -44,7 +44,6 @@ class GameScene_sim: SKScene, SKPhysicsContactDelegate {
                 blurr2.texture = SKTexture(imageNamed: "BlueNum\(tens)")
                 scoreLabel1.texture = SKTexture(imageNamed: "num\(hundreds)")
                 blurr1.texture = SKTexture(imageNamed: "BlueNum\(hundreds)")
-                
             }
             
             if score % 10 == 0 && score % 100 != 0 {
@@ -200,11 +199,13 @@ class GameScene_sim: SKScene, SKPhysicsContactDelegate {
             let location = touch.location(in: self)
             
             if atPoint(location).name == "BackButton" {
-                let menuScene = MenuScene_sim(size: view!.bounds.size)
-                menuScene.scaleMode = .aspectFill
-                menuScene.gameVC = gameVC
+                let menuScene = MenuScene_split(fileNamed: "MenuScene_Split")
+                menuScene?.scaleMode = .aspectFit
+                menuScene?.gameName = "sim"
+                menuScene?.gameVC = gameVC
                 
-                self.view?.presentScene(menuScene, transition: SKTransition.doorway(withDuration: 1))
+                
+                self.view?.presentScene(menuScene!, transition: SKTransition.doorway(withDuration: 1))
             }
             
             if gameState == .touchToBegin {
@@ -316,11 +317,13 @@ class GameScene_sim: SKScene, SKPhysicsContactDelegate {
         }
         
         if let view = self.view as SKView? {
-            let scene = MenuScene_sim(size: view.bounds.size)
-            scene.scaleMode = .aspectFill
-            scene.gameVC = self.gameVC
+            let scene = MenuScene_split(fileNamed: "MenuScene_Split")
+            scene?.scaleMode = .aspectFit
+            scene?.gameName = "sim"
+            scene?.gameVC = self.gameVC
             view.presentScene(scene)
         }
+        
     }
     
     func addBackButton() {
