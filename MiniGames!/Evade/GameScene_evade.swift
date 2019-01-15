@@ -8,12 +8,12 @@
 
 import SpriteKit
 
-struct CollisionBitMask_split {
+struct CollisionBitMask_evade {
     static let Player: UInt32 = 0x00
     static let Obstacle: UInt32 = 0x01
 }
 
-class GameScene_split: SKScene, SKPhysicsContactDelegate {
+class GameScene_evade: SKScene, SKPhysicsContactDelegate {
     
     weak var gameVC: GameViewController2?
     
@@ -85,7 +85,7 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
         
-        NotificationCenter.default.addObserver(self, selector: #selector(GameScene_split.pauseGame), name: NSNotification.Name(rawValue: "PauseGame"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GameScene_evade.pauseGame), name: NSNotification.Name(rawValue: "PauseGame"), object: nil)
         
         addBackButton()
         addPauseButton()
@@ -109,7 +109,7 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
             if atPoint(location).name == "BackButton" {
                 let menuScene = MenuScene(fileNamed: "MenuScene")
                 menuScene?.scaleMode = .aspectFit
-                menuScene?.gameName = "split"
+                menuScene?.gameName = "evade"
                 menuScene?.gameVC = gameVC
                 
                 self.view?.presentScene(menuScene!, transition: SKTransition.doorway(withDuration: 1))
@@ -179,9 +179,9 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
         player.name = "PLAYER"
         player.physicsBody?.isDynamic = false
         player.physicsBody = SKPhysicsBody(circleOfRadius: player.size.width/2)
-        player.physicsBody?.categoryBitMask = CollisionBitMask_split.Player
+        player.physicsBody?.categoryBitMask = CollisionBitMask_evade.Player
         player.physicsBody?.collisionBitMask = 0
-        player.physicsBody?.contactTestBitMask = CollisionBitMask_split.Obstacle
+        player.physicsBody?.contactTestBitMask = CollisionBitMask_evade.Obstacle
         addChild(player)
         player.zPosition = 3
     }
@@ -192,9 +192,9 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
         //playerBlurr.name = "PLAYER"
         //playerBlurr.physicsBody?.isDynamic = false
         //playerBlurr.physicsBody = SKPhysicsBody(circleOfRadius: player.size.width/2)
-        //playerBlurr.physicsBody?.categoryBitMask = CollisionBitMask_split.Player
+        //playerBlurr.physicsBody?.categoryBitMask = CollisionBitMask_evade.Player
         //playerBlurr.physicsBody?.collisionBitMask = 0
-        //playerBlurr.physicsBody?.contactTestBitMask = CollisionBitMask_split.Obstacle
+        //playerBlurr.physicsBody?.contactTestBitMask = CollisionBitMask_evade.Obstacle
         player.addChild(playerBlurr)
         playerBlurr.zPosition = -1
     }
@@ -212,7 +212,7 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
         obstacle1.name = "OBSTACLE"
         obstacle1.physicsBody?.isDynamic = true
         obstacle1.physicsBody = SKPhysicsBody(rectangleOf: obstacle1.size)
-        obstacle1.physicsBody?.categoryBitMask = CollisionBitMask_split.Obstacle
+        obstacle1.physicsBody?.categoryBitMask = CollisionBitMask_evade.Obstacle
         obstacle1.physicsBody?.collisionBitMask = 0
         obstacle1.zPosition = 1
         obstacleList.append(obstacle1)
@@ -233,7 +233,7 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
         obstacle2.name = "OBSTACLE"
         obstacle2.physicsBody?.isDynamic = true
         obstacle2.physicsBody = SKPhysicsBody(rectangleOf: obstacle2.size)
-        obstacle2.physicsBody?.categoryBitMask = CollisionBitMask_split.Obstacle
+        obstacle2.physicsBody?.categoryBitMask = CollisionBitMask_evade.Obstacle
         obstacle2.physicsBody?.collisionBitMask = 0
         obstacle2.zPosition = 1
         obstacleList.append(obstacle2)
@@ -330,16 +330,16 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
     
     func gameOver() {
         
-        UserDefaults.standard.set(score, forKey: "RecentScore_split")
-        if score > UserDefaults.standard.integer(forKey: "HighScore_split") {
-            UserDefaults.standard.set(score, forKey: "HighScore_split")
+        UserDefaults.standard.set(score, forKey: "RecentScore_evade")
+        if score > UserDefaults.standard.integer(forKey: "HighScore_evade") {
+            UserDefaults.standard.set(score, forKey: "HighScore_evade")
         }
         
         if let view = self.view as SKView? {
             let scene = MenuScene(fileNamed: "MenuScene")
             scene?.scaleMode = .aspectFit
             scene?.gameVC = self.gameVC
-            scene?.gameName = "split"
+            scene?.gameName = "evade"
             view.presentScene(scene)
         }
     }

@@ -21,25 +21,21 @@ If your app is published to the App Store, remember to come back to link your ap
  Menuscenes - Tap to play change to cool play button (thin lines with glow). like so: https://www.shutterstock.com/image-vector/play-button-blue-glowing-neon-ui-692614963
  Make sure menus don't look like old ones for spam
  shooting stars game. like duck hunt across the screen.
+ Delete leaderboard test data. check to make sure its right and that all are added up.
 ---
-*To Do*
-*split*
+*evade*
 Make progressively harder
  
-*pop*
+*collide*
  
-*sim*
+*flash*
 
 *MenuScene*
-Change Leaderboards, so u can use string interpolation
-use switch on showAlert() instructions button
-fix collectionview "MiniGames" cutoff
 fix number "1". doesnt lineup with blurr.`
 make sure all games have same gameover
- flash buttons to abrupt? Fade in/out? Make a "Wrong"/"Gamover" button?
- make flash buttons bigger?
- fix leaderboards.
- fix Push to remote!
+evade buttons to abrupt? Fade in/out? Make a "Wrong"/"Gamover" button?
+make evade buttons bigger?
+fix Push to remote!
  
 ***Eventually***
 console messages
@@ -50,11 +46,11 @@ premium?
 add sounds (add global singleton bool for mute)
  */
 
-/*Skeleton
+/*Skeleton before changing view.bounds
  
 import SpriteKit
 
-class GameScene_split: SKScene, SKPhysicsContactDelegate {
+class GameScene_evade: SKScene, SKPhysicsContactDelegate {
     
     weak var gameVC: GameViewController2?
     
@@ -70,7 +66,7 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         
-        NotificationCenter.default.addObserver(self, selector: #selector(GameScene_split.pauseGame), name: NSNotification.Name(rawValue: "PauseGame"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GameScene_evade.pauseGame), name: NSNotification.Name(rawValue: "PauseGame"), object: nil)
  
     self.physicsWorld.contactDelegate = self
 
@@ -86,7 +82,7 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
             let location = touch.location(in: self)
             
             if atPoint(location).name == "BackButton" {
-                let menuScene = MenuScene_split(size: view!.bounds.size)
+                let menuScene = MenuScene_evade(size: view!.bounds.size)
                 menuScene.scaleMode = .aspectFill
                 menuScene.gameVC = gameVC
                 
@@ -118,13 +114,13 @@ class GameScene_split: SKScene, SKPhysicsContactDelegate {
     
     func gameOver() {
         
-        UserDefaults.standard.set(score, forKey: "RecentScore_split")
-        if score > UserDefaults.standard.integer(forKey: "HighScore_split") {
-            UserDefaults.standard.set(score, forKey: "HighScore_split")
+        UserDefaults.standard.set(score, forKey: "RecentScore_evade")
+        if score > UserDefaults.standard.integer(forKey: "HighScore_evade") {
+            UserDefaults.standard.set(score, forKey: "HighScore_evade")
         }
         
         if let view = self.view as SKView? {
-            let scene = MenuScene_split(size: view.bounds.size)
+            let scene = MenuScene_evade(size: view.bounds.size)
             scene.scaleMode = .aspectFill
             scene.gameVC = self.gameVC
             view.presentScene(scene)

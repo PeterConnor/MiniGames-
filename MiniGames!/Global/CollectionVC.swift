@@ -44,7 +44,7 @@ class CollectionVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
     
     func showAlert() {
-        let myAlert: UIAlertController = UIAlertController(title: "3D Touch Alert", message: "Banana Split requires 3D Touch, which this device does not support. Please choose another game or use a device that supports 3D Touch", preferredStyle: .alert)
+        let myAlert: UIAlertController = UIAlertController(title: "3D Touch Alert", message: "evade requires 3D Touch, which this device does not support. Please choose another game or use a device that supports 3D Touch", preferredStyle: .alert)
         myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(myAlert, animated: true, completion: nil)
     }
@@ -119,7 +119,7 @@ class CollectionVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     func submitScore() {
         let leaderboardID = "MiniGames! - All Games"
         let sScore = GKScore(leaderboardIdentifier: leaderboardID)
-        sScore.value = Int64(UserDefaults.standard.integer(forKey: "HighScore_split") + UserDefaults.standard.integer(forKey: "HighScore_sim") + UserDefaults.standard.integer(forKey: "HighScore_gs") + UserDefaults.standard.integer(forKey: "HighScore_fb") + UserDefaults.standard.integer(forKey: "HighScore_bb") + UserDefaults.standard.integer(forKey: "HighScore_cs") + UserDefaults.standard.integer(forKey: "HighScore_bt") + UserDefaults.standard.integer(forKey: "HighScore_pop") + UserDefaults.standard.integer(forKey: "HighScore_ss"))
+        sScore.value = Int64(UserDefaults.standard.integer(forKey: "HighScore_evade") + UserDefaults.standard.integer(forKey: "HighScore_flash") +  UserDefaults.standard.integer(forKey: "HighScore_collide"))
         GKScore.report([sScore]) { (error: Error!) -> Void in
             if error != nil {
                 print(error.localizedDescription)

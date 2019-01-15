@@ -37,11 +37,11 @@ class GameViewController2: UIViewController, GADBannerViewDelegate {
                 scene.gameVC = self
                 view.ignoresSiblingOrder = true
                 view.presentScene(scene)
-            case "pop":
+            case "collide":
                 let scene = MenuScene(fileNamed: "MenuScene")
                 scene?.scaleMode = .aspectFit
                 scene?.gameVC = self
-                scene?.gameName = "pop"
+                scene?.gameName = "collide"
                 view.ignoresSiblingOrder = true
                 view.presentScene(scene)
             case "bt":
@@ -74,18 +74,18 @@ class GameViewController2: UIViewController, GADBannerViewDelegate {
                 scene.gameVC = self
                 view.ignoresSiblingOrder = true
                 view.presentScene(scene)
-            case "sim":
+            case "flash":
                 let scene = MenuScene(fileNamed: "MenuScene")
                 scene?.scaleMode = .aspectFit
                 scene?.gameVC = self
-                scene?.gameName = "sim"
+                scene?.gameName = "flash"
                 view.ignoresSiblingOrder = true
                 view.presentScene(scene)
-            case "split":
+            case "evade":
                 let scene = MenuScene(fileNamed: "MenuScene")
                 scene?.scaleMode = .aspectFit
                 scene?.gameVC = self
-                scene?.gameName = "split"
+                scene?.gameName = "evade"
                 view.ignoresSiblingOrder = true
                 view.presentScene(scene)
             default:

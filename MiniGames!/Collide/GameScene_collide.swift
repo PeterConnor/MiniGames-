@@ -1,6 +1,6 @@
 //
 //  GameScene.swift
-//  PopALock
+//  Collide
 //
 //  Created by Pete Connor on 3/27/18.
 //  Copyright © 2018 c0nman. All rights reserved.
@@ -9,12 +9,12 @@
 
 import SpriteKit
 
-struct CollisionBitMask_pop {
+struct CollisionBitMask_collide {
     static let Player: UInt32 = 0x00
     static let Checkpoint: UInt32 = 0x01
 }
 
-class GameScene_pop: SKScene, SKPhysicsContactDelegate {
+class GameScene_collide: SKScene, SKPhysicsContactDelegate {
     
     weak var gameVC: GameViewController2?
     
@@ -86,7 +86,7 @@ class GameScene_pop: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.contactDelegate = self
 
         
-        NotificationCenter.default.addObserver(self, selector: #selector(GameScene_pop.pauseGame), name: NSNotification.Name(rawValue: "PauseGame"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GameScene_collide.pauseGame), name: NSNotification.Name(rawValue: "PauseGame"), object: nil)
         
         addBackButton()
         addPauseButton()
@@ -100,9 +100,9 @@ class GameScene_pop: SKScene, SKPhysicsContactDelegate {
         player.name = "PLAYER"
         player.physicsBody?.isDynamic = true
         player.physicsBody = SKPhysicsBody(circleOfRadius: player.size.width/2)
-        player.physicsBody?.categoryBitMask = CollisionBitMask_pop.Player
+        player.physicsBody?.categoryBitMask = CollisionBitMask_collide.Player
         player.physicsBody?.collisionBitMask = 0
-        player.physicsBody?.contactTestBitMask = CollisionBitMask_pop.Checkpoint
+        player.physicsBody?.contactTestBitMask = CollisionBitMask_collide.Checkpoint
         //print("player mass \(player.physicsBody?.mass)")
         player.physicsBody?.mass = 1.0
         addChild(player)
@@ -119,7 +119,7 @@ class GameScene_pop: SKScene, SKPhysicsContactDelegate {
         checkpoint.name = "CHECKPOINT"
         checkpoint.physicsBody?.isDynamic = true
         checkpoint.physicsBody = SKPhysicsBody(circleOfRadius: checkpoint.size.width/2)
-        checkpoint.physicsBody?.categoryBitMask = CollisionBitMask_pop.Checkpoint
+        checkpoint.physicsBody?.categoryBitMask = CollisionBitMask_collide.Checkpoint
         checkpoint.physicsBody?.collisionBitMask = 0
         checkpoint.physicsBody?.mass = 1.0
         addChild(checkpoint)
@@ -190,16 +190,16 @@ class GameScene_pop: SKScene, SKPhysicsContactDelegate {
     
     func gameOver() {
         
-        UserDefaults.standard.set(score, forKey: "RecentScore_pop")
-        if score > UserDefaults.standard.integer(forKey: "HighScore_pop") {
-            UserDefaults.standard.set(score, forKey: "HighScore_pop")
+        UserDefaults.standard.set(score, forKey: "RecentScore_collide")
+        if score > UserDefaults.standard.integer(forKey: "HighScore_collide") {
+            UserDefaults.standard.set(score, forKey: "HighScore_collide")
         }
         
         if let view = self.view as SKView? {
             let scene = MenuScene(fileNamed: "MenuScene")
             scene?.scaleMode = .aspectFit
             scene?.gameVC = self.gameVC
-            scene?.gameName = "pop"
+            scene?.gameName = "collide"
             view.presentScene(scene)
         }
     }
@@ -276,7 +276,7 @@ class GameScene_pop: SKScene, SKPhysicsContactDelegate {
             if atPoint(location).name == "BackButton" {
                 let menuScene = MenuScene(fileNamed: "MenuScene")
                 menuScene?.scaleMode = .aspectFit
-                menuScene?.gameName = "pop"
+                menuScene?.gameName = "collide"
                 menuScene?.gameVC = gameVC
                 
                 self.view?.presentScene(menuScene!, transition: SKTransition.doorway(withDuration: 1))

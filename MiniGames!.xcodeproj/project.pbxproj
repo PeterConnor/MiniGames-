@@ -28,8 +28,8 @@
 		FA868EB420EAE1220007A716 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA868EB320EAE1220007A716 /* MenuScene.swift */; };
 		FA868EB620ED556C0007A716 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA868EB520ED556C0007A716 /* MenuScene.sks */; };
 		FA93AE6320683ACF0083FED1 /* MenuScene_bb.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA93AE6220683ACF0083FED1 /* MenuScene_bb.swift */; };
-		FA93F65B219B9250007021F6 /* GameScene_pop.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA93F65A219B9250007021F6 /* GameScene_pop.sks */; };
-		FA93F65D219D1227007021F6 /* GameScene_sim.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA93F65C219D1227007021F6 /* GameScene_sim.sks */; };
+		FA93F65B219B9250007021F6 /* GameScene_collide.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA93F65A219B9250007021F6 /* GameScene_collide.sks */; };
+		FA93F65D219D1227007021F6 /* GameScene_flash.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA93F65C219D1227007021F6 /* GameScene_flash.sks */; };
 		FA97E79A20804DCE002FF39C /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97E79920804DCE002FF39C /* CollectionVC.swift */; };
 		FA97E79C20804E8E002FF39C /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97E79B20804E8E002FF39C /* Singleton.swift */; };
 		FA97E79E2083EB54002FF39C /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97E79D2083EB54002FF39C /* CustomCell.swift */; };
@@ -38,21 +38,21 @@
 		FAB19CA420C4ABA900EF2D33 /* Player_gs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB19CA320C4ABA900EF2D33 /* Player_gs.swift */; };
 		FAB19CA620C5E4A300EF2D33 /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB19CA520C5E4A300EF2D33 /* ItemController.swift */; };
 		FAB7F36A20DFEF8A003F24E3 /* MenuScene_sim.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB7F36920DFEF8A003F24E3 /* MenuScene_sim.swift */; };
-		FAB7F36C20DFEF96003F24E3 /* GameScene_sim.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB7F36B20DFEF96003F24E3 /* GameScene_sim.swift */; };
+		FAB7F36C20DFEF96003F24E3 /* GameScene_flash.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB7F36B20DFEF96003F24E3 /* GameScene_flash.swift */; };
 		FAB9E23021342B4B006C7838 /* MenuScene_ss.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB9E22F21342B4B006C7838 /* MenuScene_ss.swift */; };
 		FAC44F2E20770912002B2F2E /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = FAC44F2720770912002B2F2E /* Explosion.sks */; };
 		FAC44F2F20770912002B2F2E /* Starfield.sks in Resources */ = {isa = PBXBuildFile; fileRef = FAC44F2820770912002B2F2E /* Starfield.sks */; };
 		FAC44F3020770912002B2F2E /* GameScene_ss.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC44F2920770912002B2F2E /* GameScene_ss.swift */; };
-		FADE21E920E7F5560066024F /* GameScene_split.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADE21E820E7F5560066024F /* GameScene_split.swift */; };
-		FADE21EB20E7F5660066024F /* GameScene_split.sks in Resources */ = {isa = PBXBuildFile; fileRef = FADE21EA20E7F5660066024F /* GameScene_split.sks */; };
+		FADE21E920E7F5560066024F /* GameScene_evade.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADE21E820E7F5560066024F /* GameScene_evade.swift */; };
+		FADE21EB20E7F5660066024F /* GameScene_evade.sks in Resources */ = {isa = PBXBuildFile; fileRef = FADE21EA20E7F5660066024F /* GameScene_evade.sks */; };
 		FAF6A8572059DE5800DAE12E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF6A8562059DE5800DAE12E /* AppDelegate.swift */; };
 		FAF6A85D2059DE5800DAE12E /* GameScene_bb.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF6A85C2059DE5800DAE12E /* GameScene_bb.swift */; };
 		FAF6A85F2059DE5800DAE12E /* GameViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF6A85E2059DE5800DAE12E /* GameViewController2.swift */; };
 		FAF6A8622059DE5800DAE12E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAF6A8602059DE5800DAE12E /* Main.storyboard */; };
 		FAF6A8642059DE5800DAE12E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAF6A8632059DE5800DAE12E /* Assets.xcassets */; };
 		FAF6A8672059DE5800DAE12E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAF6A8652059DE5800DAE12E /* LaunchScreen.storyboard */; };
-		FAF978552076FAA600C9A6ED /* GameScene_pop.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF978512076FAA600C9A6ED /* GameScene_pop.swift */; };
-		FAF978572076FAA600C9A6ED /* MenuScene_pop.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF978532076FAA600C9A6ED /* MenuScene_pop.swift */; };
+		FAF978552076FAA600C9A6ED /* GameScene_collide.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF978512076FAA600C9A6ED /* GameScene_collide.swift */; };
+		FAF978572076FAA600C9A6ED /* MenuScene_collide.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF978532076FAA600C9A6ED /* MenuScene_collide.swift */; };
 		FAF9785E2076FB1600C9A6ED /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF9785D2076FB1600C9A6ED /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -80,8 +80,8 @@
 		FA868EB320EAE1220007A716 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		FA868EB520ED556C0007A716 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
 		FA93AE6220683ACF0083FED1 /* MenuScene_bb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene_bb.swift; sourceTree = "<group>"; };
-		FA93F65A219B9250007021F6 /* GameScene_pop.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene_pop.sks; sourceTree = "<group>"; };
-		FA93F65C219D1227007021F6 /* GameScene_sim.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene_sim.sks; sourceTree = "<group>"; };
+		FA93F65A219B9250007021F6 /* GameScene_collide.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene_collide.sks; sourceTree = "<group>"; };
+		FA93F65C219D1227007021F6 /* GameScene_flash.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene_flash.sks; sourceTree = "<group>"; };
 		FA97E79920804DCE002FF39C /* CollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
 		FA97E79B20804E8E002FF39C /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		FA97E79D2083EB54002FF39C /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
@@ -90,13 +90,13 @@
 		FAB19CA320C4ABA900EF2D33 /* Player_gs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player_gs.swift; sourceTree = "<group>"; };
 		FAB19CA520C5E4A300EF2D33 /* ItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
 		FAB7F36920DFEF8A003F24E3 /* MenuScene_sim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene_sim.swift; sourceTree = "<group>"; };
-		FAB7F36B20DFEF96003F24E3 /* GameScene_sim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene_sim.swift; sourceTree = "<group>"; };
+		FAB7F36B20DFEF96003F24E3 /* GameScene_flash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene_flash.swift; sourceTree = "<group>"; };
 		FAB9E22F21342B4B006C7838 /* MenuScene_ss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuScene_ss.swift; sourceTree = "<group>"; };
 		FAC44F2720770912002B2F2E /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Explosion.sks; path = "../../../MiniGames!/MiniGames!/SpaceShooter/Explosion.sks"; sourceTree = "<group>"; };
 		FAC44F2820770912002B2F2E /* Starfield.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Starfield.sks; path = "../../../MiniGames!/MiniGames!/SpaceShooter/Starfield.sks"; sourceTree = "<group>"; };
 		FAC44F2920770912002B2F2E /* GameScene_ss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene_ss.swift; sourceTree = "<group>"; };
-		FADE21E820E7F5560066024F /* GameScene_split.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene_split.swift; sourceTree = "<group>"; };
-		FADE21EA20E7F5660066024F /* GameScene_split.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene_split.sks; sourceTree = "<group>"; };
+		FADE21E820E7F5560066024F /* GameScene_evade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene_evade.swift; sourceTree = "<group>"; };
+		FADE21EA20E7F5660066024F /* GameScene_evade.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene_evade.sks; sourceTree = "<group>"; };
 		FAF6A8532059DE5800DAE12E /* MiniGames!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MiniGames!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAF6A8562059DE5800DAE12E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAF6A85C2059DE5800DAE12E /* GameScene_bb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene_bb.swift; sourceTree = "<group>"; };
@@ -105,8 +105,8 @@
 		FAF6A8632059DE5800DAE12E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAF6A8662059DE5800DAE12E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FAF6A8682059DE5800DAE12E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FAF978512076FAA600C9A6ED /* GameScene_pop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene_pop.swift; sourceTree = "<group>"; };
-		FAF978532076FAA600C9A6ED /* MenuScene_pop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuScene_pop.swift; sourceTree = "<group>"; };
+		FAF978512076FAA600C9A6ED /* GameScene_collide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene_collide.swift; sourceTree = "<group>"; };
+		FAF978532076FAA600C9A6ED /* MenuScene_collide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuScene_collide.swift; sourceTree = "<group>"; };
 		FAF9785D2076FB1600C9A6ED /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -214,14 +214,14 @@
 			path = GrannySmith;
 			sourceTree = "<group>";
 		};
-		FAB7F36820DFEE73003F24E3 /* SimonSays */ = {
+		FAB7F36820DFEE73003F24E3 /* Flash */ = {
 			isa = PBXGroup;
 			children = (
 				FAB7F36920DFEF8A003F24E3 /* MenuScene_sim.swift */,
-				FAB7F36B20DFEF96003F24E3 /* GameScene_sim.swift */,
-				FA93F65C219D1227007021F6 /* GameScene_sim.sks */,
+				FAB7F36B20DFEF96003F24E3 /* GameScene_flash.swift */,
+				FA93F65C219D1227007021F6 /* GameScene_flash.sks */,
 			);
-			path = SimonSays;
+			path = Flash;
 			sourceTree = "<group>";
 		};
 		FAC44F2120770786002B2F2E /* SpaceShooter */ = {
@@ -253,15 +253,15 @@
 			path = "../../../SpaceShooter copy/SpaceShooter/Emitters";
 			sourceTree = "<group>";
 		};
-		FADE21E720E7F53B0066024F /* BananaSplit */ = {
+		FADE21E720E7F53B0066024F /* Evade */ = {
 			isa = PBXGroup;
 			children = (
-				FADE21E820E7F5560066024F /* GameScene_split.swift */,
-				FADE21EA20E7F5660066024F /* GameScene_split.sks */,
+				FADE21E820E7F5560066024F /* GameScene_evade.swift */,
+				FADE21EA20E7F5660066024F /* GameScene_evade.sks */,
 				FA868EB320EAE1220007A716 /* MenuScene.swift */,
 				FA868EB520ED556C0007A716 /* MenuScene.sks */,
 			);
-			path = BananaSplit;
+			path = Evade;
 			sourceTree = "<group>";
 		};
 		FAF6A84A2059DE5800DAE12E = {
@@ -285,28 +285,28 @@
 		FAF6A8552059DE5800DAE12E /* MiniGames! */ = {
 			isa = PBXGroup;
 			children = (
-				FADE21E720E7F53B0066024F /* BananaSplit */,
-				FAB7F36820DFEE73003F24E3 /* SimonSays */,
+				FADE21E720E7F53B0066024F /* Evade */,
+				FAB7F36820DFEE73003F24E3 /* Flash */,
 				FAB19C9E20C48A6C00EF2D33 /* GrannySmith */,
 				FA7A83EA2076F27100705B50 /* Global */,
 				FA24F3482094EC6300B535E6 /* FlappyBird */,
 				FA7A83E92076F25700705B50 /* BrickBreaker */,
 				FA7A83ED2076F60600705B50 /* ColorSwitch */,
 				FA7A83CF2075ACC700705B50 /* ButtonTap */,
-				FAF978502076FA5D00C9A6ED /* PopALock */,
+				FAF978502076FA5D00C9A6ED /* Collide */,
 				FAC44F2120770786002B2F2E /* SpaceShooter */,
 			);
 			path = "MiniGames!";
 			sourceTree = "<group>";
 		};
-		FAF978502076FA5D00C9A6ED /* PopALock */ = {
+		FAF978502076FA5D00C9A6ED /* Collide */ = {
 			isa = PBXGroup;
 			children = (
-				FAF978512076FAA600C9A6ED /* GameScene_pop.swift */,
-				FA93F65A219B9250007021F6 /* GameScene_pop.sks */,
-				FAF978532076FAA600C9A6ED /* MenuScene_pop.swift */,
+				FAF978512076FAA600C9A6ED /* GameScene_collide.swift */,
+				FA93F65A219B9250007021F6 /* GameScene_collide.sks */,
+				FAF978532076FAA600C9A6ED /* MenuScene_collide.swift */,
 			);
-			path = PopALock;
+			path = Collide;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -370,12 +370,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA24F35E2094F51900B535E6 /* GameplayScene.sks in Resources */,
-				FA93F65B219B9250007021F6 /* GameScene_pop.sks in Resources */,
-				FA93F65D219D1227007021F6 /* GameScene_sim.sks in Resources */,
+				FA93F65B219B9250007021F6 /* GameScene_collide.sks in Resources */,
+				FA93F65D219D1227007021F6 /* GameScene_flash.sks in Resources */,
 				FA24F35D2094F51100B535E6 /* MainMenuScene.sks in Resources */,
 				FAC44F2F20770912002B2F2E /* Starfield.sks in Resources */,
 				FA5BE9F2214724290056B5ED /* GameScene_bb.sks in Resources */,
-				FADE21EB20E7F5660066024F /* GameScene_split.sks in Resources */,
+				FADE21EB20E7F5660066024F /* GameScene_evade.sks in Resources */,
 				FAF6A8622059DE5800DAE12E /* Main.storyboard in Resources */,
 				FA868EB620ED556C0007A716 /* MenuScene.sks in Resources */,
 				FA3FBA8B20D197FE005229C8 /* MenuScene_gs.sks in Resources */,
@@ -426,7 +426,7 @@
 				FA93AE6320683ACF0083FED1 /* MenuScene_bb.swift in Sources */,
 				FA24F3572094F10400B535E6 /* GameViewController.swift in Sources */,
 				FA6070A3209FEFA900DFFFD1 /* Notes.swift in Sources */,
-				FADE21E920E7F5560066024F /* GameScene_split.swift in Sources */,
+				FADE21E920E7F5560066024F /* GameScene_evade.swift in Sources */,
 				FA868EB420EAE1220007A716 /* MenuScene.swift in Sources */,
 				FA24F3552094F0FD00B535E6 /* GameplayScene.swift in Sources */,
 				FA7A83E32075ACDE00705B50 /* MenuScene_bt.swift in Sources */,
@@ -440,12 +440,12 @@
 				FA97E79C20804E8E002FF39C /* Singleton.swift in Sources */,
 				FA24F3532094F0F700B535E6 /* Random.swift in Sources */,
 				FA7A83F32076F62500705B50 /* Settings_cs.swift in Sources */,
-				FAF978572076FAA600C9A6ED /* MenuScene_pop.swift in Sources */,
+				FAF978572076FAA600C9A6ED /* MenuScene_collide.swift in Sources */,
 				FAF9785E2076FB1600C9A6ED /* Extensions.swift in Sources */,
 				FAB19CA220C491FE00EF2D33 /* GameScene_gs.swift in Sources */,
 				FAB7F36A20DFEF8A003F24E3 /* MenuScene_sim.swift in Sources */,
-				FAB7F36C20DFEF96003F24E3 /* GameScene_sim.swift in Sources */,
-				FAF978552076FAA600C9A6ED /* GameScene_pop.swift in Sources */,
+				FAB7F36C20DFEF96003F24E3 /* GameScene_flash.swift in Sources */,
+				FAF978552076FAA600C9A6ED /* GameScene_collide.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

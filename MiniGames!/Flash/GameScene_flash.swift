@@ -1,5 +1,5 @@
 //
-//  GameScene_sim.swift
+//  GameScene_flash.swift
 //  MiniGames!
 //
 //  Created by Pete Connor on 6/24/18.
@@ -8,20 +8,20 @@
 
 import SpriteKit
 
-enum GameState_sim {
+enum GameState_flash {
     case touchToBegin
     case memorizing
     case tapping
     case gameOver
 }
 
-class GameScene_sim: SKScene, SKPhysicsContactDelegate {
+class GameScene_flash: SKScene, SKPhysicsContactDelegate {
     
     weak var gameVC: GameViewController2?
     
     var isGamePaused = false
     var pauseButton = SKSpriteNode()
-    var gameState: GameState_sim?
+    var gameState: GameState_flash?
     
     var scoreLabel1 = SKSpriteNode(imageNamed: "num0")
     var scoreLabel2 = SKSpriteNode(imageNamed: "num0")
@@ -80,7 +80,7 @@ class GameScene_sim: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         
-        NotificationCenter.default.addObserver(self, selector: #selector(GameScene_sim.pauseGame), name: NSNotification.Name(rawValue: "PauseGame"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GameScene_flash.pauseGame), name: NSNotification.Name(rawValue: "PauseGame"), object: nil)
         
         self.physicsWorld.contactDelegate = self
 
@@ -201,7 +201,7 @@ class GameScene_sim: SKScene, SKPhysicsContactDelegate {
             if atPoint(location).name == "BackButton" {
                 let menuScene = MenuScene(fileNamed: "MenuScene")
                 menuScene?.scaleMode = .aspectFit
-                menuScene?.gameName = "sim"
+                menuScene?.gameName = "flash"
                 menuScene?.gameVC = gameVC
                 
                 
@@ -311,15 +311,15 @@ class GameScene_sim: SKScene, SKPhysicsContactDelegate {
     
     func gameOver() {
         
-        UserDefaults.standard.set(score, forKey: "RecentScore_sim")
-        if score > UserDefaults.standard.integer(forKey: "HighScore_sim") {
-            UserDefaults.standard.set(score, forKey: "HighScore_sim")
+        UserDefaults.standard.set(score, forKey: "RecentScore_flash")
+        if score > UserDefaults.standard.integer(forKey: "HighScore_flash") {
+            UserDefaults.standard.set(score, forKey: "HighScore_flash")
         }
         
         if let view = self.view as SKView? {
             let scene = MenuScene(fileNamed: "MenuScene")
             scene?.scaleMode = .aspectFit
-            scene?.gameName = "sim"
+            scene?.gameName = "flash"
             scene?.gameVC = self.gameVC
             view.presentScene(scene)
         }

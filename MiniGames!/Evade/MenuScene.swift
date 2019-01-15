@@ -1,5 +1,5 @@
 //
-//  FileMenuScene_split.swift
+//  FileMenuScene_evade.swift
 //  MiniGames!
 //
 //  Created by Pete Connor on 7/2/18.
@@ -128,8 +128,10 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
         
         switch numList.count {
         case 1:
-            scoreLabel3.texture = SKTexture(imageNamed: "num" + numList[0])
-            blurr3.texture = SKTexture(imageNamed: "BlueNum" + numList[0])
+            //scoreLabel3.texture = SKTexture(imageNamed: "num" + numList[0])
+            //blurr3.texture = SKTexture(imageNamed: "BlueNum" + numList[0])
+            scoreLabel3.texture = SKTexture(imageNamed: "num1")
+            blurr3.texture = SKTexture(imageNamed: "BlueNum1")
         case 2:
             scoreLabel3.texture = SKTexture(imageNamed: "num" + numList[1])
             blurr3.texture = SKTexture(imageNamed: "BlueNum" + numList[1])
@@ -148,14 +150,6 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
         default:
             break
         }
-        
-        /*
-        recentScoreLabel = SKLabelNode(text: "Recent Score: \(UserDefaults.standard.integer(forKey: "RecentScore_split"))")
-        recentScoreLabel.fontName = "AvenirNext-Bold"
-        recentScoreLabel.fontSize = 30.0
-        recentScoreLabel.fontColor = UIColor.red
-        recentScoreLabel.position = CGPoint(x: frame.midX, y: highscoreLabel.position.y - recentScoreLabel.frame.size.height*2)
-        addChild(recentScoreLabel)*/
     }
     
     func animate(label: SKSpriteNode) {
@@ -178,24 +172,24 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
             if let playButton = playButton {
                 if playButton.contains(location) {
                     switch gameName {
-                    case "split":
-                        let gameScene = GameScene_split(fileNamed: "GameScene_" + gameName!)
+                    case "evade":
+                        let gameScene = GameScene_evade(fileNamed: "GameScene_" + gameName!)
                             gameScene!.scaleMode = .aspectFit
                             gameScene!.gameVC = gameVC
                             view!.ignoresSiblingOrder = true
                             view!.presentScene(scene)
                             view!.presentScene(gameScene)
-                    case "sim":
+                    case "flash":
                         print(true)
                         print(gameName)
-                        let gameScene = GameScene_sim(fileNamed: "GameScene_" + gameName!)
+                        let gameScene = GameScene_flash(fileNamed: "GameScene_" + gameName!)
                         gameScene!.scaleMode = .aspectFit
                         gameScene!.gameVC = gameVC
                         view!.ignoresSiblingOrder = true
                         view!.presentScene(scene)
                         view!.presentScene(gameScene)
-                    case "pop":
-                        let gameScene = GameScene_pop(fileNamed: "GameScene_" + gameName!)
+                    case "collide":
+                        let gameScene = GameScene_collide(fileNamed: "GameScene_" + gameName!)
                         gameScene!.scaleMode = .aspectFit
                         gameScene!.gameVC = gameVC
                         view!.ignoresSiblingOrder = true
@@ -241,7 +235,8 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
         let gcVC: GKGameCenterViewController = GKGameCenterViewController()
         gcVC.gameCenterDelegate = self
         gcVC.viewState = GKGameCenterViewControllerState.leaderboards
-        gcVC.leaderboardIdentifier = "MiniGames! - " + "\(gameName!)"
+        
+        gcVC.leaderboardIdentifier = "MiniGames! - " + "\(gameName!.capitalized)"
         gameVC?.present(gcVC, animated: true, completion: nil)
     
     }
@@ -251,7 +246,7 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
     }
     
     func submitScore() {
-        let leaderboardID = "MiniGames! - " + "\(gameName!)"
+        let leaderboardID = "MiniGames! - " + "\(gameName!.capitalized)"
         let sScore = GKScore(leaderboardIdentifier: leaderboardID)
         sScore.value = Int64(UserDefaults.standard.integer(forKey: "HighScore_" + gameName!))
         //let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
@@ -263,13 +258,22 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
 
             }
         }
-        
     }
     
     func showAlert() {
-        let myAlert: UIAlertController = UIAlertController(title: "Instructions", message: "Split the bananas by applying pressure to the screen with your finger. Guide the bananas through the obstacles to earn points!", preferredStyle: .alert)
+        var myAlert = UIAlertController()
+        switch gameName {
+        case "evade":
+            myAlert = UIAlertController(title: "Instructions", message: "Tap the left and right sides of the screen to guide the green disc through the obstacles. The more obstacles you pass, the more points you earn!", preferredStyle: .alert)
+        case "flash":
+            myAlert = UIAlertController(title: "Instructions", message: "Tap 'Play' to begin the flashing sequence. Memorize the location and order of flashing discs. Earn points by repeating back the ever-growing sequence correctly!" , preferredStyle: .alert)
+        case "collide":
+            myAlert = UIAlertController(title: "Instructions", message: "Tap once to move the blue disc. Once the blue disc overlaps the red disc, tap again. Repeat this action to earn points!", preferredStyle: .alert)
+        default:
+            break
+        }
+        
         myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         gameVC?.present(myAlert, animated: true, completion: nil)
     }
-    
 }

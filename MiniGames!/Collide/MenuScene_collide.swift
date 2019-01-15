@@ -1,6 +1,6 @@
 //
 //  MenuScene.swift
-//  PopALock
+//  Collide
 //
 //  Created by Pete Connor on 3/28/18.
 //  Copyright © 2018 c0nman. All rights reserved.
@@ -11,7 +11,7 @@ import Foundation
 import SpriteKit
 import GameKit
 
-class MenuScene_pop: SKScene, GKGameCenterControllerDelegate {
+class MenuScene_collide: SKScene, GKGameCenterControllerDelegate {
     
     var recentScoreLabel = SKLabelNode()
 
@@ -60,7 +60,7 @@ class MenuScene_pop: SKScene, GKGameCenterControllerDelegate {
     }
 
     func addLogo() {
-        logo = SKSpriteNode(imageNamed: "image_pop")
+        logo = SKSpriteNode(imageNamed: "image_collide")
         logo.size = CGSize(width: frame.size.width/2, height: frame.size.width/2)
         logo.position = CGPoint(x: frame.midX, y: frame.midY + frame.size.height/4)
         addChild(logo)
@@ -78,14 +78,14 @@ func addLabels() {
     addChild(playLabel)
     animate(label: playLabel)
     
-    let highscoreLabel = SKLabelNode(text: "High Score: \(UserDefaults.standard.integer(forKey: "HighScore_pop"))")
+    let highscoreLabel = SKLabelNode(text: "High Score: \(UserDefaults.standard.integer(forKey: "HighScore_collide"))")
     highscoreLabel.fontName = "AvenirNext-Bold"
     highscoreLabel.fontSize = 30.0
     highscoreLabel.fontColor = UIColor.white
     highscoreLabel.position = CGPoint(x: frame.midX, y: frame.midY - highscoreLabel.frame.size.height*3)
     addChild(highscoreLabel)
     
-    recentScoreLabel = SKLabelNode(text: "Recent Score: \(UserDefaults.standard.integer(forKey: "RecentScore_pop"))")
+    recentScoreLabel = SKLabelNode(text: "Recent Score: \(UserDefaults.standard.integer(forKey: "RecentScore_collide"))")
     recentScoreLabel.fontName = "AvenirNext-Bold"
     recentScoreLabel.fontSize = 30.0
     recentScoreLabel.fontColor = UIColor.white
@@ -108,7 +108,7 @@ func animate(label: SKLabelNode) {
 
 override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     
-    let gameScene = GameScene_pop(fileNamed: "GameScene_pop")
+    let gameScene = GameScene_collide(fileNamed: "GameScene_collide")
     if let touch = touches.first {
         let location = touch.location(in: self)
         if let logo = logo {
@@ -164,7 +164,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     func submitScore() {
         let leaderboardID = "MiniGames! - Crack The Safe"
         let sScore = GKScore(leaderboardIdentifier: leaderboardID)
-        sScore.value = Int64(UserDefaults.standard.integer(forKey: "HighScore_pop"))
+        sScore.value = Int64(UserDefaults.standard.integer(forKey: "HighScore_collide"))
         //let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
         GKScore.report([sScore]) { (error: Error!) -> Void in
             if error != nil {

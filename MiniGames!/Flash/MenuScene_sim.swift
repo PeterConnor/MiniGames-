@@ -1,5 +1,5 @@
 //
-//  MenuScene_sim.swift
+//  MenuScene_flash.swift
 //  MiniGames!
 //
 //  Created by Pete Connor on 6/24/18.
@@ -9,7 +9,7 @@
 import SpriteKit
 import GameKit
 
-class MenuScene_sim: SKScene, GKGameCenterControllerDelegate {
+class MenuScene_flash: SKScene, GKGameCenterControllerDelegate {
     
     var logo: SKSpriteNode!
     
@@ -33,7 +33,7 @@ class MenuScene_sim: SKScene, GKGameCenterControllerDelegate {
     }
     
     func addLogo() {
-        logo = SKSpriteNode(imageNamed: "image_sim")
+        logo = SKSpriteNode(imageNamed: "image_flash")
         logo.size = CGSize(width: frame.size.width/2, height: frame.size.width/2)
         logo.position = CGPoint(x: frame.midX, y: frame.midY + frame.size.height/4)
         addChild(logo)
@@ -73,14 +73,14 @@ class MenuScene_sim: SKScene, GKGameCenterControllerDelegate {
         addChild(playLabel)
         animate(label: playLabel)
         
-        let highscoreLabel = SKLabelNode(text: "High Score: \(UserDefaults.standard.integer(forKey: "HighScore_sim"))")
+        let highscoreLabel = SKLabelNode(text: "High Score: \(UserDefaults.standard.integer(forKey: "HighScore_flash"))")
         highscoreLabel.fontName = "AvenirNext-Bold"
         highscoreLabel.fontSize = 30.0
         highscoreLabel.fontColor = UIColor.blue
         highscoreLabel.position = CGPoint(x: frame.midX, y: frame.midY - highscoreLabel.frame.size.height*3)
         addChild(highscoreLabel)
         
-        recentScoreLabel = SKLabelNode(text: "Recent Score: \(UserDefaults.standard.integer(forKey: "RecentScore_sim"))")
+        recentScoreLabel = SKLabelNode(text: "Recent Score: \(UserDefaults.standard.integer(forKey: "RecentScore_flash"))")
         recentScoreLabel.fontName = "AvenirNext-Bold"
         recentScoreLabel.fontSize = 30.0
         recentScoreLabel.fontColor = UIColor.red
@@ -102,7 +102,7 @@ class MenuScene_sim: SKScene, GKGameCenterControllerDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let gameScene = GameScene_sim(fileNamed: "GameScene_sim")
+        let gameScene = GameScene_flash(fileNamed: "GameScene_flash")
         if let touch = touches.first {
             let location = touch.location(in: self)
             if let logo = logo {
@@ -148,7 +148,7 @@ class MenuScene_sim: SKScene, GKGameCenterControllerDelegate {
         let gcVC: GKGameCenterViewController = GKGameCenterViewController()
         gcVC.gameCenterDelegate = self
         gcVC.viewState = GKGameCenterViewControllerState.leaderboards
-        gcVC.leaderboardIdentifier = "MiniGames! - Simon Says"
+        gcVC.leaderboardIdentifier = "MiniGames! - Flash"
         gameVC?.present(gcVC, animated: true, completion: nil)
         
     }
@@ -158,9 +158,9 @@ class MenuScene_sim: SKScene, GKGameCenterControllerDelegate {
     }
     
     func submitScore() {
-        let leaderboardID = "MiniGames! - Simon Says"
+        let leaderboardID = "MiniGames! - Flash"
         let sScore = GKScore(leaderboardIdentifier: leaderboardID)
-        sScore.value = Int64(UserDefaults.standard.integer(forKey: "HighScore_sim"))
+        sScore.value = Int64(UserDefaults.standard.integer(forKey: "HighScore_flash"))
         //let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
         GKScore.report([sScore]) { (error: Error!) -> Void in
             if error != nil {

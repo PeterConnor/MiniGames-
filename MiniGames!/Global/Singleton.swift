@@ -12,7 +12,7 @@ import Foundation
 class Singleton: NSObject {
     static let shared: Singleton = Singleton()
     
-    var gameItems = ["pop", "split", "sim"]
+    var gameItems = ["collide", "evade", "flash"]
     
     // deleted - ss, bt, fb, cs, bb, gs
     
