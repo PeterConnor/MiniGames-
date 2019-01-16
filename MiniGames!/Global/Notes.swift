@@ -38,7 +38,7 @@ make sure u can't lose on flash by hitting back, pass, or button.
  
  
 ***Eventually***
-console messages
+console message
 android
 iPad
 feedback/email?
