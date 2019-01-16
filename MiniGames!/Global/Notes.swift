@@ -31,11 +31,11 @@ Make progressively harder
 *flash*
 
 *MenuScene*
-fix number "1". doesnt lineup with blurr.`
 make sure all games have same gameover
-evade buttons to abrupt? Fade in/out? Make a "Wrong"/"Gamover" button?
-make evade buttons bigger?
+flash buttons too abrupt? Fade in/out? Make a "Wrong"/"Gamover" button?
 fix Push to remote!
+make sure u can't lose on flash by hitting back, pass, or button.
+ 
  
 ***Eventually***
 console messages
