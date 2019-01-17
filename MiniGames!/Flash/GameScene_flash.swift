@@ -94,7 +94,6 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
     
     func addButton() {
         var button = SKSpriteNode(imageNamed: "Disc")
-        // button.size = CGSize(width: 30, height: 30)
         var randomX = Int(arc4random_uniform(UInt32(650)) + 50)
         var randomY = Int(arc4random_uniform(UInt32(1150)) + 50)
         button.position = CGPoint(x: randomX, y: randomY)
@@ -120,6 +119,7 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
         
         button.addChild(buttonBlurr)
         buttonBlurr.zPosition = -1
+        buttonBlurr.name = "button\(buttonCount)"
     }
     
     func addScoreLabels() {
@@ -144,7 +144,7 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
     
     func addActionButton() {
         //actionButton.text = "Play Sequence"
-        actionButton.position = CGPoint(x: self.size.width/2, y: 100)
+        actionButton.position = CGPoint(x: self.size.width/2, y: 140 + actionButton.size.height/2)
         actionButton.name = "actionButton"
         self.actionButton.size = actionButton.texture!.size()
         self.actionButtonBlurr.size = actionButtonBlurr.texture!.size()

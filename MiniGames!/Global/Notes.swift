@@ -23,18 +23,15 @@ If your app is published to the App Store, remember to come back to link your ap
  shooting stars game. like duck hunt across the screen.
  Delete leaderboard test data. check to make sure its right and that all are added up.
 ---
-*evade*
-Make progressively harder
- 
-*collide*
- 
-*flash*
 
-*MenuScene*
+Make Evade progressively harder
+ 
+
 make sure all games have same gameover
 flash buttons too abrupt? Fade in/out? Make a "Wrong"/"Gamover" button?
-fix Push to remote!
 make sure u can't lose on flash by hitting back, pass, or button.
+overlapping flash discs make u lose.
+fix collide bug
  
  
 ***Eventually***

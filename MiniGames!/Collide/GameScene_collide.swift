@@ -132,13 +132,15 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
     func placeCheckpoint() {
         
         var randomX = Int(arc4random_uniform(UInt32(650)) + 50)
-        var randomY = Int(arc4random_uniform(UInt32(1150)) + 50)
+        //var randomY = Int(arc4random_uniform(UInt32(1020)) + 100)
+        var randomY = Int(200)
+        
        // print("random x \(randomX) minus player position x\(player.position.x)")
         //print("random y \(randomY) minus \(player.position.y)")
         //print("diff \(abs(player.position.x - CGFloat(randomX)), abs(player.position.y - CGFloat(randomY)))")
         print(abs(player.position.x - CGFloat(randomX)) < 200, abs(player.position.y) < 200)
         
-        while abs(player.position.x - CGFloat(randomX)) < 10 || abs(player.position.y - CGFloat(randomY)) < 10 {
+        while abs(player.position.x - CGFloat(randomX)) < 15 || abs(player.position.y - CGFloat(randomY)) < 15 {
             randomX = Int(arc4random_uniform(UInt32(650)) + 50)
             randomY = Int(arc4random_uniform(UInt32(1150)) + 50)
             //print("new random x \(randomX)")
