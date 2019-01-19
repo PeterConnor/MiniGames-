@@ -93,9 +93,11 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
     }
     
     func addButton() {
-        var button = SKSpriteNode(imageNamed: "Disc")
-        var randomX = Int(arc4random_uniform(UInt32(650)) + 50)
-        var randomY = Int(arc4random_uniform(UInt32(1150)) + 50)
+        var button = SKSpriteNode(imageNamed: "White100")
+        //var randomX = Int(arc4random_uniform(UInt32(590)) + 80)
+        //var randomY = Int(arc4random_uniform(UInt32(735)) + 365)
+        var randomX = Int(arc4random_uniform(UInt32(50)) + 80)
+        var randomY = Int(arc4random_uniform(UInt32(50)) + 365)
         button.position = CGPoint(x: randomX, y: randomY)
         button.alpha = 0.2
         button.name = "button\(buttonCount)"
@@ -108,13 +110,13 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
         
         switch randomBlurr {
         case 0:
-            buttonBlurr = SKSpriteNode(imageNamed: "BlueDiscBlurr")
+            buttonBlurr = SKSpriteNode(imageNamed: "GreenBlurr100")
         case 1:
-            buttonBlurr = SKSpriteNode(imageNamed: "GreenDiscBlurr")
+            buttonBlurr = SKSpriteNode(imageNamed: "RedBlurr100")
         case 2:
-            buttonBlurr = SKSpriteNode(imageNamed: "RedDiscBlurr")
+            buttonBlurr = SKSpriteNode(imageNamed: "BlueBlurr100")
         default:
-            buttonBlurr = SKSpriteNode(imageNamed: "BlueDiscBlurr")
+            buttonBlurr = SKSpriteNode(imageNamed: "BlueBlurr100")
         }
         
         button.addChild(buttonBlurr)
@@ -176,12 +178,14 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
             
             let finalAction = SKAction.run {
                 if i == self.buttonSequence.count - 1 {
+                    self.changeZPositionofButtons()
                     self.gameState = .tapping
                     self.actionButton.texture = SKTexture(imageNamed: "Repeat")
                     self.actionButtonBlurr.texture = SKTexture(imageNamed: "RepeatBlurr")
                     self.actionButton.size = self.actionButton.texture!.size()
                     self.actionButtonBlurr.size = self.actionButtonBlurr.texture!.size()
                     self.isUserInteractionEnabled = true
+                
                 }
             }
             
@@ -190,6 +194,14 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
             let finalWait = SKAction.wait(forDuration: TimeInterval(CGFloat(buttonSequence.count)))
             
             self.run(SKAction.sequence([SKAction.wait(forDuration: 0.25), finalWait, waitAction, finalAction]))
+        }
+    }
+    
+    func changeZPositionofButtons() {
+        var count = buttonSequence.count
+        for i in 0..<buttonSequence.count {
+            buttonSequence[i].zPosition = CGFloat(count)
+            count -= 1
         }
     }
     
@@ -261,6 +273,7 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
                 }
             
             if atPoint(location).name == buttonSequence[buttonIndex].name {
+                buttonSequence[buttonIndex].zPosition = 0
                 buttonIndex += 1
                 if buttonIndex < buttonSequence.count {
                 } else {

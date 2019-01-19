@@ -30,8 +30,9 @@ Make Evade progressively harder
 make sure all games have same gameover
 flash buttons too abrupt? Fade in/out? Make a "Wrong"/"Gamover" button?
 make sure u can't lose on flash by hitting back, pass, or button.
-overlapping flash discs make u lose.
 fix collide bug
+safe zone for flash?
+blurr should register tap in flash too. too hard otherwise.
  
  
 ***Eventually***
