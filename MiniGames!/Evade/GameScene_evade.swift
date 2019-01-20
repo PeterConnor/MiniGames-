@@ -112,7 +112,7 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
                 menuScene?.gameName = "evade"
                 menuScene?.gameVC = gameVC
                 
-                self.view?.presentScene(menuScene!, transition: SKTransition.doorway(withDuration: 1))
+                self.view?.presentScene(menuScene!, transition: SKTransition.push(with: SKTransitionDirection.down, duration: 0.25))
             }
             
             if atPoint(location).name == "PauseButton" {
@@ -340,7 +340,8 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
             scene?.scaleMode = .aspectFit
             scene?.gameVC = self.gameVC
             scene?.gameName = "evade"
-            view.presentScene(scene)
+            
+            self.view?.presentScene(scene!, transition: SKTransition.push(with: SKTransitionDirection.down, duration: 0.25))
         }
     }
     

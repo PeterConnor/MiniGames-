@@ -94,10 +94,9 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
     
     func addButton() {
         var button = SKSpriteNode(imageNamed: "White100")
-        //var randomX = Int(arc4random_uniform(UInt32(590)) + 80)
-        //var randomY = Int(arc4random_uniform(UInt32(735)) + 365)
-        var randomX = Int(arc4random_uniform(UInt32(50)) + 80)
-        var randomY = Int(arc4random_uniform(UInt32(50)) + 365)
+        var randomX = Int(arc4random_uniform(UInt32(590)) + 80)
+        var randomY = Int(arc4random_uniform(UInt32(735)) + 365)
+      
         button.position = CGPoint(x: randomX, y: randomY)
         button.alpha = 0.2
         button.name = "button\(buttonCount)"
@@ -217,7 +216,7 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
                 menuScene?.gameVC = gameVC
                 
                 
-                self.view?.presentScene(menuScene!, transition: SKTransition.doorway(withDuration: 1))
+                self.view?.presentScene(menuScene!, transition: SKTransition.push(with: SKTransitionDirection.down, duration: 0.25))
             }
             
             if gameState == .touchToBegin {
@@ -295,7 +294,7 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
                     }
                     self.run(SKAction.sequence([wait, run]))
                 }
-            } else if atPoint(location).name != buttonSequence[buttonIndex].name {
+            } else if atPoint(location).name != buttonSequence[buttonIndex].name && atPoint(location).name != "actionButton" && atPoint(location).name != "BackButton" {
                 gameOver()
             }
             
@@ -334,7 +333,8 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
             scene?.scaleMode = .aspectFit
             scene?.gameName = "flash"
             scene?.gameVC = self.gameVC
-            view.presentScene(scene)
+            
+            self.view?.presentScene(scene!, transition: SKTransition.push(with: SKTransitionDirection.down, duration: 0.25))
         }
         
     }

@@ -202,7 +202,8 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
             scene?.scaleMode = .aspectFit
             scene?.gameVC = self.gameVC
             scene?.gameName = "collide"
-            view.presentScene(scene)
+            
+            self.view?.presentScene(scene!, transition: SKTransition.push(with: SKTransitionDirection.down, duration: 0.25))
         }
     }
     
@@ -281,7 +282,7 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
                 menuScene?.gameName = "collide"
                 menuScene?.gameVC = gameVC
                 
-                self.view?.presentScene(menuScene!, transition: SKTransition.doorway(withDuration: 1))
+                self.view?.presentScene(menuScene!, transition: SKTransition.push(with: SKTransitionDirection.down, duration: 0.25))
             }
             
             

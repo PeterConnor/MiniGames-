@@ -26,15 +26,14 @@ If your app is published to the App Store, remember to come back to link your ap
 
 Make Evade progressively harder
  
-
 make sure all games have same gameover
 flash buttons too abrupt? Fade in/out? Make a "Wrong"/"Gamover" button?
-make sure u can't lose on flash by hitting back, pass, or button.
-fix collide bug
+fix collide bug. (Test. is there a bug?)
 safe zone for flash?
 blurr should register tap in flash too. too hard otherwise.
+make games tap to start.
  
- 
+
 ***Eventually***
 console message
 android
