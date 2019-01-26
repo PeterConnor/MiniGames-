@@ -24,14 +24,13 @@ If your app is published to the App Store, remember to come back to link your ap
  Delete leaderboard test data. check to make sure its right and that all are added up.
 ---
 
-Make Evade progressively harder
 make sure all games have same gameover
 flash buttons too abrupt? Fade in/out? Make a "Wrong"/"Gamover" button?
 fix collide bug. (Test. is there a bug?)
 safe tap zone for flash?
 blurr should register tap in flash too. too hard otherwise.
-make games tap to start.
- 3x images
+make games tap to start
+
  
 
 ***Eventually***

@@ -80,7 +80,7 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
     var obstacleScoreList = [SKSpriteNode]()
     var firstObstacleNumber = 0
     
-    var gap: CGFloat = 175.0
+    var gap: CGFloat = 200.0
 
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
@@ -175,7 +175,7 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
     
     func addPlayer() {
         player = SKSpriteNode(imageNamed: "Disc")
-        player.position = CGPoint(x: self.size.width/2, y: 250)
+        player.position = CGPoint(x: self.size.width/2, y: 350)
         player.name = "PLAYER"
         player.physicsBody?.isDynamic = false
         player.physicsBody = SKPhysicsBody(circleOfRadius: player.size.width/2)
@@ -198,11 +198,11 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
         player.addChild(playerBlurr)
         playerBlurr.zPosition = -1
     }
-    
     func addObstacles() {
-        
         let preRandomNumber = 750 - gap
         var randomNumber = Int(arc4random_uniform(UInt32(preRandomNumber)))
+       
+        
         print(randomNumber)
 
         var obstacle1 = SKSpriteNode(imageNamed: "Obstacle")
@@ -262,13 +262,13 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
     func move(left: Bool) {
         if canMove && !isGameOver {
             if left {
-                player.position.x -= 15
+                player.position.x -= 18
                 
                 if player.position.x < 0 {
                     player.position.x = 0
                 }
             } else {
-                player.position.x += 15
+                player.position.x += 18
                 if player.position.x > 750 {
                     player.position.x = 750
                 }
@@ -287,6 +287,9 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
             if obstacleScoreList[0].position.y < player.position.y {
             obstacleScoreList.removeFirst()
                 score += 1
+                if gap > 100 {
+                    gap -= 1
+                }
             }
         }
         
