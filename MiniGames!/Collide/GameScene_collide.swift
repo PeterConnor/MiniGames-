@@ -24,6 +24,7 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
     var isGamePaused = false
     var pauseButton = SKSpriteNode()
     var pauseButtonBlurr = SKSpriteNode()
+    var tapToStart = SKSpriteNode()
 
     
     var scoreLabel1 = SKSpriteNode(imageNamed: "num0")
@@ -92,6 +93,14 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
         addPauseButton()
         addPlayer()
         addScoreLabels()
+        addTapToStart()
+    }
+    
+    func addTapToStart() {
+        tapToStart = SKSpriteNode(imageNamed: "TapToStart")
+        tapToStart.position = CGPoint(x: self.size.width/2, y: 200)
+        addChild(tapToStart)
+        tapToStart.zPosition = 3
     }
     
     func addPlayer() {
@@ -132,8 +141,8 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
     func placeCheckpoint() {
         
         var randomX = Int(arc4random_uniform(UInt32(650)) + 50)
-        //var randomY = Int(arc4random_uniform(UInt32(1020)) + 100)
-        var randomY = Int(200)
+        var randomY = Int(arc4random_uniform(UInt32(820)) + 300)
+        
         
        // print("random x \(randomX) minus player position x\(player.position.x)")
         //print("random y \(randomY) minus \(player.position.y)")
@@ -142,7 +151,7 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
         
         while abs(player.position.x - CGFloat(randomX)) < 15 || abs(player.position.y - CGFloat(randomY)) < 15 {
             randomX = Int(arc4random_uniform(UInt32(650)) + 50)
-            randomY = Int(arc4random_uniform(UInt32(1150)) + 50)
+            randomY = Int(arc4random_uniform(UInt32(820)) + 300)
             //print("new random x \(randomX)")
             //print("new random y \(randomY)")
         }
@@ -172,7 +181,7 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
     
     func movePlayer() {
         var vector = CGVector(dx: checkpoint.position.x - player.position.x, dy: checkpoint.position.y - player.position.y)
-        var length = hypot(vector.dx, vector.dy)
+        let length = hypot(vector.dx, vector.dy)
         
         vector.dx *= playerSpeed / length
         vector.dy *= playerSpeed / length
@@ -196,15 +205,12 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
         if score > UserDefaults.standard.integer(forKey: "HighScore_collide") {
             UserDefaults.standard.set(score, forKey: "HighScore_collide")
         }
-        
-        if let view = self.view as SKView? {
             let scene = MenuScene(fileNamed: "MenuScene")
             scene?.scaleMode = .aspectFit
             scene?.gameVC = self.gameVC
             scene?.gameName = "collide"
             
             self.view?.presentScene(scene!, transition: SKTransition.push(with: SKTransitionDirection.down, duration: 0.25))
-        }
     }
     
     func addBackButton() {
@@ -272,7 +278,15 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
                     movePlayer()
                 } else {
                     isGameOver = true
-                    gameOver()
+                    player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+                    self.isUserInteractionEnabled = false
+                    
+                    let actionRed = SKAction.colorize(with: .red, colorBlendFactor: 1.0, duration: 0.25)
+                    let actionBack = SKAction.wait(forDuration: 2.0)
+                    
+                    self.scene?.run(SKAction.sequence([actionRed, actionBack]), completion: { () -> Void in
+                        self.gameOver()
+                    })
                 }
             }
             
@@ -306,6 +320,7 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if !started {
             started = true
+            tapToStart.removeFromParent()
             addCheckpoint()
             movePlayer()
             //scoreLabel.text = "0"
@@ -335,9 +350,19 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
     
     func didEnd(_ contact: SKPhysicsContact) {
         if contact.bodyA.node?.name == "PLAYER" || contact.bodyA.node?.name == "CHECKPOINT" {
+
             touching = false
             isGameOver = true
-            gameOver()
+            
+            player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+            self.isUserInteractionEnabled = false
+            
+            let actionRed = SKAction.colorize(with: .red, colorBlendFactor: 1.0, duration: 0.25)
+            let actionBack = SKAction.wait(forDuration: 2.0)
+            
+            self.scene?.run(SKAction.sequence([actionRed, actionBack]), completion: { () -> Void in
+                self.gameOver()
+            })
         }
     }
     

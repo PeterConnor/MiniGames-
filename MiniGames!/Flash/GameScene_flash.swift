@@ -93,9 +93,9 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
     }
     
     func addButton() {
-        var button = SKSpriteNode(imageNamed: "White100")
-        var randomX = Int(arc4random_uniform(UInt32(590)) + 80)
-        var randomY = Int(arc4random_uniform(UInt32(735)) + 365)
+        let button = SKSpriteNode(imageNamed: "White100")
+        let randomX = Int(arc4random_uniform(UInt32(590)) + 80)
+        let randomY = Int(arc4random_uniform(UInt32(735)) + 365)
       
         button.position = CGPoint(x: randomX, y: randomY)
         button.alpha = 0.2
@@ -104,7 +104,7 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
         buttonSequence.append(button)
         addChild(button)
         
-        var randomBlurr = Int(arc4random_uniform(3))
+        let randomBlurr = Int(arc4random_uniform(3))
         var buttonBlurr = SKSpriteNode()
         
         switch randomBlurr {
@@ -295,7 +295,19 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
                     self.run(SKAction.sequence([wait, run]))
                 }
             } else if atPoint(location).name != buttonSequence[buttonIndex].name && atPoint(location).name != "actionButton" && atPoint(location).name != "BackButton" {
-                gameOver()
+                
+                for i in buttonSequence {
+                    i.alpha = 1
+                }
+                
+                self.isUserInteractionEnabled = false
+                
+                let actionRed = SKAction.colorize(with: .red, colorBlendFactor: 1.0, duration: 0.25)
+                let actionBack = SKAction.wait(forDuration: 2.0)
+                
+                self.scene?.run(SKAction.sequence([actionRed, actionBack]), completion: { () -> Void in
+                    self.gameOver()
+                })
             }
             
             if gameState == .gameOver {
@@ -328,15 +340,12 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
             UserDefaults.standard.set(score, forKey: "HighScore_flash")
         }
         
-        if let view = self.view as SKView? {
             let scene = MenuScene(fileNamed: "MenuScene")
             scene?.scaleMode = .aspectFit
             scene?.gameName = "flash"
             scene?.gameVC = self.gameVC
             
             self.view?.presentScene(scene!, transition: SKTransition.push(with: SKTransitionDirection.down, duration: 0.25))
-        }
-        
     }
     
     func addBackButton() {

@@ -17,6 +17,7 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
     
     weak var gameVC: GameViewController2?
     
+    var started = false
     var isGameOver = false
     var isGamePaused = false
     var pauseButton = SKSpriteNode()
@@ -72,7 +73,8 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    var player: SKSpriteNode!
+    var player = SKSpriteNode()
+    var tapToStart = SKSpriteNode()
     var isLeft = false
     var canMove = false
 
@@ -93,6 +95,7 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
         addPlayerBlurr()
         addScoreLabels()
         addBackground()
+        addTapToStart()
         
         view.showsNodeCount = true
         //view.showsPhysics = true
@@ -101,7 +104,6 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        var canMove = true
         for touch in touches {
             
             let location = touch.location(in: self)
@@ -139,10 +141,17 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        canMove = true
+        if started {
+            canMove = true
+        }
+        
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if !started {
+            started = true
+            tapToStart.removeFromParent()
+        }
         canMove = false
     }
     
@@ -157,13 +166,13 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
     }
     
     func addBackground() {
-        var background = SKSpriteNode(imageNamed: "BackgroundWhite")
+        let background = SKSpriteNode(imageNamed: "BackgroundWhite")
         background.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
         background.size.width = self.size.width
         background.size.height = self.size.height
         background.zPosition = 1
         
-        var backgroundBlurr = SKSpriteNode(imageNamed: "BackgroundRed")
+        let backgroundBlurr = SKSpriteNode(imageNamed: "BackgroundRed")
         backgroundBlurr.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
         backgroundBlurr.size.width = self.size.width
         backgroundBlurr.size.height = self.size.height
@@ -186,6 +195,8 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
         player.zPosition = 3
     }
     
+   
+    
     func addPlayerBlurr() {
         let playerBlurr = SKSpriteNode(imageNamed: "GreenDiscBlurr")
         //playerBlurr.position = CGPoint(x: player.position.x, y: player.position.y)
@@ -198,14 +209,22 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
         player.addChild(playerBlurr)
         playerBlurr.zPosition = -1
     }
+    
+    func addTapToStart() {
+        tapToStart = SKSpriteNode(imageNamed: "TapToStart")
+        tapToStart.position = CGPoint(x: self.size.width/2, y: 200)
+        addChild(tapToStart)
+        tapToStart.zPosition = 3
+    }
+    
     func addObstacles() {
         let preRandomNumber = 750 - gap
-        var randomNumber = Int(arc4random_uniform(UInt32(preRandomNumber)))
+        let randomNumber = Int(arc4random_uniform(UInt32(preRandomNumber)))
        
         
         print(randomNumber)
 
-        var obstacle1 = SKSpriteNode(imageNamed: "Obstacle")
+        let obstacle1 = SKSpriteNode(imageNamed: "Obstacle")
         obstacle1.size = CGSize(width: 750, height: 45)
         //obstacle1.anchorPoint = CGPoint(x: 0, y: 0)
         obstacle1.position = CGPoint(x: self.size.width/2 - gap - CGFloat(randomNumber), y: 1334 + obstacle1.size.height)
@@ -226,7 +245,7 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
         obstacle1.addChild(obstacleBlurr)
         obstacleBlurr.zPosition = -1
         
-        var obstacle2 = SKSpriteNode(imageNamed: "Obstacle")
+        let obstacle2 = SKSpriteNode(imageNamed: "Obstacle")
         obstacle2.size = CGSize(width: 750, height: 45)
         //obstacle2.anchorPoint = CGPoint(x: 0, y: 0)
         obstacle2.position = CGPoint(x: obstacle1.position.x + obstacle1.size.width/2 + gap + obstacle2.size.width/2, y: 1334 + obstacle2.size.height)
@@ -298,7 +317,7 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
                 lastUpdate = currentTime
                 timeCheck = 0
             }
-            var timeSinceLastUpdate = currentTime - lastUpdate
+            let timeSinceLastUpdate = currentTime - lastUpdate
             lastUpdate = currentTime
             lastYieldTimeInterval += timeSinceLastUpdate
             lastYieldTimeInterval2 += timeSinceLastUpdate
@@ -308,7 +327,9 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
             }
             if lastYieldTimeInterval > 0.8 {
                 lastYieldTimeInterval = 0
-                addObstacles()
+                if started {
+                    addObstacles()
+                }
             }
         }
     }
@@ -338,14 +359,12 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
             UserDefaults.standard.set(score, forKey: "HighScore_evade")
         }
         
-        if let view = self.view as SKView? {
             let scene = MenuScene(fileNamed: "MenuScene")
             scene?.scaleMode = .aspectFit
             scene?.gameVC = self.gameVC
             scene?.gameName = "evade"
             
             self.view?.presentScene(scene!, transition: SKTransition.push(with: SKTransitionDirection.down, duration: 0.25))
-        }
     }
     
     func addBackButton() {

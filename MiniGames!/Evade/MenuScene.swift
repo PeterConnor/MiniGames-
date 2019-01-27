@@ -31,7 +31,6 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
         addLabelsAndButtons()
         addBackButton()
         addLeaderButton()
-        print(gameName)
         
     }
     
@@ -99,12 +98,12 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
         highscoreLabel.addChild(highscoreLabelBlurr)
         highscoreLabelBlurr.zPosition = -1
         
-        var scoreLabel1 = SKSpriteNode(imageNamed: "num0")
-        var scoreLabel2 = SKSpriteNode(imageNamed: "num0")
-        var scoreLabel3 = SKSpriteNode(imageNamed: "num0")
-        var blurr1 = SKSpriteNode(imageNamed: "BlueNum0")
-        var blurr2 = SKSpriteNode(imageNamed: "BlueNum0")
-        var blurr3 = SKSpriteNode(imageNamed: "BlueNum0")
+        let scoreLabel1 = SKSpriteNode(imageNamed: "num0")
+        let scoreLabel2 = SKSpriteNode(imageNamed: "num0")
+        let scoreLabel3 = SKSpriteNode(imageNamed: "num0")
+        let blurr1 = SKSpriteNode(imageNamed: "BlueNum0")
+        let blurr2 = SKSpriteNode(imageNamed: "BlueNum0")
+        let blurr3 = SKSpriteNode(imageNamed: "BlueNum0")
         scoreLabel1.position = CGPoint(x: frame.midX - blurr1.size.width/2, y: highscoreLabel.position.y - highscoreLabelBlurr.size.height/2 - 25)
         scoreLabel2.position = CGPoint(x: frame.midX, y: highscoreLabel.position.y - highscoreLabelBlurr.size.height/2 - 25)
         scoreLabel3.position = CGPoint(x: frame.midX + blurr3.size.width/2, y: highscoreLabel.position.y - highscoreLabelBlurr.size.height/2 - 25)
@@ -119,7 +118,7 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
         blurr3.zPosition = -1
 
         
-        var stringFromNum = String(score)
+        let stringFromNum = String(score)
         var numList = [String]()
         
         for char in stringFromNum {
@@ -180,8 +179,6 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
                             view!.presentScene(scene)
                             view!.presentScene(gameScene)
                     case "flash":
-                        print(true)
-                        print(gameName)
                         let gameScene = GameScene_flash(fileNamed: "GameScene_" + gameName!)
                         gameScene!.scaleMode = .aspectFit
                         gameScene!.gameVC = gameVC
