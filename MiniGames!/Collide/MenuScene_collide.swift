@@ -168,9 +168,9 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         //let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
         GKScore.report([sScore]) { (error: Error!) -> Void in
             if error != nil {
-                print(error.localizedDescription)
+                //print(error.localizedDescription)
             } else {
-                print("Score Submitted")
+                //print("Score Submitted")
                 
             }
         }

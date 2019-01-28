@@ -23,11 +23,9 @@ If your app is published to the App Store, remember to come back to link your ap
  shooting stars game. like duck hunt across the screen.
  Delete leaderboard test data. check to make sure its right and that all are added up.
 ---
-
-fix collide bug. (Test. is there a bug?)
-test, test out various simulator devices, and test on ipad
+)
+test, test out various simulator devices, and test on ipad (collide bug?). Are games fun, addictive, progressions right?, too slow (flash)?
 clean out other games/non-essential files.
-high scores dont work
 
 ***Eventually***
 console message

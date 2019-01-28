@@ -100,7 +100,6 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
         view.showsNodeCount = true
         //view.showsPhysics = true
         
-        print(self.size)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -222,7 +221,6 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
         let randomNumber = Int(arc4random_uniform(UInt32(preRandomNumber)))
        
         
-        print(randomNumber)
 
         let obstacle1 = SKSpriteNode(imageNamed: "Obstacle")
         obstacle1.size = CGSize(width: 750, height: 45)

@@ -38,7 +38,7 @@ class CollectionVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         var bool = Bool()
-        let indexPath = self.collectionView.indexPath(for: sender as! UICollectionViewCell)!
+        //let indexPath = self.collectionView.indexPath(for: sender as! UICollectionViewCell)!
         bool = true
         return bool
     }
@@ -89,7 +89,7 @@ class CollectionVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
     
     func authenticateLocalPlayer() {
-        let localPlayer = GKLocalPlayer.localPlayer()
+        let localPlayer = GKLocalPlayer.local
         localPlayer.authenticateHandler = {(viewController, error) -> Void in
             
             if ((viewController) != nil) {
@@ -98,7 +98,7 @@ class CollectionVC: UIViewController, UICollectionViewDataSource, UICollectionVi
                 self.gcEnabled = true
             } else {
                 self.gcEnabled = false
-                print(error?.localizedDescription ?? "error")
+                //print(error?.localizedDescription ?? "error")
             }
             
         }
@@ -122,9 +122,9 @@ class CollectionVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         sScore.value = Int64(UserDefaults.standard.integer(forKey: "HighScore_evade") + UserDefaults.standard.integer(forKey: "HighScore_flash") +  UserDefaults.standard.integer(forKey: "HighScore_collide"))
         GKScore.report([sScore]) { (error: Error!) -> Void in
             if error != nil {
-                print(error.localizedDescription)
+                //print(error.localizedDescription)
             } else {
-                print("Score Submitted")
+                //print("Score Submitted")
                 
             }
         }

@@ -112,7 +112,6 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
         player.physicsBody?.categoryBitMask = CollisionBitMask_collide.Player
         player.physicsBody?.collisionBitMask = 0
         player.physicsBody?.contactTestBitMask = CollisionBitMask_collide.Checkpoint
-        //print("player mass \(player.physicsBody?.mass)")
         player.physicsBody?.mass = 1.0
         addChild(player)
         
@@ -144,10 +143,10 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
         var randomY = Int(arc4random_uniform(UInt32(820)) + 300)
         
         
-       // print("random x \(randomX) minus player position x\(player.position.x)")
+        // print("random x \(randomX) minus player position x\(player.position.x)")
         //print("random y \(randomY) minus \(player.position.y)")
         //print("diff \(abs(player.position.x - CGFloat(randomX)), abs(player.position.y - CGFloat(randomY)))")
-        print(abs(player.position.x - CGFloat(randomX)) < 200, abs(player.position.y) < 200)
+        //print(abs(player.position.x - CGFloat(randomX)) < 200, abs(player.position.y) < 200)
         
         while abs(player.position.x - CGFloat(randomX)) < 15 || abs(player.position.y - CGFloat(randomY)) < 15 {
             randomX = Int(arc4random_uniform(UInt32(650)) + 50)
@@ -273,7 +272,6 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
                     player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
                     playerSpeed += speedIncrease
                     speedIncrease *= 0.98
-                    print(playerSpeed)
                     placeCheckpoint()
                     movePlayer()
                 } else {

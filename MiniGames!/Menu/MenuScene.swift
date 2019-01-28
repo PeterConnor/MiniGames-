@@ -126,11 +126,12 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
         }
         
         switch numList.count {
+            
         case 1:
             //scoreLabel3.texture = SKTexture(imageNamed: "num" + numList[0])
             //blurr3.texture = SKTexture(imageNamed: "BlueNum" + numList[0])
-            scoreLabel3.texture = SKTexture(imageNamed: "num1")
-            blurr3.texture = SKTexture(imageNamed: "BlueNum1")
+            scoreLabel3.texture = SKTexture(imageNamed: "num" + numList[0])
+            blurr3.texture = SKTexture(imageNamed: "BlueNum" + numList[0])
         case 2:
             scoreLabel3.texture = SKTexture(imageNamed: "num" + numList[1])
             blurr3.texture = SKTexture(imageNamed: "BlueNum" + numList[1])
@@ -249,9 +250,9 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
         //let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
         GKScore.report([sScore]) { (error: Error!) -> Void in
             if error != nil {
-                print(error.localizedDescription)
+                //print(error.localizedDescription)
             } else {
-                print("Score Submitted")
+                //print("Score Submitted")
 
             }
         }
