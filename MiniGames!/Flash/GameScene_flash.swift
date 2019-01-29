@@ -190,9 +190,9 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
             
             buttonSequence[i].run(SKAction.sequence([initialWait, iWait, alphaAction, waitAction, alphaBack]))
             
-            let finalWait = SKAction.wait(forDuration: TimeInterval(CGFloat(buttonSequence.count)))
+            let finalWait = SKAction.wait(forDuration: TimeInterval(CGFloat(buttonSequence.count) - 0.5))
             
-            self.run(SKAction.sequence([SKAction.wait(forDuration: 0.25), finalWait, waitAction, finalAction]))
+            self.run(SKAction.sequence([SKAction.wait(forDuration: 0), finalWait, waitAction, finalAction]))
         }
     }
     

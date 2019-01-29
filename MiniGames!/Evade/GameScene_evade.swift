@@ -103,7 +103,9 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        canMove = true
+        if started {
+            canMove = true
+        }
         for touch in touches {
             
             let location = touch.location(in: self)
