@@ -25,7 +25,7 @@ If your app is published to the App Store, remember to come back to link your ap
 ---
 )
 test, test out various simulator devices, and test on ipad (collide bug?). Are games fun, addictive, progressions right?, too slow (flash)?
-clean out other games/non-essential files.
+ is evade progression too fast?
 
 ***Eventually***
 console message

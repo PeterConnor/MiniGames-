@@ -148,13 +148,15 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
         //print("diff \(abs(player.position.x - CGFloat(randomX)), abs(player.position.y - CGFloat(randomY)))")
         //print(abs(player.position.x - CGFloat(randomX)) < 200, abs(player.position.y) < 200)
         
-        while abs(player.position.x - CGFloat(randomX)) < 15 || abs(player.position.y - CGFloat(randomY)) < 15 {
+        while abs(player.position.x - CGFloat(randomX)) < 80 {
             randomX = Int(arc4random_uniform(UInt32(650)) + 50)
+        }
+        while abs(player.position.y - CGFloat(randomY)) < 80 {
             randomY = Int(arc4random_uniform(UInt32(820)) + 300)
             //print("new random x \(randomX)")
             //print("new random y \(randomY)")
         }
-        
+    
         checkpoint.position = CGPoint(x: randomX, y: randomY)
     }
     
@@ -264,16 +266,17 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
                         self.playerBlurr.texture = SKTexture(imageNamed: "BlueDiscBlurr")
                     }
                     
-                    
-                    player.run(SKAction.sequence([greenAction, waitAction, blueAction]))
-                    
                     score += 1
+                    //print("score + 1")
                     touching = false
+                    //print("touching set to false by score change")
                     player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
                     playerSpeed += speedIncrease
                     speedIncrease *= 0.98
                     placeCheckpoint()
                     movePlayer()
+                    player.run(SKAction.sequence([greenAction, waitAction, blueAction]))
+                    
                 } else {
                     isGameOver = true
                     player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
@@ -348,19 +351,24 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
     
     func didEnd(_ contact: SKPhysicsContact) {
         if contact.bodyA.node?.name == "PLAYER" || contact.bodyA.node?.name == "CHECKPOINT" {
-
-            touching = false
-            isGameOver = true
             
-            player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-            self.isUserInteractionEnabled = false
+            if touching == true {
+                touching = false
+                //print("touching set to false by didEnd")
+                isGameOver = true
+                //print("Gameover from didEnd")
+                
+                player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+                self.isUserInteractionEnabled = false
+                
+                let actionRed = SKAction.colorize(with: .red, colorBlendFactor: 1.0, duration: 0.25)
+                let actionBack = SKAction.wait(forDuration: 2.0)
+                
+                self.scene?.run(SKAction.sequence([actionRed, actionBack]), completion: { () -> Void in
+                    self.gameOver()
+                })
+            }
             
-            let actionRed = SKAction.colorize(with: .red, colorBlendFactor: 1.0, duration: 0.25)
-            let actionBack = SKAction.wait(forDuration: 2.0)
-            
-            self.scene?.run(SKAction.sequence([actionRed, actionBack]), completion: { () -> Void in
-                self.gameOver()
-            })
         }
     }
     

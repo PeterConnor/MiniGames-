@@ -103,6 +103,7 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        canMove = true
         for touch in touches {
             
             let location = touch.location(in: self)
@@ -219,8 +220,6 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
     func addObstacles() {
         let preRandomNumber = 750 - gap
         let randomNumber = Int(arc4random_uniform(UInt32(preRandomNumber)))
-       
-        
 
         let obstacle1 = SKSpriteNode(imageNamed: "Obstacle")
         obstacle1.size = CGSize(width: 750, height: 45)
@@ -279,13 +278,13 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
     func move(left: Bool) {
         if canMove && !isGameOver {
             if left {
-                player.position.x -= 18
+                player.position.x -= 17
                 
                 if player.position.x < 0 {
                     player.position.x = 0
                 }
             } else {
-                player.position.x += 18
+                player.position.x += 17
                 if player.position.x > 750 {
                     player.position.x = 750
                 }
@@ -304,7 +303,7 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
             if obstacleScoreList[0].position.y < player.position.y {
             obstacleScoreList.removeFirst()
                 score += 1
-                if gap > 100 {
+                if gap > 110 {
                     gap -= 1
                 }
             }
