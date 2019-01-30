@@ -83,9 +83,11 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
     var firstObstacleNumber = 0
     
     var gap: CGFloat = 200.0
+    var gapDecrease: CGFloat = 0.5
 
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
+        self.physicsWorld.speed = 0.99999
         
         NotificationCenter.default.addObserver(self, selector: #selector(GameScene_evade.pauseGame), name: NSNotification.Name(rawValue: "PauseGame"), object: nil)
         
@@ -98,7 +100,8 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
         addTapToStart()
         
         view.showsNodeCount = true
-        //view.showsPhysics = true
+        view.showsPhysics = true
+        view.showsFPS = true
         
     }
     
@@ -303,10 +306,26 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
         
         if firstObstacleNumber == 1 {
             if obstacleScoreList[0].position.y < player.position.y {
-            obstacleScoreList.removeFirst()
+                obstacleScoreList.removeFirst()
                 score += 1
-                if gap > 110 {
-                    gap -= 1
+                if gap > 175 {
+                    gapDecrease = 0.5
+                    gap -= gapDecrease
+                } else if gap > 150 {
+                    gapDecrease = 0.4
+                    gap -= gapDecrease
+                } else if gap > 130 {
+                    gapDecrease = 0.3
+                    gap -= gapDecrease
+                } else if gap > 125 {
+                    gapDecrease = 0.2
+                    gap -= gapDecrease
+                } else if gap > 120 {
+                    gapDecrease = 0.1
+                    gap -= gapDecrease
+                } else if gap > 112 {
+                    gapDecrease = 0.05
+                    gap -= gapDecrease
                 }
             }
         }

@@ -27,6 +27,8 @@ If your app is published to the App Store, remember to come back to link your ap
 test, test out various simulator devices, and test on ipad (collide bug?). Are games fun, addictive, progressions right?, too slow (flash)?
  is evade progression too fast?
  make ads live
+ check scores. error on evade over 100
+ evade moves when unpausing. need to changes touches began !paused
 
 ***Eventually***
 console message
