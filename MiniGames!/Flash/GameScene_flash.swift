@@ -80,7 +80,7 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         
-        NotificationCenter.default.addObserver(self, selector: #selector(GameScene_flash.pauseGame), name: NSNotification.Name(rawValue: "PauseGame"), object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(GameScene_flash.pauseGame), name: NSNotification.Name(rawValue: "PauseGame"), object: nil)
         
         self.physicsWorld.contactDelegate = self
 
@@ -94,12 +94,31 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
     
     func addButton() {
         let button = SKSpriteNode(imageNamed: "White100")
-        let randomX = Int(arc4random_uniform(UInt32(590)) + 80)
-        let randomY = Int(arc4random_uniform(UInt32(735)) + 365)
+        var randomX = Int(arc4random_uniform(UInt32(590)) + 80)
+        var randomY = Int(arc4random_uniform(UInt32(735)) + 365)
+        
+        if buttonSequence.count < 50 {
+            var check = true
+            while check && buttonCount > 0 {
+                print(true)
+                check = false
+                for i in buttonSequence {
+                    while abs(i.position.y - CGFloat(randomY)) < 100 || abs(i.position.x - CGFloat(randomX)) < 100 {
+                        check = true
+                        print("2")
+                        randomX = Int(arc4random_uniform(UInt32(590)) + 80)
+                        randomY = Int(arc4random_uniform(UInt32(735)) + 365)
+
+                        }
+                }
+                check = false
+            }
+        }
       
         button.position = CGPoint(x: randomX, y: randomY)
         button.alpha = 0.2
         button.name = "button\(buttonCount)"
+        
         buttonCount += 1
         buttonSequence.append(button)
         addChild(button)
@@ -205,6 +224,7 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        addButton()
         for touch in touches {
             
             let location = touch.location(in: self)
@@ -323,6 +343,7 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
         }
         }
     }
+    
     
     @objc func pauseGame() {
         //timeCheck = 1
