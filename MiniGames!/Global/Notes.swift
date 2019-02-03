@@ -25,12 +25,11 @@ If your app is published to the App Store, remember to come back to link your ap
 ---
 )
 test, test out various simulator devices, and test on ipad (collide bug?). Are games fun, addictive, progressions right?, too slow (flash)?
- make ads live
- evade is skipping
- delete physics stuff
- does rate crash without service? (how to simulate no service)
+make ads live
+delete physics stuff
+rate crashes with no service
+are share and rate links right?
  
-
 ***Eventually***
 console message
 android

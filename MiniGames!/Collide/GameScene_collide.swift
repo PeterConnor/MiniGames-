@@ -25,6 +25,8 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
     var pauseButton = SKSpriteNode()
     var pauseButtonBlurr = SKSpriteNode()
     var tapToStart = SKSpriteNode()
+    var tapBlurr = SKSpriteNode(imageNamed: "TapGreen")
+
 
     
     var scoreLabel1 = SKSpriteNode(imageNamed: "num0")
@@ -33,6 +35,7 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
     var blurr1 = SKSpriteNode(imageNamed: "GreenNum0")
     var blurr2 = SKSpriteNode(imageNamed: "GreenNum0")
     var blurr3 = SKSpriteNode(imageNamed: "GreenNum0")
+
     
     var ones = 0
     var tens = 0
@@ -97,10 +100,16 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
     }
     
     func addTapToStart() {
-        tapToStart = SKSpriteNode(imageNamed: "TapToStart")
+        tapToStart = SKSpriteNode(imageNamed: "TapWhite")
         tapToStart.position = CGPoint(x: self.size.width/2, y: 200)
         addChild(tapToStart)
         tapToStart.zPosition = 3
+        
+        tapBlurr.zPosition = -1
+        tapToStart.addChild(tapBlurr)
+        
+        
+        
     }
     
     func addPlayer() {
@@ -255,6 +264,7 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
             let location = touch.location(in: self)
             
             if started && atPoint(location).name != "BackButton" && atPoint(location).name != "PauseButton" && !isGameOver && !isGamePaused {
+                tapBlurr.alpha = 1.0
                 if touching {
                     let greenAction = SKAction.run {
                         self.playerBlurr.texture = SKTexture(imageNamed: "GreenDiscBlurr")
@@ -321,10 +331,13 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if !started {
             started = true
-            tapToStart.removeFromParent()
             addCheckpoint()
             movePlayer()
             //scoreLabel.text = "0"
+        }
+        
+        if tapBlurr.alpha == 1 {
+            tapBlurr.alpha = 0
         }
     }
     

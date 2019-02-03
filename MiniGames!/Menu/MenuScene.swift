@@ -262,7 +262,7 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
         var myAlert = UIAlertController()
         switch gameName {
         case "evade":
-            myAlert = UIAlertController(title: "Instructions", message: "Tap the left and right sides of the screen to guide the green disc through the obstacles. The more obstacles you pass, the more points you earn!", preferredStyle: .alert)
+            myAlert = UIAlertController(title: "Instructions", message: "Press the left and right side of the screen to guide the green disc through the obstacles. The more obstacles you pass, the more points you earn!", preferredStyle: .alert)
         case "flash":
             myAlert = UIAlertController(title: "Instructions", message: "Tap 'Play' to begin the flashing sequence. Memorize the location and order of flashing discs. Earn points by repeating back the ever-growing sequence correctly!" , preferredStyle: .alert)
         case "collide":

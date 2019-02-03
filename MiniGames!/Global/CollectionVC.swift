@@ -10,6 +10,8 @@
 import UIKit
 import StoreKit
 import GameKit
+import Reachability
+
 
 class CollectionVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, GKGameCenterControllerDelegate {
     
@@ -80,11 +82,26 @@ class CollectionVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         self.present(activityVC, animated: true, completion: nil)
     }
     
+    let reachability = Reachability()
+    
     @IBAction func rateButtonAction(_ sender: Any) {
         if #available(iOS 10.3, *) {
-            SKStoreReviewController.requestReview()
-        } else {
             
+            DispatchQueue.main.async {
+                    if self.reachability?.connection == .wifi {
+                        print("Reachable via WiFi")
+                        SKStoreReviewController.requestReview()
+                    } else if self.reachability?.connection == .cellular {
+                        print("Reachable via Cellular")
+                        SKStoreReviewController.requestReview()
+                    } else if self.reachability?.connection == .none {
+                        print("Not reachable")
+                    } else {
+                        print("Not reachable")
+                    }
+                }
+        } else {
+            print("Rate didn't work")
         }
     }
     

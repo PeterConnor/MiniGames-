@@ -97,21 +97,34 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
         var randomX = Int(arc4random_uniform(UInt32(590)) + 80)
         var randomY = Int(arc4random_uniform(UInt32(735)) + 365)
         
-        if buttonSequence.count < 50 {
+        if buttonSequence.count < 40 {
             var check = true
             while check && buttonCount > 0 {
-                print(true)
                 check = false
+                print("entering big while loop")
                 for i in buttonSequence {
-                    while abs(i.position.y - CGFloat(randomY)) < 100 || abs(i.position.x - CGFloat(randomX)) < 100 {
+                    //check = false
+
+                    print("entering for loop")
+                    print("button sequence count\(buttonSequence.count)")
+                    print("initial randomX\(randomX)")
+                    print("initial randomY\(randomY)")
+                    print("i.position.y\(i.position.y)")
+                    print("i.position.x\(i.position.x)")
+                    print("i.position.y - randomY\(i.position.y - CGFloat(randomY)) < CGFloat(32.5)")
+                    print("i.position.x - randomx\(i.position.x - CGFloat(randomX)) < CGFloat(32.5)")
+                    print("truth of y-y\((i.position.y - CGFloat(randomY)) < CGFloat(32.5))")
+                    print("truth of x-x\(abs(i.position.x - CGFloat(randomX)) < CGFloat(32.5))")
+                    
+                    while abs(i.position.y - CGFloat(randomY)) < CGFloat(63) && abs(i.position.x - CGFloat(randomX)) < CGFloat(63) {
                         check = true
-                        print("2")
+                        //clean = false
+                        print("entering yy xx true while loop")
                         randomX = Int(arc4random_uniform(UInt32(590)) + 80)
                         randomY = Int(arc4random_uniform(UInt32(735)) + 365)
-
                         }
                 }
-                check = false
+                //check = false
             }
         }
       
