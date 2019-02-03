@@ -101,30 +101,13 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
             var check = true
             while check && buttonCount > 0 {
                 check = false
-                print("entering big while loop")
                 for i in buttonSequence {
-                    //check = false
-
-                    print("entering for loop")
-                    print("button sequence count\(buttonSequence.count)")
-                    print("initial randomX\(randomX)")
-                    print("initial randomY\(randomY)")
-                    print("i.position.y\(i.position.y)")
-                    print("i.position.x\(i.position.x)")
-                    print("i.position.y - randomY\(i.position.y - CGFloat(randomY)) < CGFloat(32.5)")
-                    print("i.position.x - randomx\(i.position.x - CGFloat(randomX)) < CGFloat(32.5)")
-                    print("truth of y-y\((i.position.y - CGFloat(randomY)) < CGFloat(32.5))")
-                    print("truth of x-x\(abs(i.position.x - CGFloat(randomX)) < CGFloat(32.5))")
-                    
                     while abs(i.position.y - CGFloat(randomY)) < CGFloat(63) && abs(i.position.x - CGFloat(randomX)) < CGFloat(63) {
                         check = true
-                        //clean = false
-                        print("entering yy xx true while loop")
                         randomX = Int(arc4random_uniform(UInt32(590)) + 80)
                         randomY = Int(arc4random_uniform(UInt32(735)) + 365)
                         }
                 }
-                //check = false
             }
         }
       
@@ -237,7 +220,6 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        addButton()
         for touch in touches {
             
             let location = touch.location(in: self)

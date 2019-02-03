@@ -86,8 +86,9 @@ class CollectionVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     @IBAction func rateButtonAction(_ sender: Any) {
         if #available(iOS 10.3, *) {
+          
             
-            DispatchQueue.main.async {
+            DispatchQueue.global(qos: .background).async {
                     if self.reachability?.connection == .wifi {
                         print("Reachable via WiFi")
                         SKStoreReviewController.requestReview()

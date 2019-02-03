@@ -87,7 +87,10 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
         
         
         let highscoreLabel = SKSpriteNode(imageNamed: "HighScoreWhite")
-        let score = UserDefaults.standard.integer(forKey: "HighScore_" + gameName!)
+        var score = UserDefaults.standard.integer(forKey: "HighScore_" + gameName!)
+        if score > 999 {
+            score = 999
+        }
         highscoreLabel.position = CGPoint(x: helpButton.position.x, y: helpButton.position.y - helpButtonBlurr.size.height/2 - 25)
         //highscoreLabel.xScale = 0.5
         //highscoreLabel.yScale = 0.5
@@ -266,7 +269,7 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
         case "flash":
             myAlert = UIAlertController(title: "Instructions", message: "Tap 'Play' to begin the flashing sequence. Memorize the location and order of flashing discs. Earn points by repeating back the ever-growing sequence correctly!" , preferredStyle: .alert)
         case "collide":
-            myAlert = UIAlertController(title: "Instructions", message: "Tap once to move the blue disc. Once the blue disc overlaps the red disc, tap again. Repeat this action to earn points!", preferredStyle: .alert)
+            myAlert = UIAlertController(title: "Instructions", message: "Tap once to move the blue disc. Once the white part of the blue disc overlaps the white part of the red disc, tap again. Repeat this action to earn points!", preferredStyle: .alert)
         default:
             break
         }

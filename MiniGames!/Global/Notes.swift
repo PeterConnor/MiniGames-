@@ -24,13 +24,14 @@ If your app is published to the App Store, remember to come back to link your ap
  Delete leaderboard test data. check to make sure its right and that all are added up.
 ---
 )
-test, test out various simulator devices, and test on ipad (collide bug?). Are games fun, addictive, progressions right?, too slow (flash)?
 make ads live
 delete physics stuff
 rate crashes with no service
 are share and rate links right?
  
 ***Eventually***
+make flash objects 1 image, so taps on blur register
+change all blurrs to blur
 console message
 android
 iPad

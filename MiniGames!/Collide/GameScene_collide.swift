@@ -106,6 +106,7 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
         tapToStart.zPosition = 3
         
         tapBlurr.zPosition = -1
+        tapBlurr.alpha = 0
         tapToStart.addChild(tapBlurr)
         
         
@@ -263,6 +264,11 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
             
             let location = touch.location(in: self)
             
+            if !started && atPoint(location).name != "BackButton" && atPoint(location).name != "PauseButton" && !isGameOver && !isGamePaused {
+                tapBlurr.alpha = 1.0
+
+            }
+            
             if started && atPoint(location).name != "BackButton" && atPoint(location).name != "PauseButton" && !isGameOver && !isGamePaused {
                 tapBlurr.alpha = 1.0
                 if touching {
@@ -339,10 +345,6 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
         if tapBlurr.alpha == 1 {
             tapBlurr.alpha = 0
         }
-    }
-    
-    override func update(_ currentTime: TimeInterval) {
-        //print(touching)
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
