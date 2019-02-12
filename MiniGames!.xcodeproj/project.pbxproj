@@ -16,7 +16,6 @@
 		FA97E79A20804DCE002FF39C /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97E79920804DCE002FF39C /* CollectionVC.swift */; };
 		FA97E79C20804E8E002FF39C /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97E79B20804E8E002FF39C /* Singleton.swift */; };
 		FA97E79E2083EB54002FF39C /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97E79D2083EB54002FF39C /* CustomCell.swift */; };
-		FAA0824D22067A6100FF97A5 /* BlueNums.atlas in Resources */ = {isa = PBXBuildFile; fileRef = FAA0824C22067A6100FF97A5 /* BlueNums.atlas */; };
 		FAB7F36C20DFEF96003F24E3 /* GameScene_flash.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB7F36B20DFEF96003F24E3 /* GameScene_flash.swift */; };
 		FADE21E920E7F5560066024F /* GameScene_evade.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADE21E820E7F5560066024F /* GameScene_evade.swift */; };
 		FADE21EB20E7F5660066024F /* GameScene_evade.sks in Resources */ = {isa = PBXBuildFile; fileRef = FADE21EA20E7F5660066024F /* GameScene_evade.sks */; };
@@ -42,7 +41,6 @@
 		FA97E79920804DCE002FF39C /* CollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
 		FA97E79B20804E8E002FF39C /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		FA97E79D2083EB54002FF39C /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
-		FAA0824C22067A6100FF97A5 /* BlueNums.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BlueNums.atlas; sourceTree = "<group>"; };
 		FAB7F36B20DFEF96003F24E3 /* GameScene_flash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene_flash.swift; sourceTree = "<group>"; };
 		FADE21E820E7F5560066024F /* GameScene_evade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene_evade.swift; sourceTree = "<group>"; };
 		FADE21EA20E7F5660066024F /* GameScene_evade.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene_evade.sks; sourceTree = "<group>"; };
@@ -103,7 +101,6 @@
 				FAF6A85E2059DE5800DAE12E /* GameViewController2.swift */,
 				FAF6A8602059DE5800DAE12E /* Main.storyboard */,
 				FAF6A8632059DE5800DAE12E /* Assets.xcassets */,
-				FAA0824C22067A6100FF97A5 /* BlueNums.atlas */,
 				FAF6A8652059DE5800DAE12E /* LaunchScreen.storyboard */,
 				FAF9785D2076FB1600C9A6ED /* Extensions.swift */,
 				FA97E79D2083EB54002FF39C /* CustomCell.swift */,
@@ -239,7 +236,6 @@
 				FA93F65D219D1227007021F6 /* GameScene_flash.sks in Resources */,
 				FADE21EB20E7F5660066024F /* GameScene_evade.sks in Resources */,
 				FAF6A8622059DE5800DAE12E /* Main.storyboard in Resources */,
-				FAA0824D22067A6100FF97A5 /* BlueNums.atlas in Resources */,
 				FA868EB620ED556C0007A716 /* MenuScene.sks in Resources */,
 				FAF6A8642059DE5800DAE12E /* Assets.xcassets in Resources */,
 				FAF6A8672059DE5800DAE12E /* LaunchScreen.storyboard in Resources */,

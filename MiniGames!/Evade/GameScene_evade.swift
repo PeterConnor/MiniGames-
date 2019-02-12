@@ -23,48 +23,52 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
     var pauseButton = SKSpriteNode()
     var pauseButtonBlurr = SKSpriteNode()
     
-    var scoreLabel1 = SKSpriteNode(imageNamed: "B0")
-    var scoreLabel2 = SKSpriteNode(imageNamed: "B0")
-    var scoreLabel3 = SKSpriteNode(imageNamed: "B0")
-    //var blurr3 = SKSpriteNode(imageNamed: "BlueNum0")
+    var scoreLabel1 = SKSpriteNode(imageNamed: "num0")
+    var scoreLabel2 = SKSpriteNode(imageNamed: "num0")
+    var scoreLabel3 = SKSpriteNode(imageNamed: "num0")
+    var blurr1 = SKSpriteNode(imageNamed: "BlueNum0")
+    var blurr2 = SKSpriteNode(imageNamed: "BlueNum0")
+    var blurr3 = SKSpriteNode(imageNamed: "BlueNum0")
     
-
+    let numAtlas = SKTextureAtlas(named: "NumAtlas")
     
     var ones = 0
     var tens = 0
     var hundreds = 0
     var score = 0 {
         didSet {
-            let stringFromNum = String(score)
-            var numList = [String]()
-            
-            for char in stringFromNum {
-                numList.append(String(char))
+            ones += 1
+            if score % 100 == 0 {
+                ones = 0
+                tens = 0
+                hundreds += 1
+                scoreLabel2.texture = SKTexture(imageNamed: "num\(tens)")
+                blurr2.texture = numAtlas.textureNamed("BlueNum\(tens)")
+                scoreLabel1.texture = SKTexture(imageNamed: "num\(hundreds)")
+                blurr1.texture = numAtlas.textureNamed("BlueNum\(hundreds)")
+                
             }
             
-            switch numList.count {
+            if score % 10 == 0 && score % 100 != 0 {
+                ones = 0
+                tens += 1
+                scoreLabel2.texture = SKTexture(imageNamed: "num\(tens)")
+                blurr2.texture = numAtlas.textureNamed("BlueNum\(tens)")
                 
-            case 1:
-                scoreLabel3.texture = SKTexture(imageNamed: "B" + numList[0])
-                //blurr3.texture = SKTexture(imageNamed: "BlueNum" + numList[0])
                 
-            case 2:
-                scoreLabel3.texture = SKTexture(imageNamed: "B" + numList[1])
-                //blurr3.texture = SKTexture(imageNamed: "BlueNum" + numList[1])
+            }
+            scoreLabel3.texture = SKTexture(imageNamed: "num\(ones)")
+            blurr3.texture = numAtlas.textureNamed("BlueNum\(ones)")
+            
+            if score >= 999 {
+                scoreLabel1.texture = SKTexture(imageNamed: "num9")
+                blurr1.texture = numAtlas.textureNamed("BlueNum9")
                 
-                scoreLabel2.texture = SKTexture(imageNamed: "B" + numList[0])
-                //blurr2.texture = SKTexture(imageNamed: "BlueNum" + numList[0])
-            case 3:
-                scoreLabel3.texture = SKTexture(imageNamed: "B" + numList[2])
-                //blurr3.texture = SKTexture(imageNamed: "BlueNum" + numList[2])
+                scoreLabel2.texture = SKTexture(imageNamed: "num9")
+                blurr2.texture = numAtlas.textureNamed("BlueNum9")
                 
-                scoreLabel2.texture = SKTexture(imageNamed: "B" + numList[1])
-                //blurr2.texture = SKTexture(imageNamed: "BlueNum" + numList[1])
-                
-                scoreLabel1.texture = SKTexture(imageNamed: "B" + numList[0])
-                //blurr1.texture = SKTexture(imageNamed: "BlueNum" + numList[0])
-            default:
-                break
+                scoreLabel3.texture = SKTexture(imageNamed: "num9")
+                blurr3.texture = numAtlas.textureNamed("BlueNum9")
             }
         }
     }
@@ -83,12 +87,12 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
 
     override func didMove(to view: SKView) {
         
-        SKTextureAtlas(named: "BlueNums").preload {
-
+        numAtlas.preload {
+            // Do something once texture atlas has loaded
         }
         
         self.physicsWorld.contactDelegate = self
-        self.physicsWorld.speed = 0.99999
+
         
         NotificationCenter.default.addObserver(self, selector: #selector(GameScene_evade.pauseGame), name: NSNotification.Name(rawValue: "PauseGame"), object: nil)
         
@@ -99,10 +103,6 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
         addScoreLabels()
         addBackground()
         addTapToStart()
-        
-        view.showsNodeCount = true
-        view.showsPhysics = true
-        view.showsFPS = true
         
     }
     
@@ -421,16 +421,12 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
     }
     
     func addScoreLabels() {
-        scoreLabel1.setScale(0.6)
-        scoreLabel2.setScale(0.6)
-        scoreLabel3.setScale(0.6)
         scoreLabel1.zPosition = 3
-        scoreLabel1.position = CGPoint(x: self.size.width/2 - scoreLabel1.size.width/2, y: 1334 - scoreLabel1.size.height/2 + 10)
+        scoreLabel1.position = CGPoint(x: self.size.width/2 - scoreLabel1.size.width - 20, y: 1334 - scoreLabel1.size.height/2 - 40)
         scoreLabel2.zPosition = 3
-        scoreLabel2.position = CGPoint(x: self.size.width/2, y: 1334 - scoreLabel2.size.height/2 + 10)
+        scoreLabel2.position = CGPoint(x: self.size.width/2, y: 1334 - scoreLabel2.size.height/2 - 40)
         scoreLabel3.zPosition = 3
-        scoreLabel3.position = CGPoint(x: self.size.width/2 + scoreLabel3.size.width/2, y: 1334 - scoreLabel3.size.height/2 + 10)
-        
+        scoreLabel3.position = CGPoint(x: self.size.width/2 + scoreLabel3.size.width + 20, y: 1334 - scoreLabel3.size.height/2 - 40)
         
         addChild(scoreLabel1)
         addChild(scoreLabel2)
@@ -438,12 +434,12 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
         
         
         
-        //scoreLabel1.addChild(blurr1)
-        //scoreLabel2.addChild(blurr2)
-        //scoreLabel3.addChild(blurr3)
+        scoreLabel1.addChild(blurr1)
+        scoreLabel2.addChild(blurr2)
+        scoreLabel3.addChild(blurr3)
         
-        //blurr1.zPosition = -1
-        //blurr2.zPosition = -1
-        //blurr3.zPosition = -1
+        blurr1.zPosition = -1
+        blurr2.zPosition = -1
+        blurr3.zPosition = -1
     }
 }

@@ -5,7 +5,6 @@
 //  Created by Pete Connor on 5/6/18.
 //  Copyright © 2018 c0nman. All rights reserved.
 //
-
 /*
  
  **Admob**
@@ -14,23 +13,17 @@
  Test Unit ID: ca-app-pub-3940256099942544/2934735716
  
 ****Macro****
-Need to add actual app store url to share button
-Add right admob info
 If your app is published to the App Store, remember to come back to link your app. - Admob
- replace test admob
- Menuscenes - Tap to play change to cool play button (thin lines with glow). like so: https://www.shutterstock.com/image-vector/play-button-blue-glowing-neon-ui-692614963
- Make sure menus don't look like old ones for spam
- shooting stars game. like duck hunt across the screen.
- Delete leaderboard test data. check to make sure its right and that all are added up.
 ---
-)
-make ads live
-delete physics stuff
+
 rate crashes with no service
-are share and rate links right?
+do share and rate work right?
+ADD ADs
+ 
  
 ***Eventually***
 make flash objects 1 image, so taps on blur register
+change support url. currently, twitter.
 change all blurrs to blur
 console message
 android
@@ -38,6 +31,8 @@ iPad
 feedback/email?
 premium?
 add sounds (add global singleton bool for mute)
+
+ 
  */
 
 /*Skeleton before changing view.bounds
