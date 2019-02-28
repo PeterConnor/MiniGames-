@@ -39,7 +39,6 @@ class GameViewController2: UIViewController, GADBannerViewDelegate {
                 scene?.gameName = "collide"
                 view.ignoresSiblingOrder = true
                 view.presentScene(scene)
-            
             case "flash":
                 let scene = MenuScene(fileNamed: "MenuScene")
                 scene?.scaleMode = .aspectFit
@@ -52,6 +51,13 @@ class GameViewController2: UIViewController, GADBannerViewDelegate {
                 scene?.scaleMode = .aspectFit
                 scene?.gameVC = self
                 scene?.gameName = "evade"
+                view.ignoresSiblingOrder = true
+                view.presentScene(scene)
+            case "bounce":
+                let scene = MenuScene(fileNamed: "MenuScene")
+                scene?.scaleMode = .aspectFit
+                scene?.gameVC = self
+                scene?.gameName = "bounce"
                 view.ignoresSiblingOrder = true
                 view.presentScene(scene)
             default:

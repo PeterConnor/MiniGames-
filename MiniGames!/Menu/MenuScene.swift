@@ -196,6 +196,13 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
                         view!.ignoresSiblingOrder = true
                         view!.presentScene(scene)
                         view!.presentScene(gameScene)
+                    case "bounce":
+                        let gameScene = GameScene_bounce(fileNamed: "GameScene_" + gameName!)
+                        gameScene!.scaleMode = .aspectFit
+                        gameScene!.gameVC = gameVC
+                        view!.ignoresSiblingOrder = true
+                        view!.presentScene(scene)
+                        view!.presentScene(gameScene)
                     default:
                         break
                     }

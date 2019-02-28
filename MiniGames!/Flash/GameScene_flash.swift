@@ -371,7 +371,7 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
         backButton.zPosition = 6
         addChild(backButton)
         
-        let backButtonBlurr = SKSpriteNode(imageNamed: "BlueBackButtonBlurr")
+        let backButtonBlurr = SKSpriteNode(imageNamed: "RedBackButtonBlurr")
         //ZbackButtonBlurr.size = CGSize(width: 67.2, height: 115.8)
         backButton.addChild(backButtonBlurr)
         backButtonBlurr.zPosition = -1
