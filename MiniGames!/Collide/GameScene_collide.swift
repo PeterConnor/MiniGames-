@@ -108,6 +108,7 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
         tapBlurr.zPosition = -1
         tapBlurr.alpha = 0
         tapToStart.addChild(tapBlurr)
+        
     }
     
     func addPlayer() {

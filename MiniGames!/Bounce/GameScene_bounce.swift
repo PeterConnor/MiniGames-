@@ -9,6 +9,11 @@
 import SpriteKit
 import CoreMotion
 
+struct CollisionBitMask_bounce {
+    static let Player: UInt32 = 0x00
+    static let Obstacle: UInt32 = 0x01
+}
+
 class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
     
     weak var gameVC: GameViewController2?
@@ -70,7 +75,7 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
     }
     
     var player = SKSpriteNode()
-    var obstacle = SKSpriteNode()
+    var checkpoint = SKSpriteNode()
     var xMotion: CGFloat = 0
     let motionManager = CMMotionManager()
     let cam = SKCameraNode()
@@ -81,8 +86,9 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
         numAtlas.preload {
         }
         self.physicsWorld.contactDelegate = self
-        self.camera = cam
-        self.addChild(cam)
+        //self.camera = cam
+        //cam.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        //self.addChild(cam)
         
         NotificationCenter.default.addObserver(self, selector: #selector(GameScene_bounce.pauseGame), name: NSNotification.Name(rawValue: "PauseGame"), object: nil)
         
@@ -91,7 +97,7 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
         addScoreLabels()
         addPlayer()
         addPlayerBlurr()
-        addObstacle()
+        addCheckpoint()
         
         motionManager.accelerometerUpdateInterval = 0.1
         motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { (data: CMAccelerometerData?, error: Error?) in
@@ -115,11 +121,10 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    override func update(_ currentTime: TimeInterval) {
-        cam.position = player.position
+    
+    override func didFinishUpdate() {
+                cam.position.y = player.position.y
     }
-    
-    
     
     @objc func pauseGame() {
         self.isPaused = true
@@ -185,50 +190,54 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
     
     func addPlayer() {
         player = SKSpriteNode(imageNamed: "Disc")
-        player.position = CGPoint(x: self.size.width/2, y: 350)
+        player.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
         player.name = "PLAYER"
-        player.physicsBody?.isDynamic = false
         player.physicsBody = SKPhysicsBody(circleOfRadius: player.size.width/2)
-        player.physicsBody?.categoryBitMask = 1
+        player.physicsBody?.categoryBitMask = CollisionBitMask_collide.Player
         player.physicsBody?.collisionBitMask = 0
-        player.physicsBody?.contactTestBitMask = 1
-        addChild(player)
-        player.zPosition = 3
-        player.physicsBody?.isDynamic = false
+        player.physicsBody?.contactTestBitMask = CollisionBitMask_collide.Checkpoint
+        player.physicsBody?.isDynamic = true
+
+        self.addChild(player)
     }
     
     func addPlayerBlurr() {
         let playerBlurr = SKSpriteNode(imageNamed: "GreenDiscBlurr")
-        //playerBlurr.position = CGPoint(x: player.position.x, y: player.position.y)
-        //playerBlurr.name = "PLAYER"
-        //playerBlurr.physicsBody?.isDynamic = false
-        //playerBlurr.physicsBody = SKPhysicsBody(circleOfRadius: player.size.width/2)
-        //playerBlurr.physicsBody?.categoryBitMask = CollisionBitMask_evade.Player
-        //playerBlurr.physicsBody?.collisionBitMask = 0
-        //playerBlurr.physicsBody?.contactTestBitMask = CollisionBitMask_evade.Obstacle
         player.addChild(playerBlurr)
         playerBlurr.zPosition = -1
     }
     
-    func addObstacle() {
-        obstacle = SKSpriteNode(imageNamed: "Disc")
-        obstacle.position = CGPoint(x: self.size.width/2, y: 200)
-        obstacle.name = "OBSTACLE"
-        obstacle.physicsBody?.isDynamic = false
-        obstacle.physicsBody = SKPhysicsBody(circleOfRadius: obstacle.size.width/2)
-        obstacle.physicsBody?.categoryBitMask = 1
-        obstacle.physicsBody?.collisionBitMask = 0
-        obstacle.physicsBody?.contactTestBitMask = 1
-        addChild(obstacle)
-        obstacle.zPosition = 3
-        obstacle.physicsBody?.isDynamic = false
+    func addCheckpoint() {
+        checkpoint = SKSpriteNode(imageNamed: "Disc")
+        checkpoint.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        checkpoint.name = "CHECKPOINT"
+        checkpoint.physicsBody = SKPhysicsBody(circleOfRadius: checkpoint.size.width/2)
+        checkpoint.physicsBody?.categoryBitMask = CollisionBitMask_collide.Checkpoint
+        checkpoint.physicsBody?.collisionBitMask = 0
+        checkpoint.physicsBody?.isDynamic = true
+
+        self.addChild(checkpoint)
+        
+        let checkpointBlurr = SKSpriteNode(imageNamed: "RedDiscBlurr")
+        checkpoint.addChild(checkpointBlurr)
+        checkpointBlurr.zPosition = -1
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        if contact.bodyA.node?.name == "PLAYER" || contact.bodyA.node?.name == "CHECKPOINT" {
+            print(true)
+            print(true)
+            print(true)
+        }
+        
     }
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        player.position.y += 10
-        if started && !isPaused {
-            //canMove = true - from evade
+        if !started && !isPaused {
+            player.physicsBody?.isDynamic = true
+            player.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 120))
+            started = true
         }
         for touch in touches {
             
@@ -256,8 +265,9 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
                 }
             }
             
-            
         }
+        
+        
     }
         
 }
