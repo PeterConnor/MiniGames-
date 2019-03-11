@@ -20,7 +20,22 @@ rate crashes with no service
 make space between flash objects bigger
 change evade difficulty, so it's easier at first.
 make collide minimum bigger
-
+make collectionview images close (-1)
+ 
+scale down
+ move left right
+ make disappear
+ last checkpoint the player hits becomes the new Y value, if goes below. gameover. stop camera.
+ tap to start
+ instructions
+ make room on left and right side, so cant use checkpoint as backboard
+ make it so only 1 appears at a time.
+ 
+ bounce - end should be gradually scaled down,more and more moving checks, gradually faster checks, only 1 or 2 showing at a time.
+ 
+ make help more clear - press and hold for evade. tapping only makes it move a little bit. for collide, tell user not to tap discss.
+ 
+ change tap to tap here for collide.
  
  
 ***Eventually***
