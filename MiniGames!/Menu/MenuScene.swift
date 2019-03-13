@@ -203,6 +203,13 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
                         view!.ignoresSiblingOrder = true
                         view!.presentScene(scene)
                         view!.presentScene(gameScene)
+                    case "shoot":
+                        let gameScene = GameScene_shoot(fileNamed: "GameScene_" + gameName!)
+                        gameScene!.scaleMode = .aspectFit
+                        gameScene!.gameVC = gameVC
+                        view!.ignoresSiblingOrder = true
+                        view!.presentScene(scene)
+                        view!.presentScene(gameScene)
                     default:
                         break
                     }

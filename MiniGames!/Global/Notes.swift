@@ -236,13 +236,14 @@ add sounds (add global singleton bool for mute)
 
  
  adding new game:
+ add image
  add folder, swift file, skscene
  add case to gameviewcontroller2
  add to singleton
  change collection view width & height #'s
  add case to menuscene
  make sure sks file anchorpoint is 0,0
- 
+ add skeleton
 
  }*/
 

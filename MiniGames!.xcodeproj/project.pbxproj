@@ -13,6 +13,8 @@
 		FA868EB620ED556C0007A716 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA868EB520ED556C0007A716 /* MenuScene.sks */; };
 		FA87AEC32224DD91006A9207 /* GameScene_bounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA87AEC22224DD91006A9207 /* GameScene_bounce.swift */; };
 		FA87AEC52224DDC3006A9207 /* GameScene_bounce.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA87AEC42224DDC3006A9207 /* GameScene_bounce.sks */; };
+		FA87AEC82235FDD0006A9207 /* GameScene_shoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA87AEC72235FDD0006A9207 /* GameScene_shoot.swift */; };
+		FA87AECA2235FDF7006A9207 /* GameScene_shoot.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA87AEC92235FDF7006A9207 /* GameScene_shoot.sks */; };
 		FA93F65B219B9250007021F6 /* GameScene_collide.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA93F65A219B9250007021F6 /* GameScene_collide.sks */; };
 		FA93F65D219D1227007021F6 /* GameScene_flash.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA93F65C219D1227007021F6 /* GameScene_flash.sks */; };
 		FA97E79A20804DCE002FF39C /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97E79920804DCE002FF39C /* CollectionVC.swift */; };
@@ -40,6 +42,8 @@
 		FA868EB520ED556C0007A716 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
 		FA87AEC22224DD91006A9207 /* GameScene_bounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene_bounce.swift; sourceTree = "<group>"; };
 		FA87AEC42224DDC3006A9207 /* GameScene_bounce.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene_bounce.sks; sourceTree = "<group>"; };
+		FA87AEC72235FDD0006A9207 /* GameScene_shoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene_shoot.swift; sourceTree = "<group>"; };
+		FA87AEC92235FDF7006A9207 /* GameScene_shoot.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene_shoot.sks; sourceTree = "<group>"; };
 		FA93F65A219B9250007021F6 /* GameScene_collide.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene_collide.sks; sourceTree = "<group>"; };
 		FA93F65C219D1227007021F6 /* GameScene_flash.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene_flash.sks; sourceTree = "<group>"; };
 		FA97E79920804DCE002FF39C /* CollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
@@ -125,6 +129,15 @@
 			path = Bounce;
 			sourceTree = "<group>";
 		};
+		FA87AEC62235FDAA006A9207 /* Shoot */ = {
+			isa = PBXGroup;
+			children = (
+				FA87AEC72235FDD0006A9207 /* GameScene_shoot.swift */,
+				FA87AEC92235FDF7006A9207 /* GameScene_shoot.sks */,
+			);
+			path = Shoot;
+			sourceTree = "<group>";
+		};
 		FAB7F36820DFEE73003F24E3 /* Flash */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +179,7 @@
 			children = (
 				FA7A83EA2076F27100705B50 /* Global */,
 				FA2A62BC21FFBA24001CE6D1 /* Menu */,
+				FA87AEC62235FDAA006A9207 /* Shoot */,
 				FA87AEC12224DD27006A9207 /* Bounce */,
 				FADE21E720E7F53B0066024F /* Evade */,
 				FAB7F36820DFEE73003F24E3 /* Flash */,
@@ -247,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA93F65B219B9250007021F6 /* GameScene_collide.sks in Resources */,
+				FA87AECA2235FDF7006A9207 /* GameScene_shoot.sks in Resources */,
 				FA93F65D219D1227007021F6 /* GameScene_flash.sks in Resources */,
 				FADE21EB20E7F5660066024F /* GameScene_evade.sks in Resources */,
 				FAF6A8622059DE5800DAE12E /* Main.storyboard in Resources */,
@@ -309,6 +324,7 @@
 				FADE21E920E7F5560066024F /* GameScene_evade.swift in Sources */,
 				FA868EB420EAE1220007A716 /* MenuScene.swift in Sources */,
 				FAF6A8572059DE5800DAE12E /* AppDelegate.swift in Sources */,
+				FA87AEC82235FDD0006A9207 /* GameScene_shoot.swift in Sources */,
 				FA97E79A20804DCE002FF39C /* CollectionVC.swift in Sources */,
 				FA97E79C20804E8E002FF39C /* Singleton.swift in Sources */,
 				FAF978572076FAA600C9A6ED /* MenuScene_collide.swift in Sources */,

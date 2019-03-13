@@ -60,6 +60,13 @@ class GameViewController2: UIViewController, GADBannerViewDelegate {
                 scene?.gameName = "bounce"
                 view.ignoresSiblingOrder = true
                 view.presentScene(scene)
+            case "shoot":
+                let scene = MenuScene(fileNamed: "MenuScene")
+                scene?.scaleMode = .aspectFit
+                scene?.gameVC = self
+                scene?.gameName = "shoot"
+                view.ignoresSiblingOrder = true
+                view.presentScene(scene)
             default:
                 break
             }

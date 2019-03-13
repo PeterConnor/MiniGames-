@@ -261,7 +261,7 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
     func addCheckpoint() {
         let checkpoint = SKSpriteNode(imageNamed: "Disc")
         checkpoint.setScale(CGFloat(scaleNumber))
-        var randomX = Int(arc4random_uniform(UInt32(750)))
+        let randomX = Int(arc4random_uniform(UInt32(750)))
 
         checkpoint.position = CGPoint(x: CGFloat(randomX), y: checkpointY + 320)
         checkpoint.name = "CHECKPOINT"
@@ -319,7 +319,7 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
     }
     
     func setupCheckpoints() {
-        for i in 0...10 {
+        for _ in 0...10 {
             addCheckpoint()
         }
     }
