@@ -187,9 +187,10 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
     
     func shoot() {
         let shot = SKSpriteNode(imageNamed: "Disc")
+        shot.name = "SHOT"
         shot.position = player.position
         shot.position.y += 5
-        shot.setScale(0.3)
+        shot.setScale(0.4)
         shot.physicsBody = SKPhysicsBody(circleOfRadius: shot.size.width/2)
         shot.physicsBody?.isDynamic = true
         shot.physicsBody?.categoryBitMask = CollisionBitMask_shoot.Shot
@@ -233,6 +234,7 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
         let randomNum = arc4random_uniform(2)
         
         let enemy = SKSpriteNode(imageNamed: "Disc")
+        enemy.name = "ENEMY"
         if randomNum == 1 {
             let enemyBlurr = SKSpriteNode(imageNamed: "RedDiscBlurr")
             enemy.addChild(enemyBlurr)
@@ -303,6 +305,34 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
             }
         }
         
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        if contact.bodyA.node?.name == "ENEMY" || contact.bodyA.node?.name == "SHOT" {
+            score += 1
+            if contact.bodyA.node?.name == "ENEMY" {
+                
+                contact.bodyB.node?.removeFromParent()
+                
+                contact.bodyA.node?.removeAllActions()
+    
+                    let scaleAction = SKAction.scale(to: 0, duration: 0.25)
+                    contact.bodyA.node?.run(scaleAction, completion: {
+                        contact.bodyA.node?.removeFromParent()
+                    })
+
+            } else {
+                contact.bodyA.node?.removeFromParent()
+                
+                contact.bodyB.node?.removeAllActions()
+                
+                let scaleAction = SKAction.scale(to: 0, duration: 0.25)
+                contact.bodyB.node?.run(scaleAction, completion: {
+                    contact.bodyB.node?.removeFromParent()
+                })
+
+            }
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -17,27 +17,8 @@ If your app is published to the App Store, remember to come back to link your ap
 ---
 
 rate crashes with no service
-make space between flash objects bigger
-change evade difficulty, so it's easier at first.
-make collide minimum bigger
-make collectionview images close (-1)
- 
-scale down
- move left right
- make disappear
- last checkpoint the player hits becomes the new Y value, if goes below. gameover. stop camera.
- tap to start
- instructions
- make room on left and right side, so cant use checkpoint as backboard
- make it so only 1 appears at a time.
- 
- bounce - end should be gradually scaled down,more and more moving checks, gradually faster checks, only 1 or 2 showing at a time.
- 
- make help more clear - press and hold for evade. tapping only makes it move a little bit. for collide, tell user not to tap discss.
- 
- change tap to tap here for collide.
- 
- 
+put real unit id in
+
 ***Eventually***
 make flash objects 1 image, so taps on blur register
 change support url. currently, twitter.
@@ -48,8 +29,10 @@ iPad
 feedback/email?
 premium?
 add sounds (add global singleton bool for mute)
-
- 
+landing page
+product hunt
+add videos to app store
+make ios 10
  */
 
 /*Skeleton

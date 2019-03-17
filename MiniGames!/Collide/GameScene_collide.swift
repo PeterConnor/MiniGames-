@@ -116,7 +116,7 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
         player.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
         player.name = "PLAYER"
         player.physicsBody?.isDynamic = true
-        player.physicsBody = SKPhysicsBody(circleOfRadius: player.size.width/2)
+        player.physicsBody = SKPhysicsBody(circleOfRadius: player.size.width/2 + 2)
         player.physicsBody?.categoryBitMask = CollisionBitMask_collide.Player
         player.physicsBody?.collisionBitMask = 0
         player.physicsBody?.contactTestBitMask = CollisionBitMask_collide.Checkpoint
@@ -134,7 +134,7 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
         placeCheckpoint()
         checkpoint.name = "CHECKPOINT"
         checkpoint.physicsBody?.isDynamic = true
-        checkpoint.physicsBody = SKPhysicsBody(circleOfRadius: checkpoint.size.width/2)
+        checkpoint.physicsBody = SKPhysicsBody(circleOfRadius: checkpoint.size.width/2 + 2)
         checkpoint.physicsBody?.categoryBitMask = CollisionBitMask_collide.Checkpoint
         checkpoint.physicsBody?.collisionBitMask = 0
         checkpoint.physicsBody?.mass = 1.0
@@ -156,10 +156,10 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
         //print("diff \(abs(player.position.x - CGFloat(randomX)), abs(player.position.y - CGFloat(randomY)))")
         //print(abs(player.position.x - CGFloat(randomX)) < 200, abs(player.position.y) < 200)
         
-        while abs(player.position.x - CGFloat(randomX)) < 80 {
+        while abs(player.position.x - CGFloat(randomX)) < 115 {
             randomX = Int(arc4random_uniform(UInt32(650)) + 50)
         }
-        while abs(player.position.y - CGFloat(randomY)) < 80 {
+        while abs(player.position.y - CGFloat(randomY)) < 115 {
             randomY = Int(arc4random_uniform(UInt32(820)) + 300)
             //print("new random x \(randomX)")
             //print("new random y \(randomY)")
@@ -286,8 +286,11 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
                     //print("touching set to false by score change")
                     player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
                     playerSpeed += speedIncrease
-                    speedIncrease *= 0.98
+                    if speedIncrease > 1 {
+                        speedIncrease *= 0.98
+                    }
                     placeCheckpoint()
+                    
                     movePlayer()
                     player.run(SKAction.sequence([greenAction, waitAction, blueAction]))
                     

@@ -23,6 +23,8 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
     var isGamePaused = false
     var pauseButton = SKSpriteNode()
     var pauseButtonBlurr = SKSpriteNode()
+    var tapToStart = SKSpriteNode()
+
     
     var scoreLabel1 = SKSpriteNode(imageNamed: "num0")
     var scoreLabel2 = SKSpriteNode(imageNamed: "num0")
@@ -126,6 +128,8 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
         addScoreLabels()
         addPlayer()
         setupCheckpoints()
+        addTapToStart()
+
         
         motionManager.accelerometerUpdateInterval = 0.1
         motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { (data: CMAccelerometerData?, error: Error?) in
@@ -213,7 +217,13 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
         backButtonBlurr.zPosition = -1
         
         backButton.position = CGPoint(x: -325 + backButtonBlurr.size.width/2 + 25, y: 667 - backButtonBlurr.size.height/2 - 25)
-        
+    }
+    
+    func addTapToStart() {
+        tapToStart = SKSpriteNode(imageNamed: "TapToStart")
+        tapToStart.position = CGPoint(x: self.size.width/2, y: -200)
+        addChild(tapToStart)
+        tapToStart.zPosition = 3
     }
     
     func addScoreLabels() {

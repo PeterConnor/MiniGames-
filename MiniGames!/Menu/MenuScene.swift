@@ -31,7 +31,6 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
         addLabelsAndButtons()
         addBackButton()
         addLeaderButton()
-        
     }
     
     func addLogo() {
@@ -182,6 +181,7 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
                             view!.ignoresSiblingOrder = true
                             view!.presentScene(scene)
                             view!.presentScene(gameScene)
+                        
                     case "flash":
                         let gameScene = GameScene_flash(fileNamed: "GameScene_" + gameName!)
                         gameScene!.scaleMode = .aspectFit
@@ -212,6 +212,9 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
                         view!.presentScene(gameScene)
                     default:
                         break
+                    }
+                    if UserDefaults.standard.integer(forKey: "HighScore_" + gameName!) < 5 {
+                        showAlert()
                     }
                 }
             }
@@ -279,11 +282,15 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
         var myAlert = UIAlertController()
         switch gameName {
         case "evade":
-            myAlert = UIAlertController(title: "Instructions", message: "Press the left and right side of the screen to guide the green disc through the obstacles. The more obstacles you pass, the more points you earn!", preferredStyle: .alert)
+            myAlert = UIAlertController(title: "Instructions", message: "Press the left and right side of the screen to guide the green disc through the obstacles. The more obstacles you pass, the more points you earn! (Pro Tip: Hold the device with both hands and press down with your thumbs)", preferredStyle: .alert)
         case "flash":
             myAlert = UIAlertController(title: "Instructions", message: "Tap 'Play' to begin the flashing sequence. Memorize the location and order of flashing discs. Earn points by repeating back the ever-growing sequence correctly!" , preferredStyle: .alert)
         case "collide":
-            myAlert = UIAlertController(title: "Instructions", message: "Tap once to move the blue disc. Once the white part of the blue disc overlaps the white part of the red disc, tap again. Repeat this action to earn points!", preferredStyle: .alert)
+            myAlert = UIAlertController(title: "Instructions", message: "Tap once to move the blue disc. Once the blue disc overlaps the red disc, tap again. Repeat this action to earn points! (Tap the bottom of the screen. Not the actual discs!)", preferredStyle: .alert)
+        case "bounce":
+            myAlert = UIAlertController(title: "Instructions", message: "Tap once to launch the green disc. Tilt the phone to the left or right to make the green disc bounce off of the obstacles. Climb as high as you can to earn points! ", preferredStyle: .alert)
+        case "shoot":
+            myAlert = UIAlertController(title: "Instructions", message: "Tilt the phone to the left or right to move the green disc. Tap the screen to shoot the approaching enemies. Don't let any of the enemies get passed you!", preferredStyle: .alert)
         default:
             break
         }

@@ -82,8 +82,8 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
     var obstacleScoreList = [SKSpriteNode]()
     var firstObstacleNumber = 0
     
-    var gap: CGFloat = 200.0
-    var gapDecrease: CGFloat = 0.5
+    var gap: CGFloat = 350.0
+    var gapDecrease: CGFloat = 2
 
     override func didMove(to view: SKView) {
         
@@ -309,7 +309,13 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
             if obstacleScoreList[0].position.y < player.position.y {
                 obstacleScoreList.removeFirst()
                 score += 1
-                if gap > 175 {
+                if gap > 250 {
+                    gapDecrease = 4
+                    gap -= gapDecrease
+                } else if gap > 200 {
+                    gapDecrease = 2
+                    gap -= gapDecrease
+                } else if gap > 175 {
                     gapDecrease = 0.5
                     gap -= gapDecrease
                 } else if gap > 150 {

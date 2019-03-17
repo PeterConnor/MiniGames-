@@ -80,6 +80,7 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         
+        view.showsPhysics = true
         //NotificationCenter.default.addObserver(self, selector: #selector(GameScene_flash.pauseGame), name: NSNotification.Name(rawValue: "PauseGame"), object: nil)
         
         self.physicsWorld.contactDelegate = self
@@ -97,12 +98,12 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
         var randomX = Int(arc4random_uniform(UInt32(590)) + 80)
         var randomY = Int(arc4random_uniform(UInt32(735)) + 365)
         
-        if buttonSequence.count < 40 {
+        if buttonSequence.count < 35 {
             var check = true
             while check && buttonCount > 0 {
                 check = false
                 for i in buttonSequence {
-                    while abs(i.position.y - CGFloat(randomY)) < CGFloat(63) && abs(i.position.x - CGFloat(randomX)) < CGFloat(63) {
+                    while abs(i.position.y - CGFloat(randomY)) < CGFloat(85) && abs(i.position.x - CGFloat(randomX)) < CGFloat(85) {
                         check = true
                         randomX = Int(arc4random_uniform(UInt32(590)) + 80)
                         randomY = Int(arc4random_uniform(UInt32(735)) + 365)
@@ -309,7 +310,8 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
                     }
                     self.run(SKAction.sequence([wait, run]))
                 }
-            } else if atPoint(location).name != buttonSequence[buttonIndex].name && atPoint(location).name != "actionButton" && atPoint(location).name != "BackButton" {
+                
+            } else if atPoint(location).name != buttonSequence[buttonIndex].name && atPoint(location).name != "actionButton" && atPoint(location).name != "BackButton" && atPoint(location).name?.hasPrefix("button") ?? false {
                 
                 for i in buttonSequence {
                     i.alpha = 1
@@ -336,6 +338,19 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
                 }
             }
         }
+        }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            let location = touch.location(in: self)
+            if atPoint(location).name?.hasPrefix("button") ?? false {
+                
+            } else {
+                for i in buttonSequence {
+                    i.alpha = 0.2
+                }
+            }
         }
     }
     
