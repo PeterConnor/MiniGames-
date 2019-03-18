@@ -76,6 +76,7 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
     }
     
     var player = SKSpriteNode()
+    var enemiesList = [SKSpriteNode]()
     var xMotion: CGFloat = 0
     let motionManager = CMMotionManager()
     
@@ -258,6 +259,7 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
         enemy.physicsBody?.collisionBitMask = 0
         
         addChild(enemy)
+        enemiesList.append(enemy)
         
         addMovement(obs: enemy)
     }
@@ -266,8 +268,21 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
         var actionList = [SKAction]()
         
         actionList.append(SKAction.move(to: CGPoint(x: obs.position.x, y: 0 - obs.size.height), duration: 6))
-        actionList.append(SKAction.removeFromParent())
-        
+        actionList.append(SKAction.run({
+            self.isGameOver = true
+            for i in self.enemiesList {
+                i.removeAllActions()
+            }
+            
+            self.isUserInteractionEnabled = false
+            
+            let actionRed = SKAction.colorize(with: .red, colorBlendFactor: 1.0, duration: 0.25)
+            let actionBack = SKAction.wait(forDuration: 2.0)
+            
+            self.scene?.run(SKAction.sequence([actionRed, actionBack]), completion: { () -> Void in
+                self.gameOver()
+            })
+        }))
         obs.run(SKAction.sequence(actionList))
     }
     
@@ -289,9 +304,14 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
             if lastYieldTimeInterval > timeInterval {
                 timeInterval *= 0.997
                 lastYieldTimeInterval = 0
-                addEnemy()
+                if !isGameOver {
+                    addEnemy()
+                }
             }
         }
+        
+        
+        
     }
     
     override func didSimulatePhysics() {

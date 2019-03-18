@@ -109,7 +109,7 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
     var checkpointY = CGFloat(0)
     var gameOverY = CGFloat(0)
     var scaleNumber = 1.5
-    var moveNumber = 1
+    var moveNumber = 10
     var speedNum = CGFloat(250)
     
     override func didMove(to view: SKView) {
