@@ -18,18 +18,19 @@ If your app is published to the App Store, remember to come back to link your ap
 
 rate crashes with no service
 put real unit id in
+bounce ancd shooter difficulty right?
+test ipad
+landing page
 
 ***Eventually***
 make flash objects 1 image, so taps on blur register
-change support url. currently, twitter.
+change support url on app store. currently, twitter.
 change all blurrs to blur
 console message
-android
-iPad
 feedback/email?
 premium?
-add sounds (add global singleton bool for mute)
-landing page
+add sounds (add global singleton bool for mute)?
+
 product hunt
 add videos to app store
 make ios 10

@@ -82,6 +82,8 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         
+        UIApplication.shared.isIdleTimerDisabled = true
+        
         numAtlas.preload {
         }
         self.physicsWorld.contactDelegate = self
@@ -102,8 +104,6 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
-    
-    
     
     @objc func pauseGame() {
         self.isPaused = true
@@ -159,6 +159,8 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
         scene?.scaleMode = .aspectFit
         scene?.gameVC = self.gameVC
         scene?.gameName = "shoot"
+        
+        UIApplication.shared.isIdleTimerDisabled = false
         
         self.view?.presentScene(scene!, transition: SKTransition.push(with: SKTransitionDirection.down, duration: 0.25))
     }
@@ -262,6 +264,9 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
         enemiesList.append(enemy)
         
         addMovement(obs: enemy)
+        addSideMovement(enemy: enemy)
+        
+        
     }
     
     func addMovement(obs: SKSpriteNode) {
@@ -286,10 +291,49 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
         obs.run(SKAction.sequence(actionList))
     }
     
+    func addSideMovement(enemy: SKSpriteNode) {
+        var doSide = Int()
+        if score < 25 {
+            doSide = 0
+        } else if score < 50 {
+            doSide = Int(arc4random_uniform(UInt32(6)))
+        } else if score < 100 {
+            doSide = Int(arc4random_uniform(UInt32(5)))
+        } else if score < 150 {
+            doSide = Int(arc4random_uniform(UInt32(4)))
+        } else if score < 250 {
+            doSide = Int(arc4random_uniform(UInt32(3)))
+        }
+        
+        if doSide == 2 {
+            let leftOrRight = arc4random_uniform(UInt32(2))
+            var firstX = CGFloat()
+            var secondX = CGFloat()
+            var initialXTime = CGFloat()
+            if leftOrRight == 0 {
+                initialXTime = enemy.position.x/250
+                firstX = 0
+                secondX = 750
+            } else {
+                initialXTime = (750 - enemy.position.x)/250
+                firstX = 750
+                secondX = 0
+            }
+            
+            let firstAction = SKAction.moveTo(x: firstX, duration: TimeInterval(initialXTime))
+            let secondAction = SKAction.moveTo(x: secondX, duration: TimeInterval(750/250))
+            let thirdAction = SKAction.moveTo(x: firstX, duration: TimeInterval(750/250))
+            let actionSequence = SKAction.sequence([secondAction, thirdAction])
+            let foreverSequence = SKAction.repeatForever(actionSequence)
+            let completeAction = SKAction.sequence([firstAction, foreverSequence])
+            enemy.run(completeAction)
+        }
+    }
+    
     var lastUpdate = TimeInterval()
     var lastYieldTimeInterval = TimeInterval()
     var timeCheck = 0
-    var timeInterval = 0.8
+    var timeInterval = 0.9
     
     override func update(_ currentTime: TimeInterval) {
         print(timeInterval)
@@ -298,7 +342,7 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
                 lastUpdate = currentTime
                 timeCheck = 0
             }
-            var timeSinceLastUpdate = currentTime - lastUpdate
+            let timeSinceLastUpdate = currentTime - lastUpdate
             lastUpdate = currentTime
             lastYieldTimeInterval += timeSinceLastUpdate
             if lastYieldTimeInterval > timeInterval {
@@ -368,6 +412,7 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
                 menuScene?.scaleMode = .aspectFit
                 menuScene?.gameName = "shoot"
                 menuScene?.gameVC = gameVC
+                UIApplication.shared.isIdleTimerDisabled = false
                 
                 self.view?.presentScene(menuScene!, transition: SKTransition.push(with: SKTransitionDirection.down, duration: 0.25))
             }
