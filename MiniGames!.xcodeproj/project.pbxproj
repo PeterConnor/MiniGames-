@@ -15,6 +15,8 @@
 		FA87AEC52224DDC3006A9207 /* GameScene_bounce.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA87AEC42224DDC3006A9207 /* GameScene_bounce.sks */; };
 		FA87AEC82235FDD0006A9207 /* GameScene_shoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA87AEC72235FDD0006A9207 /* GameScene_shoot.swift */; };
 		FA87AECA2235FDF7006A9207 /* GameScene_shoot.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA87AEC92235FDF7006A9207 /* GameScene_shoot.sks */; };
+		FA87AED222434DC5006A9207 /* GameScene_match.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA87AED122434DC5006A9207 /* GameScene_match.swift */; };
+		FA87AED422434DD2006A9207 /* GameScene_match.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA87AED322434DD2006A9207 /* GameScene_match.sks */; };
 		FA93F65B219B9250007021F6 /* GameScene_collide.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA93F65A219B9250007021F6 /* GameScene_collide.sks */; };
 		FA93F65D219D1227007021F6 /* GameScene_flash.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA93F65C219D1227007021F6 /* GameScene_flash.sks */; };
 		FA97E79A20804DCE002FF39C /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97E79920804DCE002FF39C /* CollectionVC.swift */; };
@@ -44,6 +46,8 @@
 		FA87AEC42224DDC3006A9207 /* GameScene_bounce.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene_bounce.sks; sourceTree = "<group>"; };
 		FA87AEC72235FDD0006A9207 /* GameScene_shoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene_shoot.swift; sourceTree = "<group>"; };
 		FA87AEC92235FDF7006A9207 /* GameScene_shoot.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene_shoot.sks; sourceTree = "<group>"; };
+		FA87AED122434DC5006A9207 /* GameScene_match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene_match.swift; sourceTree = "<group>"; };
+		FA87AED322434DD2006A9207 /* GameScene_match.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene_match.sks; sourceTree = "<group>"; };
 		FA93F65A219B9250007021F6 /* GameScene_collide.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene_collide.sks; sourceTree = "<group>"; };
 		FA93F65C219D1227007021F6 /* GameScene_flash.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene_flash.sks; sourceTree = "<group>"; };
 		FA97E79920804DCE002FF39C /* CollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
@@ -138,6 +142,15 @@
 			path = Shoot;
 			sourceTree = "<group>";
 		};
+		FA87AED022434D97006A9207 /* Match */ = {
+			isa = PBXGroup;
+			children = (
+				FA87AED122434DC5006A9207 /* GameScene_match.swift */,
+				FA87AED322434DD2006A9207 /* GameScene_match.sks */,
+			);
+			path = Match;
+			sourceTree = "<group>";
+		};
 		FAB7F36820DFEE73003F24E3 /* Flash */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +192,7 @@
 			children = (
 				FA7A83EA2076F27100705B50 /* Global */,
 				FA2A62BC21FFBA24001CE6D1 /* Menu */,
+				FA87AED022434D97006A9207 /* Match */,
 				FA87AEC62235FDAA006A9207 /* Shoot */,
 				FA87AEC12224DD27006A9207 /* Bounce */,
 				FADE21E720E7F53B0066024F /* Evade */,
@@ -260,6 +274,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA87AED422434DD2006A9207 /* GameScene_match.sks in Resources */,
 				FA93F65B219B9250007021F6 /* GameScene_collide.sks in Resources */,
 				FA87AECA2235FDF7006A9207 /* GameScene_shoot.sks in Resources */,
 				FA93F65D219D1227007021F6 /* GameScene_flash.sks in Resources */,
@@ -324,6 +339,7 @@
 				FADE21E920E7F5560066024F /* GameScene_evade.swift in Sources */,
 				FA868EB420EAE1220007A716 /* MenuScene.swift in Sources */,
 				FAF6A8572059DE5800DAE12E /* AppDelegate.swift in Sources */,
+				FA87AED222434DC5006A9207 /* GameScene_match.swift in Sources */,
 				FA87AEC82235FDD0006A9207 /* GameScene_shoot.swift in Sources */,
 				FA97E79A20804DCE002FF39C /* CollectionVC.swift in Sources */,
 				FA97E79C20804E8E002FF39C /* Singleton.swift in Sources */,

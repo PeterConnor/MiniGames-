@@ -210,6 +210,13 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
                         view!.ignoresSiblingOrder = true
                         view!.presentScene(scene)
                         view!.presentScene(gameScene)
+                    case "match":
+                        let gameScene = GameScene_match(fileNamed: "GameScene_" + gameName!)
+                        gameScene!.scaleMode = .aspectFit
+                        gameScene!.gameVC = gameVC
+                        view!.ignoresSiblingOrder = true
+                        view!.presentScene(scene)
+                        view!.presentScene(gameScene)
                     default:
                         break
                     }
@@ -291,6 +298,8 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
             myAlert = UIAlertController(title: "Instructions", message: "Tap once to launch the green disc. Tilt the phone to the left or right to make the green disc bounce off of the obstacles. Climb as high as you can to earn points! ", preferredStyle: .alert)
         case "shoot":
             myAlert = UIAlertController(title: "Instructions", message: "Tilt the phone to the left or right to move the green disc. Tap the screen to shoot the approaching enemies. Don't let any of the enemies get passed you!", preferredStyle: .alert)
+        case "match":
+            myAlert = UIAlertController(title: "Instructions", message: "As the rows of glowing discs fall, match the bottom disc to the right color.", preferredStyle: .alert)
         default:
             break
         }

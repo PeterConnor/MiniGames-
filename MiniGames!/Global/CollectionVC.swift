@@ -64,10 +64,7 @@ class CollectionVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         
         var width = collectionView.frame.size.width / 2
         var height = collectionView.frame.size.height / 3
-        if indexPath.row == 4 {
-            width = collectionView.frame.size.width / 1
-            height = collectionView.frame.size.height / 3
-        }
+      
         return CGSize(width: width, height: height)
     }
     

@@ -21,6 +21,7 @@ put real unit id in
 bounce ancd shooter difficulty right?
 test ipad
 landing page
+ add instructions to match
 
 ***Eventually***
 make flash objects 1 image, so taps on blur register
@@ -225,7 +226,7 @@ make ios 10
  add case to gameviewcontroller2
  add to singleton
  change collection view width & height #'s
- add case to menuscene
+ add case to menuscene navigation switch and instructions switch
  make sure sks file anchorpoint is 0,0
  add skeleton
 
