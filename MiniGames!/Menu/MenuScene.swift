@@ -48,12 +48,12 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
         backButton.zPosition = 6
         addChild(backButton)
         
-        let backButtonBlurr = SKSpriteNode(imageNamed: "GreenBackButtonBlurr")
-        //backButtonBlurr.size = CGSize(width: 67.2, height: 115.8)
-        backButton.addChild(backButtonBlurr)
-        backButtonBlurr.zPosition = -1
+        let backButtonblur = SKSpriteNode(imageNamed: "GreenBackButtonblur")
+        //backButtonblur.size = CGSize(width: 67.2, height: 115.8)
+        backButton.addChild(backButtonblur)
+        backButtonblur.zPosition = -1
         
-        backButton.position = CGPoint(x: 0 + backButtonBlurr.size.width/2 + 25, y: 1334 - backButtonBlurr.size.height/2 - 25)
+        backButton.position = CGPoint(x: 0 + backButtonblur.size.width/2 + 25, y: 1334 - backButtonblur.size.height/2 - 25)
         
     }
     
@@ -61,28 +61,28 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
     
     func addLabelsAndButtons() {
         playButton = SKSpriteNode(imageNamed: "PlayWhite")
-        let playButtonBlurr = SKSpriteNode(imageNamed: "PlayGreenBlurr")
-        //backButtonBlurr.size = CGSize(width: 67.2, height: 115.8)
-        playButton.addChild(playButtonBlurr)
+        let playButtonblur = SKSpriteNode(imageNamed: "PlayGreenblur")
+        //backButtonblur.size = CGSize(width: 67.2, height: 115.8)
+        playButton.addChild(playButtonblur)
         //playButton.xScale = 0.5
         //playButton.yScale = 1
-        playButtonBlurr.zPosition = -1
+        playButtonblur.zPosition = -1
         
-        playButton.position = CGPoint(x: frame.midX, y: logo.position.y - logo.size.height/2 - playButtonBlurr.size.height/2)
+        playButton.position = CGPoint(x: frame.midX, y: logo.position.y - logo.size.height/2 - playButtonblur.size.height/2)
         addChild(playButton)
         //animate(label: playButton)
         
         helpButton = SKSpriteNode(imageNamed: "HelpWhite")
         helpButton.name = "helpButton"
         addChild(helpButton)
-        let helpButtonBlurr = SKSpriteNode(imageNamed: "HelpBlueBlurr")
-        //backButtonBlurr.size = CGSize(width: 67.2, height: 115.8)
-        helpButton.addChild(helpButtonBlurr)
+        let helpButtonblur = SKSpriteNode(imageNamed: "HelpBlueblur")
+        //backButtonblur.size = CGSize(width: 67.2, height: 115.8)
+        helpButton.addChild(helpButtonblur)
         //helpButton.xScale = 0.5
         //helpButton.yScale = 0.5
-        helpButtonBlurr.zPosition = -1
+        helpButtonblur.zPosition = -1
         
-        helpButton.position = CGPoint(x: frame.midX, y: playButton.position.y - playButtonBlurr.size.height/2 - 25)
+        helpButton.position = CGPoint(x: frame.midX, y: playButton.position.y - playButtonblur.size.height/2 - 25)
         
         
         let highscoreLabel = SKSpriteNode(imageNamed: "HighScoreWhite")
@@ -90,34 +90,34 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
         if score > 999 {
             score = 999
         }
-        highscoreLabel.position = CGPoint(x: helpButton.position.x, y: helpButton.position.y - helpButtonBlurr.size.height/2 - 25)
+        highscoreLabel.position = CGPoint(x: helpButton.position.x, y: helpButton.position.y - helpButtonblur.size.height/2 - 25)
         //highscoreLabel.xScale = 0.5
         //highscoreLabel.yScale = 0.5
 
         addChild(highscoreLabel)
-        let highscoreLabelBlurr = SKSpriteNode(imageNamed: "HighScoreRedBlurr")
-        //backButtonBlurr.size = CGSize(width: 67.2, height: 115.8)
-        highscoreLabel.addChild(highscoreLabelBlurr)
-        highscoreLabelBlurr.zPosition = -1
+        let highscoreLabelblur = SKSpriteNode(imageNamed: "HighScoreRedblur")
+        //backButtonblur.size = CGSize(width: 67.2, height: 115.8)
+        highscoreLabel.addChild(highscoreLabelblur)
+        highscoreLabelblur.zPosition = -1
         
         let scoreLabel1 = SKSpriteNode(imageNamed: "num0")
         let scoreLabel2 = SKSpriteNode(imageNamed: "num0")
         let scoreLabel3 = SKSpriteNode(imageNamed: "num0")
-        let blurr1 = SKSpriteNode(imageNamed: "BlueNum0")
-        let blurr2 = SKSpriteNode(imageNamed: "BlueNum0")
-        let blurr3 = SKSpriteNode(imageNamed: "BlueNum0")
-        scoreLabel1.position = CGPoint(x: frame.midX - blurr1.size.width/2, y: highscoreLabel.position.y - highscoreLabelBlurr.size.height/2 - 25)
-        scoreLabel2.position = CGPoint(x: frame.midX, y: highscoreLabel.position.y - highscoreLabelBlurr.size.height/2 - 25)
-        scoreLabel3.position = CGPoint(x: frame.midX + blurr3.size.width/2, y: highscoreLabel.position.y - highscoreLabelBlurr.size.height/2 - 25)
+        let blur1 = SKSpriteNode(imageNamed: "BlueNum0")
+        let blur2 = SKSpriteNode(imageNamed: "BlueNum0")
+        let blur3 = SKSpriteNode(imageNamed: "BlueNum0")
+        scoreLabel1.position = CGPoint(x: frame.midX - blur1.size.width/2, y: highscoreLabel.position.y - highscoreLabelblur.size.height/2 - 25)
+        scoreLabel2.position = CGPoint(x: frame.midX, y: highscoreLabel.position.y - highscoreLabelblur.size.height/2 - 25)
+        scoreLabel3.position = CGPoint(x: frame.midX + blur3.size.width/2, y: highscoreLabel.position.y - highscoreLabelblur.size.height/2 - 25)
         addChild(scoreLabel1)
         addChild(scoreLabel2)
         addChild(scoreLabel3)
-        scoreLabel1.addChild(blurr1)
-        blurr1.zPosition = -1
-        scoreLabel2.addChild(blurr2)
-        blurr2.zPosition = -1
-        scoreLabel3.addChild(blurr3)
-        blurr3.zPosition = -1
+        scoreLabel1.addChild(blur1)
+        blur1.zPosition = -1
+        scoreLabel2.addChild(blur2)
+        blur2.zPosition = -1
+        scoreLabel3.addChild(blur3)
+        blur3.zPosition = -1
 
         
         let stringFromNum = String(score)
@@ -131,24 +131,24 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
             
         case 1:
             //scoreLabel3.texture = SKTexture(imageNamed: "num" + numList[0])
-            //blurr3.texture = SKTexture(imageNamed: "BlueNum" + numList[0])
+            //blur3.texture = SKTexture(imageNamed: "BlueNum" + numList[0])
             scoreLabel3.texture = SKTexture(imageNamed: "num" + numList[0])
-            blurr3.texture = SKTexture(imageNamed: "BlueNum" + numList[0])
+            blur3.texture = SKTexture(imageNamed: "BlueNum" + numList[0])
         case 2:
             scoreLabel3.texture = SKTexture(imageNamed: "num" + numList[1])
-            blurr3.texture = SKTexture(imageNamed: "BlueNum" + numList[1])
+            blur3.texture = SKTexture(imageNamed: "BlueNum" + numList[1])
             
             scoreLabel2.texture = SKTexture(imageNamed: "num" + numList[0])
-            blurr2.texture = SKTexture(imageNamed: "BlueNum" + numList[0])
+            blur2.texture = SKTexture(imageNamed: "BlueNum" + numList[0])
         case 3:
             scoreLabel3.texture = SKTexture(imageNamed: "num" + numList[2])
-            blurr3.texture = SKTexture(imageNamed: "BlueNum" + numList[2])
+            blur3.texture = SKTexture(imageNamed: "BlueNum" + numList[2])
             
             scoreLabel2.texture = SKTexture(imageNamed: "num" + numList[1])
-            blurr2.texture = SKTexture(imageNamed: "BlueNum" + numList[1])
+            blur2.texture = SKTexture(imageNamed: "BlueNum" + numList[1])
             
             scoreLabel1.texture = SKTexture(imageNamed: "num" + numList[0])
-            blurr1.texture = SKTexture(imageNamed: "BlueNum" + numList[0])
+            blur1.texture = SKTexture(imageNamed: "BlueNum" + numList[0])
         default:
             break
         }

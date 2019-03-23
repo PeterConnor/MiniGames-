@@ -22,16 +22,16 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
     var isGameOver = false
     var isGamePaused = false
     var pauseButton = SKSpriteNode()
-    var pauseButtonBlurr = SKSpriteNode()
+    var pauseButtonblur = SKSpriteNode()
     var tapToStart = SKSpriteNode()
 
     
     var scoreLabel1 = SKSpriteNode(imageNamed: "num0")
     var scoreLabel2 = SKSpriteNode(imageNamed: "num0")
     var scoreLabel3 = SKSpriteNode(imageNamed: "num0")
-    var blurr1 = SKSpriteNode(imageNamed: "BlueNum0")
-    var blurr2 = SKSpriteNode(imageNamed: "BlueNum0")
-    var blurr3 = SKSpriteNode(imageNamed: "BlueNum0")
+    var blur1 = SKSpriteNode(imageNamed: "BlueNum0")
+    var blur2 = SKSpriteNode(imageNamed: "BlueNum0")
+    var blur3 = SKSpriteNode(imageNamed: "BlueNum0")
     
     let numAtlas = SKTextureAtlas(named: "NumAtlas")
     
@@ -47,9 +47,9 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
                 tens = 0
                 hundreds += 1
                 scoreLabel2.texture = SKTexture(imageNamed: "num\(tens)")
-                blurr2.texture = numAtlas.textureNamed("BlueNum\(tens)")
+                blur2.texture = numAtlas.textureNamed("BlueNum\(tens)")
                 scoreLabel1.texture = SKTexture(imageNamed: "num\(hundreds)")
-                blurr1.texture = numAtlas.textureNamed("BlueNum\(hundreds)")
+                blur1.texture = numAtlas.textureNamed("BlueNum\(hundreds)")
                 
             }
             
@@ -57,22 +57,22 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
                 ones = 0
                 tens += 1
                 scoreLabel2.texture = SKTexture(imageNamed: "num\(tens)")
-                blurr2.texture = numAtlas.textureNamed("BlueNum\(tens)")
+                blur2.texture = numAtlas.textureNamed("BlueNum\(tens)")
                 
                 
             }
             scoreLabel3.texture = SKTexture(imageNamed: "num\(ones)")
-            blurr3.texture = numAtlas.textureNamed("BlueNum\(ones)")
+            blur3.texture = numAtlas.textureNamed("BlueNum\(ones)")
             
             if score >= 999 {
                 scoreLabel1.texture = SKTexture(imageNamed: "num9")
-                blurr1.texture = numAtlas.textureNamed("BlueNum9")
+                blur1.texture = numAtlas.textureNamed("BlueNum9")
                 
                 scoreLabel2.texture = SKTexture(imageNamed: "num9")
-                blurr2.texture = numAtlas.textureNamed("BlueNum9")
+                blur2.texture = numAtlas.textureNamed("BlueNum9")
                 
                 scoreLabel3.texture = SKTexture(imageNamed: "num9")
-                blurr3.texture = numAtlas.textureNamed("BlueNum9")
+                blur3.texture = numAtlas.textureNamed("BlueNum9")
             }
             
         
@@ -102,7 +102,7 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
     }
     
     var player = SKSpriteNode()
-    var playerBlurr = SKSpriteNode()
+    var playerblur = SKSpriteNode()
     var xMotion: CGFloat = 0
     let motionManager = CMMotionManager()
     let cam = SKCameraNode()
@@ -185,20 +185,20 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
         self.isPaused = true
         isGamePaused = true
         pauseButton.texture = SKTexture(imageNamed: "PlayButton")
-        pauseButtonBlurr.texture = SKTexture(imageNamed: "GreenPlayButtonBlurr")
+        pauseButtonblur.texture = SKTexture(imageNamed: "GreenPlayButtonblur")
         self.speed = 0.0
         self.physicsWorld.speed = 0.0
     }
     
     func addPauseButton() {
         pauseButton = SKSpriteNode(texture: SKTexture(imageNamed: "PauseButton"))
-        pauseButtonBlurr = SKSpriteNode(imageNamed: "GreenPauseButtonBlurr")
+        pauseButtonblur = SKSpriteNode(imageNamed: "GreenPauseButtonblur")
         pauseButton.name = "PauseButton"
-        pauseButton.position = CGPoint(x: 325 - pauseButtonBlurr.size.width/2 - 25, y: 667 - pauseButtonBlurr.size.height/2 - 25)
+        pauseButton.position = CGPoint(x: 325 - pauseButtonblur.size.width/2 - 25, y: 667 - pauseButtonblur.size.height/2 - 25)
         pauseButton.zPosition = 6
         cam.addChild(pauseButton)
-        pauseButton.addChild(pauseButtonBlurr)
-        pauseButtonBlurr.zPosition = -1
+        pauseButton.addChild(pauseButtonblur)
+        pauseButtonblur.zPosition = -1
         
         
         
@@ -211,12 +211,12 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
         backButton.zPosition = 6
         cam.addChild(backButton)
         
-        let backButtonBlurr = SKSpriteNode(imageNamed: "RedBackButtonBlurr")
-        //ZbackButtonBlurr.size = CGSize(width: 67.2, height: 115.8)
-        backButton.addChild(backButtonBlurr)
-        backButtonBlurr.zPosition = -1
+        let backButtonblur = SKSpriteNode(imageNamed: "RedBackButtonblur")
+        //ZbackButtonblur.size = CGSize(width: 67.2, height: 115.8)
+        backButton.addChild(backButtonblur)
+        backButtonblur.zPosition = -1
         
-        backButton.position = CGPoint(x: -325 + backButtonBlurr.size.width/2 + 25, y: 667 - backButtonBlurr.size.height/2 - 25)
+        backButton.position = CGPoint(x: -325 + backButtonblur.size.width/2 + 25, y: 667 - backButtonblur.size.height/2 - 25)
     }
     
     func addTapToStart() {
@@ -240,13 +240,13 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
         
         
         
-        scoreLabel1.addChild(blurr1)
-        scoreLabel2.addChild(blurr2)
-        scoreLabel3.addChild(blurr3)
+        scoreLabel1.addChild(blur1)
+        scoreLabel2.addChild(blur2)
+        scoreLabel3.addChild(blur3)
         
-        blurr1.zPosition = -1
-        blurr2.zPosition = -1
-        blurr3.zPosition = -1
+        blur1.zPosition = -1
+        blur2.zPosition = -1
+        blur3.zPosition = -1
     }
     
     func addPlayer() {
@@ -262,9 +262,9 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
         player.physicsBody?.affectedByGravity = false
         player.physicsBody?.mass = 0.13635388016700745
         self.addChild(player)
-        playerBlurr = SKSpriteNode(imageNamed: "GreenDiscBlurr")
-        player.addChild(playerBlurr)
-        playerBlurr.zPosition = -1
+        playerblur = SKSpriteNode(imageNamed: "GreenDiscblur")
+        player.addChild(playerblur)
+        playerblur.zPosition = -1
     }
     
     
@@ -300,9 +300,9 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
         }
         
         if randomMoveNumber == 0 {
-            let checkpointBlurr = SKSpriteNode(imageNamed: "RedDiscBlurr")
-            checkpoint.addChild(checkpointBlurr)
-            checkpointBlurr.zPosition = -1
+            let checkpointblur = SKSpriteNode(imageNamed: "RedDiscblur")
+            checkpoint.addChild(checkpointblur)
+            checkpointblur.zPosition = -1
             
             
             
@@ -314,9 +314,9 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
             let completeAction = SKAction.sequence([firstAction, foreverSequence])
             checkpoint.run(completeAction)
         } else {
-            let checkpointBlurr = SKSpriteNode(imageNamed: "BlueDiscBlurr")
-            checkpoint.addChild(checkpointBlurr)
-            checkpointBlurr.zPosition = -1
+            let checkpointblur = SKSpriteNode(imageNamed: "BlueDiscblur")
+            checkpoint.addChild(checkpointblur)
+            checkpointblur.zPosition = -1
         }
         
         if scaleNumber > 0.5 {
@@ -394,7 +394,7 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
                     isGamePaused = false
                     self.isPaused = false
                     pauseButton.texture = SKTexture(imageNamed: "PauseButton")
-                    pauseButtonBlurr.texture = SKTexture(imageNamed: "GreenPauseButtonBlurr")
+                    pauseButtonblur.texture = SKTexture(imageNamed: "GreenPauseButtonblur")
                     self.speed = 1.0
                     self.physicsWorld.speed = 1.0
                 }

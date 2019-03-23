@@ -22,11 +22,13 @@ bounce ancd shooter difficulty right?
 test ipad
 landing page
  add instructions to match
+ for match, increase speed & frequency.
+ for match and all other time update games, need to fix the timecheck, so it's not updating while paused. Look at split game. Put timecheck in pause function.
 
 ***Eventually***
 make flash objects 1 image, so taps on blur register
 change support url on app store. currently, twitter.
-change all blurrs to blur
+change all blurs to blur
 console message
 feedback/email?
 premium?
@@ -49,14 +51,14 @@ make ios 10
  var isGameOver = false
  var isGamePaused = false
  var pauseButton = SKSpriteNode()
- var pauseButtonBlurr = SKSpriteNode()
+ var pauseButtonblur = SKSpriteNode()
  
  var scoreLabel1 = SKSpriteNode(imageNamed: "num0")
  var scoreLabel2 = SKSpriteNode(imageNamed: "num0")
  var scoreLabel3 = SKSpriteNode(imageNamed: "num0")
- var blurr1 = SKSpriteNode(imageNamed: "BlueNum0")
- var blurr2 = SKSpriteNode(imageNamed: "BlueNum0")
- var blurr3 = SKSpriteNode(imageNamed: "BlueNum0")
+ var blur1 = SKSpriteNode(imageNamed: "BlueNum0")
+ var blur2 = SKSpriteNode(imageNamed: "BlueNum0")
+ var blur3 = SKSpriteNode(imageNamed: "BlueNum0")
  
  let numAtlas = SKTextureAtlas(named: "NumAtlas")
  
@@ -71,9 +73,9 @@ make ios 10
  tens = 0
  hundreds += 1
  scoreLabel2.texture = SKTexture(imageNamed: "num\(tens)")
- blurr2.texture = numAtlas.textureNamed("BlueNum\(tens)")
+ blur2.texture = numAtlas.textureNamed("BlueNum\(tens)")
  scoreLabel1.texture = SKTexture(imageNamed: "num\(hundreds)")
- blurr1.texture = numAtlas.textureNamed("BlueNum\(hundreds)")
+ blur1.texture = numAtlas.textureNamed("BlueNum\(hundreds)")
  
  }
  
@@ -81,22 +83,22 @@ make ios 10
  ones = 0
  tens += 1
  scoreLabel2.texture = SKTexture(imageNamed: "num\(tens)")
- blurr2.texture = numAtlas.textureNamed("BlueNum\(tens)")
+ blur2.texture = numAtlas.textureNamed("BlueNum\(tens)")
  
  
  }
  scoreLabel3.texture = SKTexture(imageNamed: "num\(ones)")
- blurr3.texture = numAtlas.textureNamed("BlueNum\(ones)")
+ blur3.texture = numAtlas.textureNamed("BlueNum\(ones)")
  
  if score >= 999 {
  scoreLabel1.texture = SKTexture(imageNamed: "num9")
- blurr1.texture = numAtlas.textureNamed("BlueNum9")
+ blur1.texture = numAtlas.textureNamed("BlueNum9")
  
  scoreLabel2.texture = SKTexture(imageNamed: "num9")
- blurr2.texture = numAtlas.textureNamed("BlueNum9")
+ blur2.texture = numAtlas.textureNamed("BlueNum9")
  
  scoreLabel3.texture = SKTexture(imageNamed: "num9")
- blurr3.texture = numAtlas.textureNamed("BlueNum9")
+ blur3.texture = numAtlas.textureNamed("BlueNum9")
  }
  }
  }
@@ -121,7 +123,7 @@ make ios 10
  self.isPaused = true
  isGamePaused = true
  pauseButton.texture = SKTexture(imageNamed: "PlayButton")
- pauseButtonBlurr.texture = SKTexture(imageNamed: "GreenPlayButtonBlurr")
+ pauseButtonblur.texture = SKTexture(imageNamed: "GreenPlayButtonblur")
  self.speed = 0.0
  self.physicsWorld.speed = 0.0
  }
@@ -135,12 +137,12 @@ make ios 10
  pauseButton.zPosition = 6
  addChild(pauseButton)
  
- pauseButtonBlurr = SKSpriteNode(imageNamed: "GreenPauseButtonBlurr")
- //pauseButtonBlurr.size = CGSize(width: 72.4, height: 104.7)
- pauseButton.addChild(pauseButtonBlurr)
- pauseButtonBlurr.zPosition = -1
+ pauseButtonblur = SKSpriteNode(imageNamed: "GreenPauseButtonblur")
+ //pauseButtonblur.size = CGSize(width: 72.4, height: 104.7)
+ pauseButton.addChild(pauseButtonblur)
+ pauseButtonblur.zPosition = -1
  
- pauseButton.position = CGPoint(x: 750 - pauseButtonBlurr.size.width/2 - 25, y: 1334 - pauseButtonBlurr.size.height/2 - 25)
+ pauseButton.position = CGPoint(x: 750 - pauseButtonblur.size.width/2 - 25, y: 1334 - pauseButtonblur.size.height/2 - 25)
  
  }
  
@@ -151,12 +153,12 @@ make ios 10
  backButton.zPosition = 6
  addChild(backButton)
  
- let backButtonBlurr = SKSpriteNode(imageNamed: "RedBackButtonBlurr")
- //ZbackButtonBlurr.size = CGSize(width: 67.2, height: 115.8)
- backButton.addChild(backButtonBlurr)
- backButtonBlurr.zPosition = -1
+ let backButtonblur = SKSpriteNode(imageNamed: "RedBackButtonblur")
+ //ZbackButtonblur.size = CGSize(width: 67.2, height: 115.8)
+ backButton.addChild(backButtonblur)
+ backButtonblur.zPosition = -1
  
- backButton.position = CGPoint(x: 0 + backButtonBlurr.size.width/2 + 25, y: 1334 - backButtonBlurr.size.height/2 - 25)
+ backButton.position = CGPoint(x: 0 + backButtonblur.size.width/2 + 25, y: 1334 - backButtonblur.size.height/2 - 25)
  
  }
  
@@ -174,13 +176,13 @@ make ios 10
  
  
  
- scoreLabel1.addChild(blurr1)
- scoreLabel2.addChild(blurr2)
- scoreLabel3.addChild(blurr3)
+ scoreLabel1.addChild(blur1)
+ scoreLabel2.addChild(blur2)
+ scoreLabel3.addChild(blur3)
  
- blurr1.zPosition = -1
- blurr2.zPosition = -1
- blurr3.zPosition = -1
+ blur1.zPosition = -1
+ blur2.zPosition = -1
+ blur3.zPosition = -1
  }
  
  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -207,7 +209,7 @@ make ios 10
  isGamePaused = false
  self.isPaused = false
  pauseButton.texture = SKTexture(imageNamed: "PauseButton")
- pauseButtonBlurr.texture = SKTexture(imageNamed: "GreenPauseButtonBlurr")
+ pauseButtonblur.texture = SKTexture(imageNamed: "GreenPauseButtonblur")
  self.speed = 1.0
  self.physicsWorld.speed = 1.0
  }
