@@ -289,17 +289,17 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
         var myAlert = UIAlertController()
         switch gameName {
         case "evade":
-            myAlert = UIAlertController(title: "Instructions", message: "Press the left and right side of the screen to guide the green disc through the obstacles. The more obstacles you pass, the more points you earn! (Pro Tip: Hold the device with both hands and press down with your thumbs)", preferredStyle: .alert)
+            myAlert = UIAlertController(title: "Instructions", message: "Press the left and right side of the screen to guide the green disc through the obstacles. (Pro Tip: Hold the device with both hands and press down with your thumbs)", preferredStyle: .alert)
         case "flash":
             myAlert = UIAlertController(title: "Instructions", message: "Tap 'Play' to begin the flashing sequence. Memorize the location and order of flashing discs. Earn points by repeating back the ever-growing sequence correctly!" , preferredStyle: .alert)
         case "collide":
             myAlert = UIAlertController(title: "Instructions", message: "Tap once to move the blue disc. Once the blue disc overlaps the red disc, tap again. Repeat this action to earn points! (Tap the bottom of the screen. Not the actual discs!)", preferredStyle: .alert)
         case "bounce":
-            myAlert = UIAlertController(title: "Instructions", message: "Tap once to launch the green disc. Tilt the phone to the left or right to make the green disc bounce off of the obstacles. Climb as high as you can to earn points! ", preferredStyle: .alert)
+            myAlert = UIAlertController(title: "Instructions", message: "Tap once to launch the green disc. Tilt your device to the left or right to make the green disc move. Climb as high as you can by bouncing the green disc off the blue and red discs! ", preferredStyle: .alert)
         case "shoot":
-            myAlert = UIAlertController(title: "Instructions", message: "Tilt the phone to the left or right to move the green disc. Tap the screen to shoot the approaching enemies. Don't let any of the enemies get passed you!", preferredStyle: .alert)
+            myAlert = UIAlertController(title: "Instructions", message: "Tilt your device to the left or right to move the green disc. Tap the screen repeatedly to shoot the approaching enemies. Don't let any of the enemies get passed you!", preferredStyle: .alert)
         case "match":
-            myAlert = UIAlertController(title: "Instructions", message: "As the rows of glowing discs fall, match the bottom disc to the right color.", preferredStyle: .alert)
+            myAlert = UIAlertController(title: "Instructions", message: "Tap the left, middle, or right of the screen to move the bottom disc to that spot. Match the bottom disc to the correct color in the rows of falling discs.", preferredStyle: .alert)
         default:
             break
         }

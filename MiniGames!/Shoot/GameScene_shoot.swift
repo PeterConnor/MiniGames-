@@ -82,8 +82,6 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         
-        UIApplication.shared.isIdleTimerDisabled = true
-        
         numAtlas.preload {
         }
         self.physicsWorld.contactDelegate = self
@@ -106,6 +104,7 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
     }
     
     @objc func pauseGame() {
+        timeCheck = 1
         self.isPaused = true
         isGamePaused = true
         pauseButton.texture = SKTexture(imageNamed: "PlayButton")
@@ -159,9 +158,7 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
         scene?.scaleMode = .aspectFit
         scene?.gameVC = self.gameVC
         scene?.gameName = "shoot"
-        
-        UIApplication.shared.isIdleTimerDisabled = false
-        
+                
         self.view?.presentScene(scene!, transition: SKTransition.push(with: SKTransitionDirection.down, duration: 0.25))
     }
     
@@ -412,7 +409,7 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
                 menuScene?.scaleMode = .aspectFit
                 menuScene?.gameName = "shoot"
                 menuScene?.gameVC = gameVC
-                UIApplication.shared.isIdleTimerDisabled = false
+
                 
                 self.view?.presentScene(menuScene!, transition: SKTransition.push(with: SKTransitionDirection.down, duration: 0.25))
             }

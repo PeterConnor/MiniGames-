@@ -156,10 +156,10 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
         //print("diff \(abs(player.position.x - CGFloat(randomX)), abs(player.position.y - CGFloat(randomY)))")
         //print(abs(player.position.x - CGFloat(randomX)) < 200, abs(player.position.y) < 200)
         
-        while abs(player.position.x - CGFloat(randomX)) < 115 {
+        while abs(player.position.x - CGFloat(randomX)) < 120 {
             randomX = Int(arc4random_uniform(UInt32(650)) + 50)
         }
-        while abs(player.position.y - CGFloat(randomY)) < 115 {
+        while abs(player.position.y - CGFloat(randomY)) < 120 {
             randomY = Int(arc4random_uniform(UInt32(820)) + 300)
             //print("new random x \(randomX)")
             //print("new random y \(randomY)")

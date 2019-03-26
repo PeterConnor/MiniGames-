@@ -18,12 +18,22 @@ If your app is published to the App Store, remember to come back to link your ap
 
 rate crashes with no service
 put real unit id in
-bounce ancd shooter difficulty right?
-test ipad
-landing page
- add instructions to match
- for match, increase speed & frequency.
- for match and all other time update games, need to fix the timecheck, so it's not updating while paused. Look at split game. Put timecheck in pause function.
+ 
+add tap to start to match
+ 
+for match, increase speed & frequency. (Maybe just speed)
+scale down enemies in shoot. Make it easier at first and make it get harder faster.
+ make games, especially bounce, idiot proof
+ for bounce. make floor or checks so cant die immediately.
+ in bounce, direction of check should be random.
+ 
+test idiot-proof (starts), difficulty progressions (can't take too too long to get challenging), endgames, ipads/devices
+ collide-
+ flash-
+ evade-
+ bounce-
+ match-
+ shoot-
 
 ***Eventually***
 make flash objects 1 image, so taps on blur register
@@ -36,8 +46,15 @@ add sounds (add global singleton bool for mute)?
 
 product hunt
 add videos to app store
+landing page
 make ios 10
+ reviews
+ 
  */
+
+
+
+
 
 /*Skeleton
  

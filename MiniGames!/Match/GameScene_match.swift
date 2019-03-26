@@ -95,6 +95,7 @@ class GameScene_match: SKScene, SKPhysicsContactDelegate {
     }
     
     @objc func pauseGame() {
+        timeCheck = 1
         self.isPaused = true
         isGamePaused = true
         pauseButton.texture = SKTexture(imageNamed: "PlayButton")
@@ -277,7 +278,6 @@ class GameScene_match: SKScene, SKPhysicsContactDelegate {
             if timeCheck == 1 {
                 lastUpdate = currentTime
                 timeCheck = 0
-                print("run?")
             }
             let timeSinceLastUpdate = currentTime - lastUpdate
             lastUpdate = currentTime
@@ -313,6 +313,23 @@ class GameScene_match: SKScene, SKPhysicsContactDelegate {
         blur1.zPosition = -1
         blur2.zPosition = -1
         blur3.zPosition = -1
+    }
+    
+    func gameOver() {
+        
+        UserDefaults.standard.set(score, forKey: "RecentScore_match")
+        if score > UserDefaults.standard.integer(forKey: "HighScore_match") {
+            UserDefaults.standard.set(score, forKey: "HighScore_match")
+        }
+        
+        let scene = MenuScene(fileNamed: "MenuScene")
+        scene?.scaleMode = .aspectFit
+        scene?.gameVC = self.gameVC
+        scene?.gameName = "match"
+        
+        UIApplication.shared.isIdleTimerDisabled = false
+        
+        self.view?.presentScene(scene!, transition: SKTransition.push(with: SKTransitionDirection.down, duration: 0.25))
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -368,13 +385,27 @@ class GameScene_match: SKScene, SKPhysicsContactDelegate {
             removalList[0].removeFromParent()
             removalList.removeFirst()
         } else {
-            print("gameover")
-            removalList[0].removeFromParent()
+            
+            isGameOver = true
+            
+            self.isUserInteractionEnabled = false
+            
+            for i in removalList {
+                i.removeAllActions()
+            }
+            
+            let actionRed = SKAction.colorize(with: .red, colorBlendFactor: 1.0, duration: 0.25)
+            let actionBack = SKAction.wait(forDuration: 2.0)
+            
+            self.scene?.run(SKAction.sequence([actionRed, actionBack]), completion: { () -> Void in
+                self.gameOver()
+            })
+            /*removalList[0].removeFromParent()
             removalList.removeFirst()
             removalList[0].removeFromParent()
             removalList.removeFirst()
             removalList[0].removeFromParent()
-            removalList.removeFirst()
+            removalList.removeFirst()*/
         }
         
     }

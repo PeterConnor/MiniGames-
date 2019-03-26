@@ -114,6 +114,8 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         
+        UIApplication.shared.isIdleTimerDisabled = true
+        
         numAtlas.preload {
         }
         self.physicsWorld.contactDelegate = self
@@ -346,6 +348,8 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
         scene?.gameVC = self.gameVC
         scene?.gameName = "bounce"
         
+        UIApplication.shared.isIdleTimerDisabled = false
+        
         self.view?.presentScene(scene!, transition: SKTransition.push(with: SKTransitionDirection.down, duration: 0.25))
     }
     
@@ -383,6 +387,7 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
                 menuScene?.scaleMode = .aspectFit
                 menuScene?.gameName = "bounce"
                 menuScene?.gameVC = gameVC
+                UIApplication.shared.isIdleTimerDisabled = false
                 
                 self.view?.presentScene(menuScene!, transition: SKTransition.push(with: SKTransitionDirection.down, duration: 0.25))
             }
