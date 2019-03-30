@@ -87,20 +87,18 @@ class CollectionVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     @IBAction func rateButtonAction(_ sender: Any) {
         if #available(iOS 10.3, *) {
-          
-            
-            DispatchQueue.global(qos: .background).async {
-                    if self.reachability?.connection == .wifi {
-                        print("Reachable via WiFi")
-                        SKStoreReviewController.requestReview()
-                    } else if self.reachability?.connection == .cellular {
-                        print("Reachable via Cellular")
-                        SKStoreReviewController.requestReview()
-                    } else if self.reachability?.connection == .none {
-                        print("Not reachable")
-                    } else {
-                        print("Not reachable")
+                if self.reachability?.connection == .wifi {
+                    print("Reachable via WiFi")
+                    SKStoreReviewController.requestReview()
+                } else if self.reachability?.connection == .cellular {
+                    print("Reachable via Cellular")
+                    if let url  = URL(string: "itms-apps://itunes.apple.com/us/app/minigames/id1378113348") {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
                     }
+                } else if self.reachability?.connection == .none {
+                    print("Not reachable")
+                } else {
+                    print("Not reachable")
                 }
         } else {
             print("Rate didn't work")

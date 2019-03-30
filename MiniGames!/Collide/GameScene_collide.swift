@@ -156,16 +156,17 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
         //print("diff \(abs(player.position.x - CGFloat(randomX)), abs(player.position.y - CGFloat(randomY)))")
         //print(abs(player.position.x - CGFloat(randomX)) < 200, abs(player.position.y) < 200)
         
-        while abs(player.position.x - CGFloat(randomX)) < 120 {
+        while abs(player.position.x - CGFloat(randomX)) < 130  {
             randomX = Int(arc4random_uniform(UInt32(650)) + 50)
         }
-        while abs(player.position.y - CGFloat(randomY)) < 120 {
+        while abs(player.position.y - CGFloat(randomY)) < 130 || abs(player.position.y - CGFloat(randomY)) > 550 {
             randomY = Int(arc4random_uniform(UInt32(820)) + 300)
             //print("new random x \(randomX)")
             //print("new random y \(randomY)")
         }
     
         checkpoint.position = CGPoint(x: randomX, y: randomY)
+
     }
     
     func addScoreLabels() {
@@ -286,8 +287,10 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
                     //print("touching set to false by score change")
                     player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
                     playerSpeed += speedIncrease
-                    if speedIncrease > 1 {
+                    print(playerSpeed)
+                    if speedIncrease > 2 {
                         speedIncrease *= 0.98
+                        print(speedIncrease)
                     }
                     placeCheckpoint()
                     

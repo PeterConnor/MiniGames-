@@ -16,24 +16,20 @@
 If your app is published to the App Store, remember to come back to link your app. - Admob
 ---
 
-rate crashes with no service
 put real unit id in
  
-add tap to start to match
- 
-for match, increase speed & frequency. (Maybe just speed)
-scale down enemies in shoot. Make it easier at first and make it get harder faster.
- make games, especially bounce, idiot proof
- for bounce. make floor or checks so cant die immediately.
- in bounce, direction of check should be random.
- 
-test idiot-proof (starts), difficulty progressions (can't take too too long to get challenging), endgames, ipads/devices
- collide-
- flash-
- evade-
+test idiot-proof (starts), difficulty progressions (can't take too too long to get challenging. slow start, quick to get going, slow progression with difficulty), endgames
+ collide-done
+ flash-done
+ evade-done
  bounce-
- match-
- shoot-
+ match-done
+ shoot-done, but keep playing
+ 
+ after tesing progressions, test ipad and other sizes.
+ add pics to appstore
+ add leaderboards.
+ 
 
 ***Eventually***
 make flash objects 1 image, so taps on blur register

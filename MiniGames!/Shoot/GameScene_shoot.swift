@@ -79,6 +79,7 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
     var enemiesList = [SKSpriteNode]()
     var xMotion: CGFloat = 0
     let motionManager = CMMotionManager()
+    var scaleValue: CGFloat = 1.0
     
     override func didMove(to view: SKView) {
         
@@ -98,7 +99,7 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
         motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { (data: CMAccelerometerData?, error: Error?) in
             if let accelerometerData = data {
                 let acceleration = accelerometerData.acceleration
-                self.xMotion = CGFloat(acceleration.x) * (self.size.width * 0.04)
+                self.xMotion = CGFloat(acceleration.x) * 32
             }
         }
     }
@@ -249,9 +250,14 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
         
        enemy.position = CGPoint(x: CGFloat(randomX), y: 1334 + player.size.height)
         
-        
+        enemy.setScale(scaleValue)
+        if scaleValue > 0.5 {
+            scaleValue -= 0.001
+        }
         enemy.physicsBody = SKPhysicsBody(circleOfRadius: enemy.size.width/2)
         enemy.physicsBody?.isDynamic = true
+        
+        
         
         enemy.physicsBody?.categoryBitMask = CollisionBitMask_shoot.Enemy
         enemy.physicsBody?.contactTestBitMask = CollisionBitMask_shoot.Shot
@@ -261,7 +267,7 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
         enemiesList.append(enemy)
         
         addMovement(obs: enemy)
-        addSideMovement(enemy: enemy)
+        //addSideMovement(enemy: enemy)
         
         
     }
@@ -330,10 +336,10 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
     var lastUpdate = TimeInterval()
     var lastYieldTimeInterval = TimeInterval()
     var timeCheck = 0
-    var timeInterval = 0.9
+    var timeInterval = 1.2
+    var timeIntervalMultiplier = 0.991
     
     override func update(_ currentTime: TimeInterval) {
-        print(timeInterval)
         if isGamePaused == false {
             if timeCheck == 1 {
                 lastUpdate = currentTime
@@ -343,7 +349,7 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
             lastUpdate = currentTime
             lastYieldTimeInterval += timeSinceLastUpdate
             if lastYieldTimeInterval > timeInterval {
-                timeInterval *= 0.997
+                timeInterval *= timeIntervalMultiplier
                 lastYieldTimeInterval = 0
                 if !isGameOver {
                     addEnemy()
@@ -371,6 +377,14 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         if contact.bodyA.node?.name == "ENEMY" || contact.bodyA.node?.name == "SHOT" {
             score += 1
+            if score % 25 == 0 {
+                if timeIntervalMultiplier < 0.998 {
+                timeIntervalMultiplier += 0.001
+                }
+                print(score)
+                print(timeIntervalMultiplier)
+                print(timeInterval)
+            }
             if contact.bodyA.node?.name == "ENEMY" {
                 
                 contact.bodyB.node?.removeFromParent()

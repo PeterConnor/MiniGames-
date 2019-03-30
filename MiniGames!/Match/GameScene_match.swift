@@ -77,6 +77,8 @@ class GameScene_match: SKScene, SKPhysicsContactDelegate {
     var player = SKSpriteNode()
     var playerblur = SKSpriteNode()
     var removalList = [SKSpriteNode]()
+    var tapToStart = SKSpriteNode()
+
     
     
     override func didMove(to view: SKView) {
@@ -90,8 +92,8 @@ class GameScene_match: SKScene, SKPhysicsContactDelegate {
         addPauseButton()
         addBackButton()
         addScoreLabels()
-        addPlayer()
         changePlayer()
+        addTapToStart()
     }
     
     @objc func pauseGame() {
@@ -138,6 +140,13 @@ class GameScene_match: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    func addTapToStart() {
+        tapToStart = SKSpriteNode(imageNamed: "TapToStart")
+        tapToStart.position = CGPoint(x: self.size.width/2, y: 200)
+        addChild(tapToStart)
+        tapToStart.zPosition = 3
+    }
+    
     func addPlayer() {
         player = SKSpriteNode(imageNamed: "Disc")
         player.setScale(2)
@@ -157,17 +166,17 @@ class GameScene_match: SKScene, SKPhysicsContactDelegate {
         switch randomNum {
         case 0:
             playerblur = SKSpriteNode(imageNamed: "GreenDiscblur")
-            playerblur.name = "Green"
+            player.name = "Green"
             player.addChild(playerblur)
             playerblur.zPosition = -1
         case 1:
             playerblur = SKSpriteNode(imageNamed: "RedDiscblur")
-            playerblur.name = "Red"
+            player.name = "Red"
             player.addChild(playerblur)
             playerblur.zPosition = -1
         case 2:
             playerblur = SKSpriteNode(imageNamed: "BlueDiscblur")
-            playerblur.name = "Blue"
+            player.name = "Blue"
             player.addChild(playerblur)
             playerblur.zPosition = -1
         default:
@@ -271,6 +280,7 @@ class GameScene_match: SKScene, SKPhysicsContactDelegate {
     var lastYieldTimeInterval = TimeInterval()
     var timeCheck = 0
     var timeInterval = 1.5
+    var timeMultiplier = 0.990
     
     override func update(_ currentTime: TimeInterval) {
         //print(timeInterval)
@@ -283,9 +293,8 @@ class GameScene_match: SKScene, SKPhysicsContactDelegate {
             lastUpdate = currentTime
             lastYieldTimeInterval += timeSinceLastUpdate
             if lastYieldTimeInterval > timeInterval {
-                timeInterval *= 0.997
                 lastYieldTimeInterval = 0
-                if !isGameOver {
+                if !isGameOver && started {
                     addCheckpoints()
                 }
             }
@@ -374,9 +383,24 @@ class GameScene_match: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if !started {
+            addPlayer()
+            tapToStart.removeFromParent()
+            started = true
+        }
+    }
+    
     func didBegin(_ contact: SKPhysicsContact) {
         if contact.bodyA.node?.name == contact.bodyB.node?.name {
             score += 1
+            timeInterval *= timeMultiplier
+            if score % 10 == 0 && timeMultiplier < 0.99 {
+                timeMultiplier += 0.001
+            }
+            print(timeInterval)
+            print(timeMultiplier)
+            print(score)
             changePlayer()
             removalList[0].removeFromParent()
             removalList.removeFirst()
