@@ -75,6 +75,7 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    var tapToStart = SKSpriteNode()
     var player = SKSpriteNode()
     var enemiesList = [SKSpriteNode]()
     var xMotion: CGFloat = 0
@@ -94,6 +95,8 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
         addBackButton()
         addScoreLabels()
         addPlayer()
+        addBackground()
+        addTapToStart()
         
         motionManager.accelerometerUpdateInterval = 0.1
         motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { (data: CMAccelerometerData?, error: Error?) in
@@ -186,11 +189,29 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
         blur3.zPosition = -1
     }
     
+    func addBackground() {
+        let background = SKSpriteNode(imageNamed: "BackgroundWhite")
+        background.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        background.size.width = self.size.width
+        background.size.height = self.size.height
+        background.zPosition = 1
+        
+        self.addChild(background)
+        
+    }
+    
+    func addTapToStart() {
+        tapToStart = SKSpriteNode(imageNamed: "TapToStart")
+        tapToStart.position = CGPoint(x: self.size.width/2, y: 175)
+        addChild(tapToStart)
+        tapToStart.zPosition = 3
+    }
+    
     func shoot() {
         let shot = SKSpriteNode(imageNamed: "Disc")
         shot.name = "SHOT"
         shot.position = player.position
-        shot.position.y += 5
+        shot.position.y += 30
         shot.setScale(0.4)
         shot.physicsBody = SKPhysicsBody(circleOfRadius: shot.size.width/2)
         shot.physicsBody?.isDynamic = true
@@ -213,6 +234,7 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
         
         shot.run(SKAction.sequence(actionList))
     }
+    
     
     func addPlayer() {
         player = SKSpriteNode(imageNamed: "Disc")
@@ -337,7 +359,7 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
     var lastYieldTimeInterval = TimeInterval()
     var timeCheck = 0
     var timeInterval = 1.2
-    var timeIntervalMultiplier = 0.991
+    var timeIntervalMultiplier = 0.990
     
     override func update(_ currentTime: TimeInterval) {
         if isGamePaused == false {
@@ -351,7 +373,7 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
             if lastYieldTimeInterval > timeInterval {
                 timeInterval *= timeIntervalMultiplier
                 lastYieldTimeInterval = 0
-                if !isGameOver {
+                if !isGameOver && started {
                     addEnemy()
                 }
             }
@@ -381,9 +403,6 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
                 if timeIntervalMultiplier < 0.998 {
                 timeIntervalMultiplier += 0.001
                 }
-                print(score)
-                print(timeIntervalMultiplier)
-                print(timeInterval)
             }
             if contact.bodyA.node?.name == "ENEMY" {
                 
@@ -411,9 +430,7 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if started && !isPaused {
-            //canMove = true - from evade
-        }
+
         for touch in touches {
             
             let location = touch.location(in: self)
@@ -441,10 +458,14 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
                 }
             }
             
-            if isGamePaused == false && atPoint(location).name != "PauseButton" {
+            if isGamePaused == false && started == true && atPoint(location).name != "PauseButton" {
                 shoot()
             }
             
+            if !started && !isPaused {
+                started = true
+                tapToStart.removeFromParent()
+            }
             
         }
     }

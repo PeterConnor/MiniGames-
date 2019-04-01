@@ -309,15 +309,14 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
             if obstacleScoreList[0].position.y < player.position.y {
                 obstacleScoreList.removeFirst()
                 score += 1
-                print(gap)
                 if gap > 250 {
                     gapDecrease = 4
                     gap -= gapDecrease
                 } else if gap > 200 {
-                    gapDecrease = 2
+                    gapDecrease = 2.5
                     gap -= gapDecrease
                 } else if gap > 175 {
-                    gapDecrease = 0.5
+                    gapDecrease = 0.7
                     gap -= gapDecrease
                 } else if gap > 150 {
                     gapDecrease = 0.4

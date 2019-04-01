@@ -131,6 +131,7 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
         addPlayer()
         setupCheckpoints()
         addTapToStart()
+        addBackground()
 
         
         motionManager.accelerometerUpdateInterval = 0.1
@@ -219,6 +220,17 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
         backButtonblur.zPosition = -1
         
         backButton.position = CGPoint(x: -325 + backButtonblur.size.width/2 + 25, y: 667 - backButtonblur.size.height/2 - 25)
+    }
+    
+    func addBackground() {
+        let background = SKSpriteNode(imageNamed: "BackgroundWhite")
+        background.position = CGPoint(x: 0, y: 0)
+        background.size.width = self.size.width
+        background.size.height = self.size.height
+        background.zPosition = 1
+        
+        cam.addChild(background)
+        
     }
     
     func addTapToStart() {
@@ -377,7 +389,9 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
             player.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 172))
             player.physicsBody?.affectedByGravity = true
             started = true
+            tapToStart.removeFromParent()
         }
+        
         for touch in touches {
             
             let location = touch.location(in: self)

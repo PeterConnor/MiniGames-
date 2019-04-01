@@ -62,8 +62,8 @@ class CollectionVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        var width = collectionView.frame.size.width / 2
-        var height = collectionView.frame.size.height / 3
+        let width = collectionView.frame.size.width / 2
+        let height = collectionView.frame.size.height / 3
       
         return CGSize(width: width, height: height)
     }
@@ -88,20 +88,20 @@ class CollectionVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     @IBAction func rateButtonAction(_ sender: Any) {
         if #available(iOS 10.3, *) {
                 if self.reachability?.connection == .wifi {
-                    print("Reachable via WiFi")
+                    //print("Reachable via WiFi")
                     SKStoreReviewController.requestReview()
                 } else if self.reachability?.connection == .cellular {
-                    print("Reachable via Cellular")
+                    //print("Reachable via Cellular")
                     if let url  = URL(string: "itms-apps://itunes.apple.com/us/app/minigames/id1378113348") {
                         UIApplication.shared.open(url, options: [:], completionHandler: nil)
                     }
                 } else if self.reachability?.connection == .none {
-                    print("Not reachable")
+                    //print("Not reachable")
                 } else {
-                    print("Not reachable")
+                    //print("Not reachable")
                 }
         } else {
-            print("Rate didn't work")
+            //print("Rate didn't work")
         }
     }
     
@@ -136,7 +136,7 @@ class CollectionVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     func submitScore() {
         let leaderboardID = "MiniGames! - All Games"
         let sScore = GKScore(leaderboardIdentifier: leaderboardID)
-        sScore.value = Int64(UserDefaults.standard.integer(forKey: "HighScore_evade") + UserDefaults.standard.integer(forKey: "HighScore_flash") +  UserDefaults.standard.integer(forKey: "HighScore_collide"))
+        sScore.value = Int64(UserDefaults.standard.integer(forKey: "HighScore_evade") + UserDefaults.standard.integer(forKey: "HighScore_flash") +  UserDefaults.standard.integer(forKey: "HighScore_collide") + UserDefaults.standard.integer(forKey: "HighScore_bounce") + UserDefaults.standard.integer(forKey: "HighScore_shoot") + UserDefaults.standard.integer(forKey: "HighScore_match"))
         GKScore.report([sScore]) { (error: Error!) -> Void in
             if error != nil {
                 //print(error.localizedDescription)

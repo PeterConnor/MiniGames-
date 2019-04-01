@@ -16,25 +16,11 @@
 If your app is published to the App Store, remember to come back to link your app. - Admob
 ---
 
-put real unit id in
+add pics to appstore
  
-test idiot-proof (starts), difficulty progressions (can't take too too long to get challenging. slow start, quick to get going, slow progression with difficulty), endgames
- collide-done
- flash-done
- evade-done
- bounce-
- match-done
- shoot-done, but keep playing
- 
- after tesing progressions, test ipad and other sizes.
- add pics to appstore
- add leaderboards.
- 
-
 ***Eventually***
 make flash objects 1 image, so taps on blur register
 change support url on app store. currently, twitter.
-change all blurs to blur
 console message
 feedback/email?
 premium?

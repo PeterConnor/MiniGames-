@@ -394,13 +394,13 @@ class GameScene_match: SKScene, SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         if contact.bodyA.node?.name == contact.bodyB.node?.name {
             score += 1
-            timeInterval *= timeMultiplier
+            if timeInterval > 0.5 {
+                timeInterval *= timeMultiplier
+            }
             if score % 10 == 0 && timeMultiplier < 0.99 {
                 timeMultiplier += 0.001
             }
-            print(timeInterval)
-            print(timeMultiplier)
-            print(score)
+
             changePlayer()
             removalList[0].removeFromParent()
             removalList.removeFirst()

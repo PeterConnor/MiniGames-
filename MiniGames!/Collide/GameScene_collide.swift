@@ -287,10 +287,9 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
                     //print("touching set to false by score change")
                     player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
                     playerSpeed += speedIncrease
-                    print(playerSpeed)
+                    
                     if speedIncrease > 2 {
                         speedIncrease *= 0.98
-                        print(speedIncrease)
                     }
                     placeCheckpoint()
                     
