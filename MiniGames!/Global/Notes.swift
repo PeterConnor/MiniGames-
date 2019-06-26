@@ -26,7 +26,6 @@ feedback/email?
 premium?
 add sounds (add global singleton bool for mute)?
 
-product hunt
 add videos to app store
 landing page
 make ios 10
