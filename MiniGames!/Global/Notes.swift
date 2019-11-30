@@ -16,16 +16,33 @@
 If your app is published to the App Store, remember to come back to link your app. - Admob
 ---
 
-add pics to appstore
+add pics & videos to appstore
+
+flap
+button tap?
+granny smith
+color wheel
+color trek
+brick breaker
+
+ 
+space shooter
+granny smith
+button tap
+flap
+banana split
+pop a lock
+simon says
+candy crush
+
+
  
 ***Eventually***
 make flash objects 1 image, so taps on blur register
 change support url on app store. currently, twitter.
 console message
 feedback/email?
-premium?
-add sounds (add global singleton bool for mute)?
-
+sounds?
 add videos to app store
 landing page
 make ios 10
