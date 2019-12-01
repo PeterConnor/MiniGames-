@@ -294,10 +294,11 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    var enemyDuration = 6.0
     func addMovement(obs: SKSpriteNode) {
         var actionList = [SKAction]()
         
-        actionList.append(SKAction.move(to: CGPoint(x: obs.position.x, y: 0 - obs.size.height), duration: 6))
+        actionList.append(SKAction.move(to: CGPoint(x: obs.position.x, y: 0 - obs.size.height), duration: enemyDuration))
         actionList.append(SKAction.run({
             self.isGameOver = true
             for i in self.enemiesList {
@@ -314,6 +315,12 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
             })
         }))
         obs.run(SKAction.sequence(actionList))
+        if enemyDuration > 4.0 {
+            enemyDuration *= timeIntervalMultiplier
+            print(enemyDuration)
+        } else {
+            enemyDuration *= 0.997
+        }
     }
     
     func addSideMovement(enemy: SKSpriteNode) {

@@ -15,30 +15,23 @@
 ****Macro****
 If your app is published to the App Store, remember to come back to link your app. - Admob
 ---
-
-add pics & videos to appstore
-
-flap
-button tap?
+**Improvements**
+ each individual leaderboard button should submit all scores
+ need to click leaderboard buttons twice to display correctly. bug.
+ write each game gets progressively harded in app store.
+ add pics & videos to app store.
+ 
+ 
+**NEW GAMES**
+flapy bird
+button tap? (but make it so the ball gets bigger and heavier (mass)
 granny smith
 color wheel
 color trek
 brick breaker
-
- 
-space shooter
-granny smith
-button tap
-flap
-banana split
-pop a lock
-simon says
 candy crush
 
-
- 
 ***Eventually***
-make flash objects 1 image, so taps on blur register
 change support url on app store. currently, twitter.
 console message
 feedback/email?
@@ -46,8 +39,7 @@ sounds?
 add videos to app store
 landing page
 make ios 10
- reviews
- 
+reviews
  */
 
 

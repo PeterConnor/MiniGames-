@@ -107,7 +107,7 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
     let motionManager = CMMotionManager()
     let cam = SKCameraNode()
     var checkpointY = CGFloat(0)
-    var gameOverY = CGFloat(0)
+    var gameOverY = CGFloat(-200)
     var scaleNumber = 1.5
     var moveNumber = 10
     var speedNum = CGFloat(250)
@@ -348,6 +348,27 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func setupFirstRow() {
+        var firstRowXPoint = CGFloat(0)
+        for _ in 0...10 {
+            let firstRow = SKSpriteNode(imageNamed: "Disc")
+            firstRow.setScale(CGFloat(scaleNumber))
+            firstRow.position = CGPoint(x: CGFloat(firstRowXPoint), y: tapToStart.position.y)
+            firstRow.name = "FIRSTROW"
+            firstRow.physicsBody = SKPhysicsBody(circleOfRadius: firstRow.size.width/2)
+            firstRow.physicsBody?.categoryBitMask = CollisionBitMask_bounce.Checkpoint
+            firstRow.physicsBody?.collisionBitMask = 0
+            firstRow.physicsBody?.isDynamic = true
+            firstRow.physicsBody?.affectedByGravity = false
+            self.addChild(firstRow)
+
+            let firstRowblur = SKSpriteNode(imageNamed: "BlueDiscblur")
+            firstRow.addChild(firstRowblur)
+            firstRow.zPosition = -1
+            firstRowXPoint += firstRowblur.size.width
+        }
+    }
+    
     func gameOver() {
         
         UserDefaults.standard.set(score, forKey: "RecentScore_bounce")
@@ -366,16 +387,19 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
-        if contact.bodyA.node?.name == "PLAYER" || contact.bodyA.node?.name == "CHECKPOINT" {
+        if (contact.bodyA.node?.name == "PLAYER" || contact.bodyA.node?.name == "CHECKPOINT") && (contact.bodyA.node?.name != "FIRSTROW" && contact.bodyB.node?.name != "FIRSTROW") {
             score += 1
             addCheckpoint()
+            player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+            player.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 172))
+        } else {
             player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
             player.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 172))
         }
         if contact.bodyA.node?.name == "CHECKPOINT" {
             gameOverY = (contact.bodyA.node?.position.y)! - 300
             contact.bodyA.node?.removeFromParent()
-        } else {
+        } else if contact.bodyB.node?.name == "CHECKPOINT" {
             gameOverY = (contact.bodyB.node?.position.y)! - 300
             contact.bodyB.node?.removeFromParent()
         }
@@ -390,6 +414,7 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
             player.physicsBody?.affectedByGravity = true
             started = true
             tapToStart.removeFromParent()
+            setupFirstRow()
         }
         
         for touch in touches {

@@ -136,7 +136,7 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
         
         button.addChild(buttonblur)
         buttonblur.zPosition = -1
-        buttonblur.name = "button\(buttonCount)"
+        buttonblur.name = "button\(buttonCount - 1)"
     }
     
     func addScoreLabels() {

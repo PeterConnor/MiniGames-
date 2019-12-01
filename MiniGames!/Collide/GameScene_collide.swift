@@ -25,7 +25,7 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
     var pauseButton = SKSpriteNode()
     var pauseButtonblur = SKSpriteNode()
     var tapToStart = SKSpriteNode()
-    var tapblur = SKSpriteNode(imageNamed: "TapGreen")
+    var tapblur = SKSpriteNode(imageNamed: "TapHereGreen")
 
 
     
@@ -100,7 +100,7 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
     }
     
     func addTapToStart() {
-        tapToStart = SKSpriteNode(imageNamed: "TapWhite")
+        tapToStart = SKSpriteNode(imageNamed: "TapHereWhite")
         tapToStart.position = CGPoint(x: self.size.width/2, y: 200)
         addChild(tapToStart)
         tapToStart.zPosition = 3
