@@ -263,7 +263,6 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
         
         gcVC.leaderboardIdentifier = "MiniGames! - " + "\(gameName!.capitalized)"
         gameVC?.present(gcVC, animated: true, completion: nil)
-    
     }
     
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
