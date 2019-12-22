@@ -23,13 +23,13 @@ class GameViewController2: UIViewController, GADBannerViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-      /*
+      
        let request = GADRequest()
         bannerView.delegate = self
         bannerView.adUnitID = "ca-app-pub-9017513021309308/2799201158"
         bannerView.rootViewController = self
         bannerView.load(request)
- */
+
  
         if let view = self.view as! SKView? {
             switch gameItem {

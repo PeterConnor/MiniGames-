@@ -229,7 +229,7 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
                 gameVC?.dismiss(animated: true, completion: nil)
             }
             if leaderButton.contains(location) {
-                showLeader()
+                submitScore()
             }
             
             if helpButton.contains(location) {
@@ -255,8 +255,6 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
     
     func showLeader() {
         
-        submitScore()
-        
         let gcVC: GKGameCenterViewController = GKGameCenterViewController()
         gcVC.gameCenterDelegate = self
         gcVC.viewState = GKGameCenterViewControllerState.leaderboards
@@ -279,7 +277,7 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
                 //print(error.localizedDescription)
             } else {
                 //print("Score Submitted")
-
+                self.showLeader()
             }
         }
     }

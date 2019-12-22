@@ -317,7 +317,7 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
         obs.run(SKAction.sequence(actionList))
         if enemyDuration > 4.0 {
             enemyDuration *= timeIntervalMultiplier
-            print(enemyDuration)
+            //print(enemyDuration)
         } else {
             enemyDuration *= 0.997
         }

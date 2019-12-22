@@ -16,11 +16,11 @@
 If your app is published to the App Store, remember to come back to link your app. - Admob
 ---
 **Improvements**
- each individual leaderboard button should submit all scores
- need to click leaderboard buttons twice to display correctly. bug.
- write each game gets progressively harded in app store.
+fix warnings
+ fix console messages
+ write each game gets progressively harder in app store.
  add pics & videos to app store.
- 
+ app landing page
  
 **NEW GAMES**
 flapy bird

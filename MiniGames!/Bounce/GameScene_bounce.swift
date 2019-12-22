@@ -96,6 +96,7 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
             case _ where score > 650:
                 moveNumber = 1
             default:
+                break
                 print("moveNumber is false")
             }
         }
