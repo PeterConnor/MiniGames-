@@ -4,8 +4,6 @@
 //
 //  Created by Pete Connor on 3/27/18.
 //  Copyright © 2018 c0nman. All rights reserved.
-//
-//
 
 import SpriteKit
 
@@ -26,8 +24,6 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
     var pauseButtonblur = SKSpriteNode()
     var tapToStart = SKSpriteNode()
     var tapblur = SKSpriteNode(imageNamed: "TapHereGreen")
-
-
     
     var scoreLabel1 = SKSpriteNode(imageNamed: "num0")
     var scoreLabel2 = SKSpriteNode(imageNamed: "num0")
@@ -35,7 +31,6 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
     var blur1 = SKSpriteNode(imageNamed: "GreenNum0")
     var blur2 = SKSpriteNode(imageNamed: "GreenNum0")
     var blur3 = SKSpriteNode(imageNamed: "GreenNum0")
-
     
     var ones = 0
     var tens = 0
@@ -51,7 +46,6 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
                 blur2.texture = SKTexture(imageNamed: "GreenNum\(tens)")
                 scoreLabel1.texture = SKTexture(imageNamed: "num\(hundreds)")
                 blur1.texture = SKTexture(imageNamed: "GreenNum\(hundreds)")
-                
             }
             
             if score % 10 == 0 && score % 100 != 0 {
@@ -59,7 +53,6 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
                 tens += 1
                 scoreLabel2.texture = SKTexture(imageNamed: "num\(tens)")
                 blur2.texture = SKTexture(imageNamed: "GreenNum\(tens)")
-                
                 
             }
             scoreLabel3.texture = SKTexture(imageNamed: "num\(ones)")
@@ -89,7 +82,6 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         self.physicsWorld.contactDelegate = self
 
-        
         NotificationCenter.default.addObserver(self, selector: #selector(GameScene_collide.pauseGame), name: NSNotification.Name(rawValue: "PauseGame"), object: nil)
         
         addBackButton()
@@ -108,7 +100,6 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
         tapblur.zPosition = -1
         tapblur.alpha = 0
         tapToStart.addChild(tapblur)
-        
     }
     
     func addPlayer() {
@@ -149,14 +140,13 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
         
         var randomX = Int(arc4random_uniform(UInt32(650)) + 50)
         var randomY = Int(arc4random_uniform(UInt32(820)) + 300)
-        
-        
+          
         // print("random x \(randomX) minus player position x\(player.position.x)")
         //print("random y \(randomY) minus \(player.position.y)")
         //print("diff \(abs(player.position.x - CGFloat(randomX)), abs(player.position.y - CGFloat(randomY)))")
         //print(abs(player.position.x - CGFloat(randomX)) < 200, abs(player.position.y) < 200)
         
-        while abs(player.position.x - CGFloat(randomX)) < 130  {
+        while abs(player.position.x - CGFloat(randomX)) < 130 {
             randomX = Int(arc4random_uniform(UInt32(650)) + 50)
         }
         while abs(player.position.y - CGFloat(randomY)) < 130 || abs(player.position.y - CGFloat(randomY)) > 550 {
@@ -318,10 +308,7 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
                 
                 self.view?.presentScene(menuScene!, transition: SKTransition.push(with: SKTransitionDirection.down, duration: 0.25))
             }
-            
-            
-            
-            
+                    
             if atPoint(location).name == "PauseButton" {
                 if isGamePaused == false {
                     pauseGame()
@@ -354,8 +341,7 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
             if contact.bodyA.node?.name == "PLAYER" || contact.bodyA.node?.name == "CHECKPOINT" {
                 touching = true
             }
-    
-            
+       
             /*player.isUserInteractionEnabled = false
             
             let actionRed = SKAction.colorize(with: .red, colorBlendFactor: 1.0, duration: 0.25)
@@ -386,8 +372,6 @@ class GameScene_collide: SKScene, SKPhysicsContactDelegate {
                     self.gameOver()
                 })
             }
-            
         }
     }
-    
 }

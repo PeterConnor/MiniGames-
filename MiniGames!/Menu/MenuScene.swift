@@ -4,7 +4,7 @@
 //
 //  Created by Pete Connor on 7/2/18.
 //  Copyright © 2018 c0nman. All rights reserved.
-//
+
 import SpriteKit
 import GameKit
 
@@ -18,14 +18,11 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
     var backButton: SKSpriteNode!
     var helpButton: SKSpriteNode!
     var playButton: SKSpriteNode!
-    
-    
-    
+     
     var leaderButton: SKSpriteNode!
-    
-    //var recentScoreLabel = SKLabelNode()
-    
+        
     override func didMove(to view: SKView) {
+        print("general")
         self.backgroundColor = .black
         addLogo()
         addLabelsAndButtons()
@@ -38,8 +35,6 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
         logo.size = CGSize(width: 500, height: 500)
         logo.position = CGPoint(x: frame.midX, y: frame.maxY - logo.size.height/2)
         addChild(logo)
-
-        
     }
     
     func addBackButton() {
@@ -54,10 +49,7 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
         backButtonblur.zPosition = -1
         
         backButton.position = CGPoint(x: 0 + backButtonblur.size.width/2 + 25, y: 1334 - backButtonblur.size.height/2 - 25)
-        
     }
-    
-   
     
     func addLabelsAndButtons() {
         playButton = SKSpriteNode(imageNamed: "PlayWhite")
@@ -83,13 +75,13 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
         helpButtonblur.zPosition = -1
         
         helpButton.position = CGPoint(x: frame.midX, y: playButton.position.y - playButtonblur.size.height/2 - 25)
-        
-        
+                
         let highscoreLabel = SKSpriteNode(imageNamed: "HighScoreWhite")
         var score = UserDefaults.standard.integer(forKey: "HighScore_" + gameName!)
         if score > 999 {
             score = 999
         }
+        
         highscoreLabel.position = CGPoint(x: helpButton.position.x, y: helpButton.position.y - helpButtonblur.size.height/2 - 25)
         //highscoreLabel.xScale = 0.5
         //highscoreLabel.yScale = 0.5
@@ -118,7 +110,6 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
         blur2.zPosition = -1
         scoreLabel3.addChild(blur3)
         blur3.zPosition = -1
-
         
         let stringFromNum = String(score)
         var numList = [String]()
@@ -288,7 +279,7 @@ class MenuScene: SKScene, GKGameCenterControllerDelegate {
         case "evade":
             myAlert = UIAlertController(title: "Instructions", message: "Press the left and right side of the screen to guide the green disc through the gap in the obstacles. The gap will get smaller and smaller. (Pro Tip: Hold the device with both hands and press down with your thumbs).", preferredStyle: .alert)
         case "flash":
-            myAlert = UIAlertController(title: "Instructions", message: "Tap 'Play' to begin the flashing sequence. Memorize the location and order of flashing discs. Earn points by repeating back the ever-growing sequence correctly." , preferredStyle: .alert)
+            myAlert = UIAlertController(title: "Instructions", message: "Tap 'Play' to begin the flashing sequence. Memorize the location and order of flashing discs. Earn points by repeating back the ever-growing sequence correctly.", preferredStyle: .alert)
         case "collide":
             myAlert = UIAlertController(title: "Instructions", message: "Tap once to move the blue disc. Once the blue disc overlaps the red disc, tap again. Repeat this action to earn points! The blue disc will move faster and faster. (Tap the bottom of the screen. Not the actual discs!)", preferredStyle: .alert)
         case "bounce":

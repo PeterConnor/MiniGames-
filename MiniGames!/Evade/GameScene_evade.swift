@@ -4,7 +4,6 @@
 //
 //  Created by Pete Connor on 6/30/18.
 //  Copyright © 2018 c0nman. All rights reserved.
-//
 
 import SpriteKit
 
@@ -55,7 +54,6 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
                 scoreLabel2.texture = SKTexture(imageNamed: "num\(tens)")
                 blur2.texture = numAtlas.textureNamed("BlueNum\(tens)")
                 
-                
             }
             scoreLabel3.texture = SKTexture(imageNamed: "num\(ones)")
             blur3.texture = numAtlas.textureNamed("BlueNum\(ones)")
@@ -92,7 +90,6 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
         }
         
         self.physicsWorld.contactDelegate = self
-
         
         NotificationCenter.default.addObserver(self, selector: #selector(GameScene_evade.pauseGame), name: NSNotification.Name(rawValue: "PauseGame"), object: nil)
         
@@ -201,8 +198,6 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
         player.zPosition = 3
     }
     
-   
-    
     func addPlayerblur() {
         let playerblur = SKSpriteNode(imageNamed: "GreenDiscblur")
         //playerblur.position = CGPoint(x: player.position.x, y: player.position.y)
@@ -241,8 +236,7 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
         obstacleScoreList.append(obstacle1)
         firstObstacleNumber = 1
         addChild(obstacle1)
-        
-        
+                
        let obstacleblur = SKSpriteNode(imageNamed: "Obstacleblur")
         obstacleblur.size = CGSize(width: 803, height: 98)
         obstacle1.addChild(obstacleblur)
@@ -364,8 +358,8 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
             isGameOver = true
             player.isUserInteractionEnabled = false
             
-            for i in obstacleList {
-                i.removeAllActions()
+            for item in obstacleList {
+                item.removeAllActions()
             }
 
             let actionRed = SKAction.colorize(with: .red, colorBlendFactor: 1.0, duration: 0.25)
@@ -437,8 +431,6 @@ class GameScene_evade: SKScene, SKPhysicsContactDelegate {
         addChild(scoreLabel1)
         addChild(scoreLabel2)
         addChild(scoreLabel3)
-        
-        
         
         scoreLabel1.addChild(blur1)
         scoreLabel2.addChild(blur2)

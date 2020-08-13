@@ -4,7 +4,6 @@
 //
 //  Created by Pete Connor on 3/21/19.
 //  Copyright © 2019 c0nman. All rights reserved.
-//
 
 import Foundation
 import SpriteKit
@@ -56,7 +55,6 @@ class GameScene_match: SKScene, SKPhysicsContactDelegate {
                 scoreLabel2.texture = SKTexture(imageNamed: "num\(tens)")
                 blur2.texture = numAtlas.textureNamed("BlueNum\(tens)")
                 
-                
             }
             scoreLabel3.texture = SKTexture(imageNamed: "num\(ones)")
             blur3.texture = numAtlas.textureNamed("BlueNum\(ones)")
@@ -78,9 +76,7 @@ class GameScene_match: SKScene, SKPhysicsContactDelegate {
     var playerblur = SKSpriteNode()
     var removalList = [SKSpriteNode]()
     var tapToStart = SKSpriteNode()
-
-    
-    
+   
     override func didMove(to view: SKView) {
         
         numAtlas.preload {
@@ -203,8 +199,7 @@ class GameScene_match: SKScene, SKPhysicsContactDelegate {
             break
         }
     }
-    
-    
+        
     func addCheckpoints() {
         var checkList = ["Green", "Red", "Blue"]
         var checkNum = Int(arc4random_uniform(3))
@@ -313,8 +308,6 @@ class GameScene_match: SKScene, SKPhysicsContactDelegate {
         addChild(scoreLabel2)
         addChild(scoreLabel3)
         
-        
-        
         scoreLabel1.addChild(blur1)
         scoreLabel2.addChild(blur2)
         scoreLabel3.addChild(blur3)
@@ -414,8 +407,8 @@ class GameScene_match: SKScene, SKPhysicsContactDelegate {
             
             self.isUserInteractionEnabled = false
             
-            for i in removalList {
-                i.removeAllActions()
+            for item in removalList {
+                item.removeAllActions()
             }
             
             let actionRed = SKAction.colorize(with: .red, colorBlendFactor: 1.0, duration: 0.25)
@@ -431,10 +424,5 @@ class GameScene_match: SKScene, SKPhysicsContactDelegate {
             removalList[0].removeFromParent()
             removalList.removeFirst()*/
         }
-        
     }
-    
 }
-
-
-

@@ -4,14 +4,11 @@
 //
 //  Created by Pete Connor on 4/12/18.
 //  Copyright © 2018 c0nman. All rights reserved.
-//
-//
 
 import UIKit
 import StoreKit
 import GameKit
 import Reachability
-
 
 class CollectionVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, GKGameCenterControllerDelegate {
     
@@ -39,10 +36,7 @@ class CollectionVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        var bool = Bool()
-        //let indexPath = self.collectionView.indexPath(for: sender as! UICollectionViewCell)!
-        bool = true
-        return bool
+        return true
     }
     
     func showAlert() {
@@ -120,7 +114,6 @@ class CollectionVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             
         }
     }
-    
     
     @IBAction func combinedLeaderButton(_ sender: Any) {
         

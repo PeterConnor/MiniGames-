@@ -4,7 +4,6 @@
 //
 //  Created by Pete Connor on 2/25/19.
 //  Copyright © 2019 c0nman. All rights reserved.
-//
 
 import SpriteKit
 import CoreMotion
@@ -25,7 +24,6 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
     var pauseButtonblur = SKSpriteNode()
     var tapToStart = SKSpriteNode()
 
-    
     var scoreLabel1 = SKSpriteNode(imageNamed: "num0")
     var scoreLabel2 = SKSpriteNode(imageNamed: "num0")
     var scoreLabel3 = SKSpriteNode(imageNamed: "num0")
@@ -59,7 +57,6 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
                 scoreLabel2.texture = SKTexture(imageNamed: "num\(tens)")
                 blur2.texture = numAtlas.textureNamed("BlueNum\(tens)")
                 
-                
             }
             scoreLabel3.texture = SKTexture(imageNamed: "num\(ones)")
             blur3.texture = numAtlas.textureNamed("BlueNum\(ones)")
@@ -74,8 +71,7 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
                 scoreLabel3.texture = SKTexture(imageNamed: "num9")
                 blur3.texture = numAtlas.textureNamed("BlueNum9")
             }
-            
-        
+                    
             switch score {
             case _ where score > 25 && score <= 50:
                 moveNumber = 9
@@ -133,7 +129,6 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
         setupCheckpoints()
         addTapToStart()
         addBackground()
-
         
         motionManager.accelerometerUpdateInterval = 0.1
         motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { (data: CMAccelerometerData?, error: Error?) in
@@ -180,7 +175,6 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    
     override func didFinishUpdate() {
                 cam.position.y = player.position.y + 250
     }
@@ -203,8 +197,6 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
         cam.addChild(pauseButton)
         pauseButton.addChild(pauseButtonblur)
         pauseButtonblur.zPosition = -1
-        
-        
         
     }
     
@@ -252,9 +244,7 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
         cam.addChild(scoreLabel1)
         cam.addChild(scoreLabel2)
         cam.addChild(scoreLabel3)
-        
-        
-        
+              
         scoreLabel1.addChild(blur1)
         scoreLabel2.addChild(blur2)
         scoreLabel3.addChild(blur3)
@@ -282,7 +272,6 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
         playerblur.zPosition = -1
     }
     
-    
     func addCheckpoint() {
         let checkpoint = SKSpriteNode(imageNamed: "Disc")
         checkpoint.setScale(CGFloat(scaleNumber))
@@ -296,8 +285,6 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
         checkpoint.physicsBody?.isDynamic = true
         checkpoint.physicsBody?.affectedByGravity = false
         self.addChild(checkpoint)
-        
-        
         
         let randomMoveNumber = arc4random_uniform(UInt32(moveNumber))
         let leftOrRight = arc4random_uniform(UInt32(2))
@@ -318,9 +305,7 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
             let checkpointblur = SKSpriteNode(imageNamed: "RedDiscblur")
             checkpoint.addChild(checkpointblur)
             checkpointblur.zPosition = -1
-            
-            
-            
+                    
             let firstAction = SKAction.moveTo(x: firstX, duration: TimeInterval(initialXTime))
             let secondAction = SKAction.moveTo(x: secondX, duration: TimeInterval(750/speedNum))
             let thirdAction = SKAction.moveTo(x: firstX, duration: TimeInterval(750/speedNum))
@@ -406,8 +391,7 @@ class GameScene_bounce: SKScene, SKPhysicsContactDelegate {
         }
         
     }
-    
-    
+      
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if !started && !isPaused {
             player.physicsBody?.isDynamic = true

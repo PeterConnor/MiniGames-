@@ -4,33 +4,27 @@
 //
 //  Created by Pete Connor on 3/14/18.
 //  Copyright © 2018 c0nman. All rights reserved.
-//
-//
+
 import UIKit
 import SpriteKit
 import GameplayKit
 import GoogleMobileAds
 
-
 class GameViewController2: UIViewController, GADBannerViewDelegate {
-    
-    
+        
     @IBOutlet weak var bannerView: GADBannerView!
         
     var gameItem: String!
-    //var scene: SKScene!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
-      
        let request = GADRequest()
         bannerView.delegate = self
         bannerView.adUnitID = "ca-app-pub-9017513021309308/2799201158"
         bannerView.rootViewController = self
         bannerView.load(request)
 
- 
         if let view = self.view as! SKView? {
             switch gameItem {
         
@@ -85,4 +79,3 @@ class GameViewController2: UIViewController, GADBannerViewDelegate {
     return true
    }
 }
-

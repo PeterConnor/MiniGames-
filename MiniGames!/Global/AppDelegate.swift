@@ -4,8 +4,6 @@
 //
 //  Created by Pete Connor on 3/14/18.
 //  Copyright © 2018 c0nman. All rights reserved.
-//
-//
 
 import UIKit
 import GoogleMobileAds
@@ -42,4 +40,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 }
-

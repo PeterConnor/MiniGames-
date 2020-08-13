@@ -4,7 +4,6 @@
 //
 //  Created by Pete Connor on 5/6/18.
 //  Copyright © 2018 c0nman. All rights reserved.
-//
 /*
  
  **Admob**
@@ -13,13 +12,11 @@
  Test Unit ID: ca-app-pub-3940256099942544/2934735716
  
 ****Macro****
-If your app is published to the App Store, remember to come back to link your app. - Admob
----
+-------
 **Improvements**
 fix warnings
  fix console messages
- write each game gets progressively harder in app store.
- add pics & videos to app store.
+ add videos to app store.
  app landing page
  
 **NEW GAMES**
@@ -33,18 +30,11 @@ candy crush
 
 ***Eventually***
 change support url on app store. currently, twitter.
-console message
+console messages
 feedback/email?
 sounds?
-add videos to app store
 landing page
-make ios 10
-reviews
  */
-
-
-
-
 
 /*Skeleton
  
@@ -240,6 +230,3 @@ reviews
  add skeleton
 
  }*/
-
-
-

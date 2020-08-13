@@ -4,7 +4,6 @@
 //
 //  Created by Pete Connor on 3/10/19.
 //  Copyright © 2019 c0nman. All rights reserved.
-//
 
 import SpriteKit
 import CoreMotion
@@ -56,7 +55,6 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
                 tens += 1
                 scoreLabel2.texture = SKTexture(imageNamed: "num\(tens)")
                 blur2.texture = numAtlas.textureNamed("BlueNum\(tens)")
-                
                 
             }
             scoreLabel3.texture = SKTexture(imageNamed: "num\(ones)")
@@ -178,8 +176,6 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
         addChild(scoreLabel2)
         addChild(scoreLabel3)
         
-        
-        
         scoreLabel1.addChild(blur1)
         scoreLabel2.addChild(blur2)
         scoreLabel3.addChild(blur3)
@@ -234,8 +230,7 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
         
         shot.run(SKAction.sequence(actionList))
     }
-    
-    
+        
     func addPlayer() {
         player = SKSpriteNode(imageNamed: "Disc")
         player.position = CGPoint(x: self.size.width/2, y: 300)
@@ -279,8 +274,6 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
         enemy.physicsBody = SKPhysicsBody(circleOfRadius: enemy.size.width/2)
         enemy.physicsBody?.isDynamic = true
         
-        
-        
         enemy.physicsBody?.categoryBitMask = CollisionBitMask_shoot.Enemy
         enemy.physicsBody?.contactTestBitMask = CollisionBitMask_shoot.Shot
         enemy.physicsBody?.collisionBitMask = 0
@@ -290,8 +283,7 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
         
         addMovement(obs: enemy)
         //addSideMovement(enemy: enemy)
-        
-        
+               
     }
     
     var enemyDuration = 6.0
@@ -385,9 +377,6 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
                 }
             }
         }
-        
-        
-        
     }
     
     override func didSimulatePhysics() {
@@ -447,7 +436,6 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
                 menuScene?.scaleMode = .aspectFit
                 menuScene?.gameName = "shoot"
                 menuScene?.gameVC = gameVC
-
                 
                 self.view?.presentScene(menuScene!, transition: SKTransition.push(with: SKTransitionDirection.down, duration: 0.25))
             }
@@ -473,9 +461,6 @@ class GameScene_shoot: SKScene, SKPhysicsContactDelegate {
                 started = true
                 tapToStart.removeFromParent()
             }
-            
         }
     }
-    
 }
-

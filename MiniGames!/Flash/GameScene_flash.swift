@@ -4,7 +4,6 @@
 //
 //  Created by Pete Connor on 6/24/18.
 //  Copyright © 2018 c0nman. All rights reserved.
-// is this pushing?!?!?!
 
 import SpriteKit
 
@@ -51,9 +50,8 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
                 tens += 1
                 scoreLabel2.texture = SKTexture(imageNamed: "num\(tens)")
                 blur2.texture = SKTexture(imageNamed: "BlueNum\(tens)")
-                
-                
             }
+            
             scoreLabel3.texture = SKTexture(imageNamed: "num\(ones)")
             blur3.texture = SKTexture(imageNamed: "BlueNum\(ones)")
             
@@ -75,9 +73,7 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
     var buttonIndex = 0
     var actionButton = SKSpriteNode(imageNamed: "PlayWhite")
     var actionButtonblur = SKSpriteNode(imageNamed: "PlayGreenblur")
-
-    
-    
+  
     override func didMove(to view: SKView) {
         
         view.showsPhysics = true
@@ -88,8 +84,7 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
         addBackButton()
         addScoreLabels()
         addActionButton()
-        
-        
+   
         gameState = .touchToBegin
     }
     
@@ -102,12 +97,12 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
             var check = true
             while check && buttonCount > 0 {
                 check = false
-                for i in buttonSequence {
-                    while abs(i.position.y - CGFloat(randomY)) < CGFloat(85) && abs(i.position.x - CGFloat(randomX)) < CGFloat(85) {
+                for item in buttonSequence {
+                    while abs(item.position.y - CGFloat(randomY)) < CGFloat(85) && abs(item.position.x - CGFloat(randomX)) < CGFloat(85) {
                         check = true
                         randomX = Int(arc4random_uniform(UInt32(590)) + 80)
                         randomY = Int(arc4random_uniform(UInt32(735)) + 365)
-                        }
+                    }
                 }
             }
         }
@@ -214,8 +209,8 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
     
     func changeZPositionofButtons() {
         var count = buttonSequence.count
-        for i in 0..<buttonSequence.count {
-            buttonSequence[i].zPosition = CGFloat(count)
+        for item in 0..<buttonSequence.count {
+            buttonSequence[item].zPosition = CGFloat(count)
             count -= 1
         }
     }
@@ -230,7 +225,6 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
                 menuScene?.scaleMode = .aspectFit
                 menuScene?.gameName = "flash"
                 menuScene?.gameVC = gameVC
-                
                 
                 self.view?.presentScene(menuScene!, transition: SKTransition.push(with: SKTransitionDirection.down, duration: 0.25))
             }
@@ -354,7 +348,6 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    
     @objc func pauseGame() {
         //timeCheck = 1
         self.isPaused = true
@@ -405,4 +398,3 @@ class GameScene_flash: SKScene, SKPhysicsContactDelegate {
         addChild(pauseButton)
     }
 }
-

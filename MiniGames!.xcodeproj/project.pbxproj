@@ -31,7 +31,6 @@
 		FAF6A8642059DE5800DAE12E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAF6A8632059DE5800DAE12E /* Assets.xcassets */; };
 		FAF6A8672059DE5800DAE12E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAF6A8652059DE5800DAE12E /* LaunchScreen.storyboard */; };
 		FAF978552076FAA600C9A6ED /* GameScene_collide.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF978512076FAA600C9A6ED /* GameScene_collide.swift */; };
-		FAF978572076FAA600C9A6ED /* MenuScene_collide.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF978532076FAA600C9A6ED /* MenuScene_collide.swift */; };
 		FAF9785E2076FB1600C9A6ED /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF9785D2076FB1600C9A6ED /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,7 +63,6 @@
 		FAF6A8662059DE5800DAE12E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FAF6A8682059DE5800DAE12E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAF978512076FAA600C9A6ED /* GameScene_collide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene_collide.swift; sourceTree = "<group>"; };
-		FAF978532076FAA600C9A6ED /* MenuScene_collide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuScene_collide.swift; sourceTree = "<group>"; };
 		FAF9785D2076FB1600C9A6ED /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -207,7 +205,6 @@
 			children = (
 				FAF978512076FAA600C9A6ED /* GameScene_collide.swift */,
 				FA93F65A219B9250007021F6 /* GameScene_collide.sks */,
-				FAF978532076FAA600C9A6ED /* MenuScene_collide.swift */,
 			);
 			path = Collide;
 			sourceTree = "<group>";
@@ -246,7 +243,7 @@
 				TargetAttributes = {
 					FAF6A8522059DE5800DAE12E = {
 						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1160;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -343,7 +340,6 @@
 				FA87AEC82235FDD0006A9207 /* GameScene_shoot.swift in Sources */,
 				FA97E79A20804DCE002FF39C /* CollectionVC.swift in Sources */,
 				FA97E79C20804E8E002FF39C /* Singleton.swift in Sources */,
-				FAF978572076FAA600C9A6ED /* MenuScene_collide.swift in Sources */,
 				FA87AEC32224DD91006A9207 /* GameScene_bounce.swift in Sources */,
 				FAF9785E2076FB1600C9A6ED /* Extensions.swift in Sources */,
 				FAB7F36C20DFEF96003F24E3 /* GameScene_flash.swift in Sources */,
@@ -494,10 +490,11 @@
 				INFOPLIST_FILE = "$(SRCROOT)/MiniGames!/Global/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.c0nman.MiniGames;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -512,10 +509,11 @@
 				INFOPLIST_FILE = "$(SRCROOT)/MiniGames!/Global/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.c0nman.MiniGames;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
