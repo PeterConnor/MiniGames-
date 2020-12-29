@@ -21,7 +21,7 @@ class GameViewController2: UIViewController, GADBannerViewDelegate {
     
        let request = GADRequest()
         bannerView.delegate = self
-        bannerView.adUnitID = "ca-app-pub-9017513021309308/2799201158"
+        bannerView.adUnitID = addUnitID
         bannerView.rootViewController = self
         bannerView.load(request)
 

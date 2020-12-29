@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5322F1861FE72D2189781810 /* Pods_MiniGames_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 734F1A2BE75B92250E4E4B39 /* Pods_MiniGames_.framework */; };
+		FA38271D259BF9230044959B /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA38271C259BF9230044959B /* Keys.swift */; };
 		FA6070A3209FEFA900DFFFD1 /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6070A2209FEFA900DFFFD1 /* Notes.swift */; };
 		FA868EB420EAE1220007A716 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA868EB320EAE1220007A716 /* MenuScene.swift */; };
 		FA868EB620ED556C0007A716 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA868EB520ED556C0007A716 /* MenuScene.sks */; };
@@ -38,6 +39,7 @@
 		0A9D71851C4D68C77C8FCC84 /* Pods-MiniGames!.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniGames!.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MiniGames!/Pods-MiniGames!.debug.xcconfig"; sourceTree = "<group>"; };
 		734F1A2BE75B92250E4E4B39 /* Pods_MiniGames_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniGames_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E49796B14ECFCA129F1B728A /* Pods-MiniGames!.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniGames!.release.xcconfig"; path = "Pods/Target Support Files/Pods-MiniGames!/Pods-MiniGames!.release.xcconfig"; sourceTree = "<group>"; };
+		FA38271C259BF9230044959B /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		FA6070A2209FEFA900DFFFD1 /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
 		FA868EB320EAE1220007A716 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		FA868EB520ED556C0007A716 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				FA97E79B20804E8E002FF39C /* Singleton.swift */,
 				FA6070A2209FEFA900DFFFD1 /* Notes.swift */,
 				FAF6A8682059DE5800DAE12E /* Info.plist */,
+				FA38271C259BF9230044959B /* Keys.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				FAF6A85F2059DE5800DAE12E /* GameViewController2.swift in Sources */,
 				FA6070A3209FEFA900DFFFD1 /* Notes.swift in Sources */,
 				FADE21E920E7F5560066024F /* GameScene_evade.swift in Sources */,
+				FA38271D259BF9230044959B /* Keys.swift in Sources */,
 				FA868EB420EAE1220007A716 /* MenuScene.swift in Sources */,
 				FAF6A8572059DE5800DAE12E /* AppDelegate.swift in Sources */,
 				FA87AED222434DC5006A9207 /* GameScene_match.swift in Sources */,
